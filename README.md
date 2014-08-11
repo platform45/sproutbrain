@@ -1,6 +1,8 @@
 hydro45
 =======
 
+![image](images/sprouts.png)
+
 Hydroponic sustainable food supply.
 
 ###Getting Started
