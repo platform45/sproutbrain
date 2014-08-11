@@ -1,7 +1,7 @@
 hydro45
 =======
 
-Hydroponic sustainable food supply
+Hydroponic sustainable food supply.
 
 ###Getting Started
 
