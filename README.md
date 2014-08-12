@@ -51,4 +51,7 @@ Drain well and to harvest cover the jar with a lid, or transfer to an airtight c
 
 ### Information:
 www.kitchengarden.co.za
+
 joseph@kitchengarden.co.za
+
+Thank you for reading!
