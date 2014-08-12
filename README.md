@@ -55,3 +55,11 @@ www.kitchengarden.co.za
 joseph@kitchengarden.co.za
 
 Thank you for reading!
+
+
+License 
+=================
+
+![Platform45](http://imgur.com/3fORK1g.png)
+
+SproutBrain is maintained and funded by Platform45. Follow [@platform45](http://twitter.com/platform45) on Twitter for updates.
