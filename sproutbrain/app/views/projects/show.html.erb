@@ -1,0 +1,30 @@
+<h1><%= @project.name %></h1>
+
+<h2>Cycles:</h2>
+<!-- highlight ongoing cycles -->
+<% Cycle.where(project_id: @project.id).each do |cycle| %>
+	
+	<h3><%= cycle.name %></h3>
+	
+	<p>Start Date: <%= cycle.start %></p>
+	
+	<p>End Date: <%= cycle.end %></p>
+	
+	<p>Duration (in days): <%= cycle.duration_days %></p>
+
+	<p>Seeds: 
+		<% if Seedtag.where(cycle_id: cycle.id) %>
+			<% Seedtag.where(cycle_id: cycle.id).each do |seedtag| %>
+				<%= Seed.find(seedtag.seed_id).name %>, 
+			<% end %>
+		<% end %>
+	</p>
+
+	<%= link_to 'Delete Cycle', cycle_path(cycle), method: :delete %><br>
+
+<% end %>
+
+<br><%= link_to 'New Cycle', new_project_cycle_path(@project) %>
+<%= link_to 'Back', projects_path %>
+<%= link_to 'Delete Project', project_path(@project), method: :delete %>
+<%= link_to 'All Seeds', seeds_path %>

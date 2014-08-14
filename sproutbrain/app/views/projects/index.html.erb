@@ -1,0 +1,12 @@
+<p>Projects homepage!</p>
+
+<% if @projects %>
+	<% @projects.each do |project| %>
+		<%= link_to project.name, project_path(project) %><br>
+		<!-- list current cycles here -->
+	<% end %>
+<% end %>
+
+<%= link_to 'New Project', new_project_path %>
+<%= link_to 'All Seeds', seeds_path %>
+<%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>

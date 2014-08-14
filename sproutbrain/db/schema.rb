@@ -11,7 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140812121108) do
+ActiveRecord::Schema.define(version: 20140814124232) do
+
+  create_table "cycles", force: true do |t|
+    t.string  "name"
+    t.integer "project_id"
+    t.integer "duration_days"
+    t.date    "start"
+    t.date    "end"
+  end
+
+  create_table "projects", force: true do |t|
+    t.string  "name"
+    t.integer "user_id"
+  end
+
+  create_table "seeds", force: true do |t|
+    t.string  "name"
+    t.integer "min_duration"
+    t.integer "max_duration"
+    t.string  "family"
+    t.text    "nutrition"
+    t.text    "tips"
+  end
+
+  create_table "seedtags", force: true do |t|
+    t.integer "cycle_id"
+    t.integer "seed_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

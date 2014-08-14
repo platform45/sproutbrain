@@ -1,10 +1,22 @@
 Rails.application.routes.draw do
   
   devise_for :users
+  
+  resources :cycles, only: [:show, :index, :destroy]
+
+  resources :projects do
+    resources :cycles, only: [:new, :create, :edit, :update]
+  end
+
+  resources :seeds, only: [:index]
 
   devise_scope :user do
     root "devise/sessions#new", as: :home
   end
+
+  # devise_scope :user do
+  #   root to: "devise/sessions#new"
+  # end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

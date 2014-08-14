@@ -1,0 +1,17 @@
+<h1>Seeds:</h1>
+
+<%= link_to 'Project Home', projects_path %>
+
+<% Seed.all.each do |seed| %>
+	
+	<h3><%= seed.name %></h3>
+	
+	<p>Days for seed to sprout: <%= seed.min_duration %> - <%= seed.max_duration %></p>
+	
+	<p>Plant Family: <%= seed.family %></p>
+	
+	<p>Nutrition: <%= seed.nutrition %></p>
+
+	<p>Tips: <%= seed.nutrition %></p>
+
+<% end %>
