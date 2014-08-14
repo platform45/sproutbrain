@@ -1,0 +1,11 @@
+<%= form_for(@project) do |f| %>
+  
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+  
+  <%= f.submit %>
+
+<% end %>
+
+<%= link_to 'Cancel', projects_path %>
+

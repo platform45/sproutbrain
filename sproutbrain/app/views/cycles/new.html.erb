@@ -1,0 +1,21 @@
+<%= form_for(@cycle, url: project_cycles_path(params[:project_id])) do |f| %>
+  
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :duration_days %><br>
+  <%= f.number_field :duration_days %><br>
+
+  <%= f.label :start %><br>
+  <%= f.date_field :start %><br>
+
+  <% Seed.all.pluck(:name).each do |seed| %>
+    <%= check_box_tag "seed_names[]", seed %>
+    <%= seed %>
+  <% end %><br>
+  
+  <%= f.submit %>
+
+<% end %>
+
+<%= link_to 'Cancel', project_path(params[:project_id]) %>
