@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140814124232) do
+ActiveRecord::Schema.define(version: 20140815124653) do
 
   create_table "cycles", force: true do |t|
     t.string  "name"
@@ -19,6 +19,12 @@ ActiveRecord::Schema.define(version: 20140814124232) do
     t.integer "duration_days"
     t.date    "start"
     t.date    "end"
+  end
+
+  create_table "participants", force: true do |t|
+    t.integer "project_id"
+    t.string  "name"
+    t.string  "email"
   end
 
   create_table "projects", force: true do |t|
@@ -38,6 +44,7 @@ ActiveRecord::Schema.define(version: 20140814124232) do
   create_table "seedtags", force: true do |t|
     t.integer "cycle_id"
     t.integer "seed_id"
+    t.date    "startdate"
   end
 
   create_table "users", force: true do |t|

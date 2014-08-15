@@ -4,8 +4,11 @@ Rails.application.routes.draw do
   
   resources :cycles, only: [:show, :index, :destroy]
 
+  resources :participants, only: [:destroy]
+
   resources :projects do
     resources :cycles, only: [:new, :create, :edit, :update]
+    resources :participants, only: [:new, :create]
   end
 
   resources :seeds, only: [:index]

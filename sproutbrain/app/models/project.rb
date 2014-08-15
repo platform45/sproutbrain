@@ -7,5 +7,6 @@ class Project < ActiveRecord::Base
 	#has_many :events, dependent: :destroy
 
 	has_many :cycles, dependent: :destroy
+	has_many :participants, dependent: :destroy
 
 end

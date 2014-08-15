@@ -1,0 +1,13 @@
+<%= form_for(@participant, url: project_participants_path(params[:project_id])) do |f| %>
+  
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :email %><br>
+  <%= f.text_field :email %><br>
+  
+  <%= f.submit %>
+
+<% end %>
+
+<%= link_to 'Cancel', project_path(params[:project_id]) %>
