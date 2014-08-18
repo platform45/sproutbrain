@@ -1,0 +1,413 @@
+
+
+Started GET "/" for 127.0.0.1 at 2014-08-18 11:25:15 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (2.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (35.2ms)
+Completed 200 OK in 131ms (Views: 97.2ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-08-18 11:25:15 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-18 11:25:15 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:15 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:15 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:15 +0200
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-08-18 11:25:17 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (0.5ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:17 +0200
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-18 11:25:17 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:17 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:17 +0200
+
+
+Started POST "/users" for 127.0.0.1 at 2014-08-18 11:25:21 +0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rH3AT2Kje0Glen1/RPtN2tDn/dpmbnor18Elm8INn9o=", "user"=>{"email"=>"katiehahm@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (1.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'katiehahm@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-08-18 09:25:21.299570"], ["email", "katiehahm@gmail.com"], ["encrypted_password", "$2a$10$pQYvmYkLZ.dODUuNmDkDbe7LPzS5El3/TmMrQQSKAr8geOpHhQCEK"], ["updated_at", "2014-08-18 09:25:21.299570"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = $1, "current_sign_in_ip" = $2, "last_sign_in_at" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = 1[0m  [["current_sign_in_at", "2014-08-18 09:25:21.306003"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_at", "2014-08-18 09:25:21.306003"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2014-08-18 09:25:21.307120"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/projects
+Completed 302 Found in 108ms (ActiveRecord: 5.1ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2014-08-18 11:25:21 +0200
+Processing by ProjectsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mProject Load (1.5ms)[0m  SELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1
+  Rendered projects/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 17ms (Views: 4.9ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:21 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:21 +0200
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-18 11:25:21 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:21 +0200
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2014-08-18 11:25:22 +0200
+Processing by ProjectsController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered projects/new.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 14ms (Views: 6.9ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-18 11:25:22 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:22 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:22 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:22 +0200
+
+
+Started POST "/projects" for 127.0.0.1 at 2014-08-18 11:25:26 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rH3AT2Kje0Glen1/RPtN2tDn/dpmbnor18Elm8INn9o=", "project"=>{"name"=>"project1"}, "commit"=>"Create Project"}
+  [1m[35mUser Load (1.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "projects" ("name", "user_id") VALUES ($1, $2) RETURNING "id"  [["name", "project1"], ["user_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/projects/1
+Completed 302 Found in 8ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2014-08-18 11:25:26 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCycle Load (1.8ms)[0m  SELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = 1
+  [1m[36mParticipant Load (1.5ms)[0m  [1mSELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = 1[0m
+  Rendered projects/show.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 21ms (Views: 14.8ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-18 11:25:26 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:26 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:26 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:26 +0200
+
+
+Started GET "/projects/1/participants/new" for 127.0.0.1 at 2014-08-18 11:25:27 +0200
+Processing by ParticipantsController#new as HTML
+  Parameters: {"project_id"=>"1"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered participants/new.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 16ms (Views: 8.7ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-18 11:25:27 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:27 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:27 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:27 +0200
+
+
+Started POST "/projects/1/participants" for 127.0.0.1 at 2014-08-18 11:25:33 +0200
+Processing by ParticipantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rH3AT2Kje0Glen1/RPtN2tDn/dpmbnor18Elm8INn9o=", "participant"=>{"name"=>"Katie", "email"=>"katie@ix.com"}, "commit"=>"Create Participant", "project_id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "participants" ("email", "name", "project_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["email", "katie@ix.com"], ["name", "Katie"], ["project_id", 1]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/projects/1
+Completed 302 Found in 8ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2014-08-18 11:25:33 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mProject Load (0.4ms)[0m  SELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCycle Load (0.5ms)[0m  [1mSELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = 1[0m
+  [1m[35mParticipant Load (0.4ms)[0m  SELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = 1
+  Rendered projects/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 13ms (Views: 8.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:34 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:34 +0200
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-18 11:25:34 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:34 +0200
+
+
+Started GET "/projects/1/cycles/new" for 127.0.0.1 at 2014-08-18 11:25:36 +0200
+Processing by CyclesController#new as HTML
+  Parameters: {"project_id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.9ms)[0m  SELECT "seeds"."name" FROM "seeds"
+  Rendered cycles/new.html.erb within layouts/application (19.2ms)
+Completed 200 OK in 30ms (Views: 20.2ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-18 11:25:36 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:36 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:36 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:36 +0200
+
+
+Started POST "/projects/1/cycles" for 127.0.0.1 at 2014-08-18 11:25:45 +0200
+Processing by CyclesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rH3AT2Kje0Glen1/RPtN2tDn/dpmbnor18Elm8INn9o=", "cycle"=>{"name"=>"cycle1", "duration_days"=>"10", "start"=>"2014-08-11"}, "seed_names"=>["Leeks", "Flax"], "commit"=>"Create Cycle", "project_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "cycles" ("duration_days", "name", "project_id", "start") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["duration_days", 10], ["name", "cycle1"], ["project_id", 1], ["start", "2014-08-11"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  UPDATE "cycles" SET "end" = $1 WHERE "cycles"."id" = 1  [["end", "2014-08-21"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSeed Load (0.6ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."name" = 'Leeks' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "seedtags" ("cycle_id", "seed_id", "startdate") VALUES ($1, $2, $3) RETURNING "id"  [["cycle_id", 1], ["seed_id", 1], ["startdate", "2014-08-11"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSeed Load (0.8ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."name" = 'Flax' LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "seedtags" ("cycle_id", "seed_id", "startdate") VALUES ($1, $2, $3) RETURNING "id"  [["cycle_id", 1], ["seed_id", 4], ["startdate", "2014-08-11"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/projects/1
+Completed 302 Found in 40ms (ActiveRecord: 11.6ms)
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2014-08-18 11:25:45 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCycle Load (0.8ms)[0m  SELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = 1
+  [1m[36mSeedtag Load (0.6ms)[0m  [1mSELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 1[0m
+  [1m[35mSeed Load (0.3ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mSeed Load (0.3ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mParticipant Load (0.4ms)[0m  SELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = 1
+  Rendered projects/show.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 18ms (Views: 10.5ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:45 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:45 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:45 +0200
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-18 11:25:45 +0200
+
+
+Started DELETE "/projects/1" for 127.0.0.1 at 2014-08-18 11:25:48 +0200
+Processing by ProjectsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"rH3AT2Kje0Glen1/RPtN2tDn/dpmbnor18Elm8INn9o=", "id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mProject Load (0.4ms)[0m  SELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mCycle Load (0.4ms)[0m  SELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = $1  [["project_id", 1]]
+  [1m[36mSeedtag Load (0.4ms)[0m  [1mSELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = $1[0m  [["cycle_id", 1]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "seedtags" WHERE "seedtags"."id" = $1  [["id", 1]]
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "seedtags" WHERE "seedtags"."id" = $1[0m  [["id", 2]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "cycles" WHERE "cycles"."id" = $1  [["id", 1]]
+  [1m[36mParticipant Load (0.7ms)[0m  [1mSELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = $1[0m  [["project_id", 1]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "participants" WHERE "participants"."id" = $1  [["id", 1]]
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "projects" WHERE "projects"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/projects
+Completed 302 Found in 45ms (ActiveRecord: 4.6ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2014-08-18 11:25:48 +0200
+Processing by ProjectsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mProject Load (0.3ms)[0m  SELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1
+  Rendered projects/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-18 11:25:48 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:48 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:48 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:48 +0200
+
+
+Started GET "/seeds" for 127.0.0.1 at 2014-08-18 11:25:55 +0200
+Processing by SeedsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mSeed Load (0.4ms)[0m  SELECT "seeds".* FROM "seeds"
+  Rendered seeds/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 9ms (Views: 5.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-18 11:25:55 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:55 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:55 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-18 11:25:55 +0200
+
+
+Started GET "/projects" for 127.0.0.1 at 2014-08-18 11:26:00 +0200
+Processing by ProjectsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mProject Load (0.4ms)[0m  SELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1
+  Rendered projects/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 9ms (Views: 5.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-18 11:26:00 +0200
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-18 11:26:00 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-18 11:26:00 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-18 11:26:00 +0200
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-08-18 11:26:01 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"rH3AT2Kje0Glen1/RPtN2tDn/dpmbnor18Elm8INn9o="}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 20ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-08-18 11:26:01 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-18 11:26:01 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-18 11:26:01 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-18 11:26:01 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-18 11:26:01 +0200
+  [1m[36mSQL (7.7ms)[0m  [1mDELETE FROM "users"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-08-18 12:06:40 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (1.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (28.0ms)
+Completed 200 OK in 81ms (Views: 52.8ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-18 12:06:40 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-18 12:06:40 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-18 12:06:41 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-18 12:06:41 +0200
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-08-18 12:06:43 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KIOMxD3q28sqNZqO5mOoywe34hxwUVivsUiZVwMTUFg=", "user"=>{"email"=>"katiehahm@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (1.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'katiehahm@gmail.com'  ORDER BY "users"."id" ASC LIMIT 1
+Completed 401 Unauthorized in 12ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KIOMxD3q28sqNZqO5mOoywe34hxwUVivsUiZVwMTUFg=", "user"=>{"email"=>"katiehahm@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/shared/_links.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 77ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-18 12:06:43 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-18 12:06:43 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-18 12:06:43 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-18 12:06:43 +0200
