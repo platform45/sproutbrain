@@ -9,6 +9,11 @@
   <%= f.label :start %><br>
   <%= f.date_field :start %><br>
 
+<!--   valid_seeds = Array.new
+  Seed.all.each do |seed|
+    if (seed.min_duration + seed.max_duration) / 2 <= :duration_days
+      valid_seeds.push(seed)
+  valid_seeds.pluck(:name).each do |seed| -->
   <% Seed.all.pluck(:name).each do |seed| %>
     <%= check_box_tag "seed_names[]", seed %>
     <%= seed %>

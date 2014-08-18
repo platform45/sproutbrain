@@ -24,7 +24,20 @@
 
 <% end %>
 
-<br><%= link_to 'New Cycle', new_project_cycle_path(@project) %>
+<h2>Participants:</h2>
+<!-- highlight ongoing cycles -->
+<% Participant.where(project_id: @project.id).each do |participant| %>
+	
+	<h3><%= participant.name %></h3>
+	
+	<p>Email: <%= participant.email %></p>
+
+	<%= link_to 'Delete Participant', participant_path(participant), method: :delete %><br>
+
+<% end %>
+
+<br><%= link_to 'New Participant', new_project_participant_path(@project) %>
+<%= link_to 'New Cycle', new_project_cycle_path(@project) %>
 <%= link_to 'Back', projects_path %>
 <%= link_to 'Delete Project', project_path(@project), method: :delete %>
 <%= link_to 'All Seeds', seeds_path %>

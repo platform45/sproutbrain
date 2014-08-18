@@ -14,7 +14,7 @@ class CyclesController < ApplicationController
 		if @cycle.save
 			if params[:seed_names].present?
 				params[:seed_names].each do |name|
-					Seedtag.create(seed_id: Seed.find_by(name: name).id, cycle_id: @cycle.id)
+					Seedtag.create(seed_id: Seed.find_by(name: name).id, cycle_id: @cycle.id, startdate: @cycle.start)
 				end
 			end
 			redirect_to project_path(params[:project_id])
