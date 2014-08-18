@@ -1,28 +1,6 @@
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Current Functionalities:
+- User can create projects
+- Within a project, user can create cycles
+- Each cycle contains seeds
+- A cycle specifies the duration in days, and at 10am and 6pm during that duration a random participant receives a notification to water the seeds. 
+- A user can input all the participants' name and email.
