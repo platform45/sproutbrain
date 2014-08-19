@@ -411,6 +411,7 @@ Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-18 12:06:43 
 
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-18 12:06:43 +0200
+<<<<<<< HEAD
 
 
 Started GET "/" for 127.0.0.1 at 2014-08-18 13:32:22 +0200
@@ -6639,6 +6640,20 @@ ActionController::RoutingError (No route matches [GET] "/assets/projects.css.scs
   [1m[35m (0.3ms)[0m  COMMIT
   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  INSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["family", "Brassicas"], ["max_duration", 6], ["min_duration", 3], ["name", "Mustard"], ["nutrition", "Vitamins A, B, C, E, K, Anti-Oxidants, Calcium, Iron, Protein 35%"], ["tips", ""]]
+=======
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["family", "Allium"], ["max_duration", 15], ["min_duration", 7], ["name", "Leeks"], ["nutrition", "Vitamin A, B, C, E, Calcium, Iron, Protein 20%"], ["tips", "Freezing seeds extends their lifetime"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["family", "Allium"], ["max_duration", 15], ["min_duration", 7], ["name", "Bunching onion"], ["nutrition", "Vitamin A, B, C, E, Calcium, Iron, Protein 20%"], ["tips", "Freezing seeds extends their lifetime"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["family", "Brassicas"], ["max_duration", 6], ["min_duration", 3], ["name", "Radish"], ["nutrition", "Vitamins A, B, C, E, K, Anti-Oxidants, Calcium, Iron, Protein 35%"], ["tips", ""]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["family", "Brassicas"], ["max_duration", 6], ["min_duration", 3], ["name", "Mustard"], ["nutrition", "Vitamins A, B, C, E, K, Anti-Oxidants, Calcium, Iron, Protein 35%"], ["tips", ""]]
+>>>>>>> adding-features
   [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
   [1m[35m (0.1ms)[0m  BEGIN
   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["family", "Brassicas"], ["max_duration", 6], ["min_duration", 3], ["name", "Cabbage"], ["nutrition", "Vitamins A, B, C, E, K, Anti-Oxidants, Calcium, Iron, Protein 35%"], ["tips", ""]]
@@ -6653,6 +6668,7 @@ ActionController::RoutingError (No route matches [GET] "/assets/projects.css.scs
   [1m[35mSQL (0.2ms)[0m  INSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["family", "Brassicas"], ["max_duration", 6], ["min_duration", 3], ["name", "Kohlrabi"], ["nutrition", "Vitamins A, B, C, E, K, Anti-Oxidants, Calcium, Iron, Protein 35%"], ["tips", ""]]
   [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
   [1m[35m (0.1ms)[0m  BEGIN
+<<<<<<< HEAD
   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["family", "Grains"], ["max_duration", 3], ["min_duration", 1], ["name", "Popcorn"], ["nutrition", "Vitamins A, B, C, E, K, Calcium, Iron, Potassium, Protein 30%"], ["tips", "Can be used in breads"]]
   [1m[35m (0.3ms)[0m  COMMIT
   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
@@ -6667,10 +6683,27 @@ ActionController::RoutingError (No route matches [GET] "/assets/projects.css.scs
   [1m[35m (0.1ms)[0m  BEGIN
   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["family", "Leafy Sprout Seeds"], ["max_duration", 6], ["min_duration", 5], ["name", "Alfalfa"], ["nutrition", "Vitamins A, B, C, E, K, Calcium, Iron, Potassium, Protein 35%"], ["tips", ""]]
   [1m[35m (0.4ms)[0m  COMMIT
+=======
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["family", "Grains"], ["max_duration", 3], ["min_duration", 1], ["name", "Popcorn"], ["nutrition", "Vitamins A, B, C, E, K, Calcium, Iron, Potassium, Protein 30%"], ["tips", "Can be used in breads"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["family", "Grains"], ["max_duration", 3], ["min_duration", 1], ["name", "BuckWheat"], ["nutrition", "Vitamins A, B, C, E, K, Calcium, Iron, Potassium, Protein 30%"], ["tips", "Can be used in breads"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["family", "Grains"], ["max_duration", 3], ["min_duration", 1], ["name", "Wheat"], ["nutrition", "Vitamins A, B, C, E, K, Calcium, Iron, Potassium, Protein 30%"], ["tips", "Can be used in breads"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["family", "Leafy Sprout Seeds"], ["max_duration", 6], ["min_duration", 5], ["name", "Flax"], ["nutrition", "Vitamins A, B, C, E, K, Calcium, Iron, Potassium, Protein 35%"], ["tips", ""]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["family", "Leafy Sprout Seeds"], ["max_duration", 6], ["min_duration", 5], ["name", "Alfafa"], ["nutrition", "Vitamins A, B, C, E, K, Calcium, Iron, Potassium, Protein 35%"], ["tips", ""]]
+  [1m[35m (0.3ms)[0m  COMMIT
+>>>>>>> adding-features
   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  INSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["family", "Nuts/Seeds"], ["max_duration", 3], ["min_duration", 1], ["name", "Pumpkin Seed"], ["nutrition", "Vitamins A, B, C, E, Calcium, Iron, Potassium, Protein 20-30%"], ["tips", "Try roasting sprouted seeds in the oven"]]
   [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
   [1m[35m (0.1ms)[0m  BEGIN
+<<<<<<< HEAD
   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["family", "Nuts/Seeds"], ["max_duration", 3], ["min_duration", 1], ["name", "Sunflower Seed"], ["nutrition", "Vitamins A, B, C, E, Calcium, Iron, Potassium, Protein 20-30%"], ["tips", "Try roasting sprouted seeds in the oven"]]
   [1m[35m (0.3ms)[0m  COMMIT
   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
@@ -6678,26 +6711,47 @@ ActionController::RoutingError (No route matches [GET] "/assets/projects.css.scs
   [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
   [1m[35m (0.1ms)[0m  BEGIN
   [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["family", "Pulses"], ["max_duration", 5], ["min_duration", 2], ["name", "Yellow Peas"], ["nutrition", "Vitamins A, B, C, E, Calcium, Iron, Potassium, Protein 20-30%"], ["tips", "Toxin precautions: http://www.kitchengarden.co.za/pulses/"]]
+=======
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["family", "Nuts/Seeds"], ["max_duration", 3], ["min_duration", 1], ["name", "Sunflower Seeds"], ["nutrition", "Vitamins A, B, C, E, Calcium, Iron, Potassium, Protein 20-30%"], ["tips", "Try roasting sprouted seeds in the oven"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["family", "Nuts/Seeds"], ["max_duration", 3], ["min_duration", 1], ["name", "Sesame Seeds"], ["nutrition", "Vitamins A, B, C, E, Calcium, Iron, Potassium, Protein 20-30%"], ["tips", "Try roasting sprouted seeds in the oven"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["family", "Pulses"], ["max_duration", 5], ["min_duration", 2], ["name", "Yellow Peas"], ["nutrition", "Vitamins A, B, C, E, Calcium, Iron, Potassium, Protein 20-30%"], ["tips", "Toxin precautions: http://www.kitchengarden.co.za/pulses/"]]
+>>>>>>> adding-features
   [1m[35m (0.3ms)[0m  COMMIT
   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  INSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["family", "Pulses"], ["max_duration", 5], ["min_duration", 2], ["name", "Sugar Beans"], ["nutrition", "Vitamins A, B, C, E, Calcium, Iron, Potassium, Protein 20-30%"], ["tips", "Toxin precautions: http://www.kitchengarden.co.za/pulses/"]]
   [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
   [1m[35m (0.1ms)[0m  BEGIN
   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["family", "Pulses"], ["max_duration", 5], ["min_duration", 2], ["name", "Soy Beans"], ["nutrition", "Vitamins A, B, C, E, Calcium, Iron, Potassium, Protein 20-30%"], ["tips", "Toxin precautions: http://www.kitchengarden.co.za/pulses/"]]
+<<<<<<< HEAD
   [1m[35m (0.2ms)[0m  COMMIT
+=======
+  [1m[35m (0.3ms)[0m  COMMIT
+>>>>>>> adding-features
   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  INSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["family", "Pulses"], ["max_duration", 5], ["min_duration", 2], ["name", "Peanuts"], ["nutrition", "Vitamins A, B, C, E, Calcium, Iron, Potassium, Protein 20-30%"], ["tips", "Toxin precautions: http://www.kitchengarden.co.za/pulses/"]]
   [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
   [1m[35m (0.1ms)[0m  BEGIN
   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["family", "Pulses"], ["max_duration", 5], ["min_duration", 2], ["name", "Mung Beans"], ["nutrition", "Vitamins A, B, C, E, Calcium, Iron, Potassium, Protein 20-30%"], ["tips", "Toxin precautions: http://www.kitchengarden.co.za/pulses/"]]
+<<<<<<< HEAD
   [1m[35m (0.2ms)[0m  COMMIT
   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  INSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["family", "Pulses"], ["max_duration", 5], ["min_duration", 2], ["name", "Lupins"], ["nutrition", "Vitamins A, B, C, E, Calcium, Iron, Potassium, Protein 20-30%"], ["tips", "Toxin precautions: http://www.kitchengarden.co.za/pulses/"]]
   [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+=======
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["family", "Pulses"], ["max_duration", 5], ["min_duration", 2], ["name", "Lupins"], ["nutrition", "Vitamins A, B, C, E, Calcium, Iron, Potassium, Protein 20-30%"], ["tips", "Toxin precautions: http://www.kitchengarden.co.za/pulses/"]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+>>>>>>> adding-features
   [1m[35m (0.1ms)[0m  BEGIN
   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["family", "Pulses"], ["max_duration", 5], ["min_duration", 2], ["name", "Fava Beans"], ["nutrition", "Vitamins A, B, C, E, Calcium, Iron, Potassium, Protein 20-30%"], ["tips", "Toxin precautions: http://www.kitchengarden.co.za/pulses/"]]
   [1m[35m (0.2ms)[0m  COMMIT
   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+<<<<<<< HEAD
   [1m[35mSQL (0.2ms)[0m  INSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["family", "Pulses"], ["max_duration", 5], ["min_duration", 2], ["name", "Chickpeas"], ["nutrition", "Vitamins A, B, C, E, Calcium, Iron, Potassium, Protein 20-30%"], ["tips", "Toxin precautions: http://www.kitchengarden.co.za/pulses/"]]
   [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
   [1m[35m (0.4ms)[0m  BEGIN
@@ -7752,3 +7806,28 @@ ActionController::RoutingError (No route matches [GET] "/assets/projects.css.scs
   Rendered /Users/Katie/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.9ms)
   Rendered /Users/Katie/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
   Rendered /Users/Katie/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (24.7ms)
+=======
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["family", "Pulses"], ["max_duration", 5], ["min_duration", 2], ["name", "Chickpeas"], ["nutrition", "Vitamins A, B, C, E, Calcium, Iron, Potassium, Protein 20-30%"], ["tips", "Toxin precautions: http://www.kitchengarden.co.za/pulses/"]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["family", "Pulses"], ["max_duration", 5], ["min_duration", 2], ["name", "Brown Lentils"], ["nutrition", "Vitamins A, B, C, E, Calcium, Iron, Potassium, Protein 20-30%"], ["tips", "Toxin precautions: http://www.kitchengarden.co.za/pulses/"]]
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["family", "Pulses"], ["max_duration", 5], ["min_duration", 2], ["name", "Black Eye Beans"], ["nutrition", "Vitamins A, B, C, E, Calcium, Iron, Potassium, Protein 20-30%"], ["tips", "Toxin precautions: http://www.kitchengarden.co.za/pulses/"]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["family", "Pulses"], ["max_duration", 5], ["min_duration", 2], ["name", "Green Peas"], ["nutrition", "Vitamins A, B, C, E, Calcium, Iron, Potassium, Protein 20-30%"], ["tips", "Toxin precautions: http://www.kitchengarden.co.za/pulses/"]]
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["family", "Pulses"], ["max_duration", 5], ["min_duration", 2], ["name", "Maple Peas"], ["nutrition", "Vitamins A, B, C, E, Calcium, Iron, Potassium, Protein 20-30%"], ["tips", "Toxin precautions: http://www.kitchengarden.co.za/pulses/"]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["family", "Pulses"], ["max_duration", 5], ["min_duration", 2], ["name", "Dunn Peas"], ["nutrition", "Vitamins A, B, C, E, Calcium, Iron, Potassium, Protein 20-30%"], ["tips", "Toxin precautions: http://www.kitchengarden.co.za/pulses/"]]
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["family", "Spices"], ["max_duration", 6], ["min_duration", 3], ["name", "Poppy Seed"], ["nutrition", "Vitamins A, B, C, E, K, Calcium, Iron, Potassium, Protein 20-35%"], ["tips", ""]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "seeds" ("family", "max_duration", "min_duration", "name", "nutrition", "tips") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["family", "Spices"], ["max_duration", 6], ["min_duration", 3], ["name", "Fenugreek"], ["nutrition", "Vitamins A, B, C, E, K, Calcium, Iron, Potassium, Protein 20-35%"], ["tips", ""]]
+  [1m[35m (0.3ms)[0m  COMMIT
+>>>>>>> adding-features
