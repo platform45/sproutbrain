@@ -15,7 +15,10 @@
       valid_seeds.push(seed)
   valid_seeds.pluck(:name).each do |seed| -->
 
-  <% Seed.all.pluck(:name).each do |seed| %>
+  <% all_seeds = Seed.all.pluck(:name) %>
+  <% all_seeds.sort_by!{ |s| s.downcase } %>
+
+  <% all_seeds.each do |seed| %>
     <%= check_box_tag "seed_names[]", seed %>
     <%= seed %>
   <% end %><br>

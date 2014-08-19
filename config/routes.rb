@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :participants, only: [:destroy]
 
-  resources :projects, only: [:show, :new, :create] do
+  resources :projects do
     resources :cycles, only: [:new, :create, :edit, :update]
     resources :participants, only: [:new, :create]
   end
