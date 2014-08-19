@@ -4,7 +4,7 @@ require 'rufus/scheduler'
 scheduler = Rufus::Scheduler.new
 
 #every day,
-scheduler.every("7h") do
+scheduler.every("1h") do
 	#for all current cycles,
 	Cycle.all.each do |cycle|
 		if (cycle.start < Date.today && cycle.end > Date.today)

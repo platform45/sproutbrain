@@ -1,3 +1,4 @@
 class SeedsController < ApplicationController
 
+
 end
