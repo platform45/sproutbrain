@@ -4,31 +4,33 @@ require 'rufus/scheduler'
 scheduler = Rufus::Scheduler.new
 
 #every day,
-scheduler.every("7h") do
+scheduler.every("1h") do
 	#for all current cycles,
-	Cycle.all.each do |cycle|
-		if (cycle.start < Date.today && cycle.end > Date.today)
-			#for each seed in this cycle and ending before the cycle ends,
-			current_seeds = Array.new
-			Seedtag.where(cycle_id: cycle.id).each do |seedtag|
-				s = Seed.find(seedtag.seed_id)
-				seed_length = (s.min_duration + s.max_duration) / 2
-				if (seedtag.startdate.advance(:days => seed_length) < Date.today)
-					seedtag.startdate = Date.today
+	if (Time.now.hour == 10 || Time.now.hour == 18)
+		Cycle.all.each do |cycle|
+			if (cycle.start < Date.today && cycle.end > Date.today)
+				#for each seed in this cycle and ending before the cycle ends,
+				current_seeds = Array.new
+				Seedtag.where(cycle_id: cycle.id).each do |seedtag|
+					s = Seed.find(seedtag.seed_id)
+					seed_length = (s.min_duration + s.max_duration) / 2
+					if (seedtag.startdate.advance(:days => seed_length) < Date.today)
+						seedtag.startdate = Date.today
+					end
+					if (seedtag.startdate.advance(:days => seed_length) < cycle.end)
+						current_seeds.push(s.name)
+					end
 				end
-				if (seedtag.startdate.advance(:days => seed_length) < cycle.end)
-					current_seeds.push(s.name)
+				@current_seeds = current_seeds
+				#put reminder at 10am
+				if (Time.now.hour == 10)
+					puts current_seeds
+					p = Participant.all
+					ParticipantMailer.welcome_email(p[Random.rand(p.length)], @current_seeds).deliver
+				#put reminder at 6pm
+				elsif (Time.now.hour == 18)
+					puts current_seeds
 				end
-			end
-			@current_seeds = current_seeds
-			#put reminder at 10am
-			if (Time.now.hour == 10)
-				puts current_seeds
-				p = Participant.all
-				ParticipantMailer.welcome_email(p[Random.rand(p.length)], @current_seeds).deliver
-			#put reminder at 6pm
-			elsif (Time.now.hour == 18)
-				puts current_seeds
 			end
 		end
 	end
