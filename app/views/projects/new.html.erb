@@ -1,11 +1,6 @@
+<p>You don't have any projects!</p>
+
+<p>Create a project:</p>
 <%= form_for(@project) do |f| %>
-  
-  <%= f.label :name %><br>
-  <%= f.text_field :name %>
-  
-  <%= f.submit %>
-
+  <%= f.label :name %>: <%= f.text_field :name %> <%= f.submit %>
 <% end %>
-
-<%= link_to 'Cancel', projects_path %>
-

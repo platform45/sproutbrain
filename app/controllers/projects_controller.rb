@@ -6,6 +6,8 @@ class ProjectsController < ApplicationController
 
 	def show
 		@project = Project.find(params[:id])
+		@participant = Participant.new
+		@new_project = Project.new
 	end
 
 	def new
@@ -24,7 +26,11 @@ class ProjectsController < ApplicationController
 	def destroy
 		project = Project.find(params[:id])
 		project.destroy
-		redirect_to projects_path
+		if Project.all[0]
+			redirect_to project_path(Project.all[0].id)
+		else
+			redirect_to new_project_path
+		end
 	end
 
 	private
