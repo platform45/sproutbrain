@@ -1,41 +1,39 @@
-<h1><%= @project.name %></h1>
+<h2><%= @project.name %></h2>
+
+<!-- creates new project -->
+<%= form_for(@new_project) do |f| %>
+  <%= f.label :name %>: <%= f.text_field :name %> <%= f.submit %>
+<% end %>
 
 <h2>Cycles:</h2>
 <!-- highlight ongoing cycles -->
 <% Cycle.where(project_id: @project.id).each do |cycle| %>
-	
-	<h3><%= cycle.name %></h3>
-	
+	<p><%= cycle.name %> <%= link_to 'delete' , cycle_path(cycle), method: :delete %></p>
 	<p>Start Date: <%= cycle.start %></p>
-	
 	<p>End Date: <%= cycle.end %></p>
-	
 	<p>Duration (in days): <%= cycle.duration_days %></p>
-
 	<p>Seeds: 
 		<% if Seedtag.where(cycle_id: cycle.id) %>
 			<% Seedtag.where(cycle_id: cycle.id).each do |seedtag| %>
 				<%= Seed.find(seedtag.seed_id).name %>, 
 			<% end %>
 		<% end %>
-	</p>
-
-	<%= link_to 'Delete Cycle', cycle_path(cycle), method: :delete %><br>
+	</p><br>
 
 <% end %>
 
 <h2>Participants:</h2>
 <!-- highlight ongoing cycles -->
-<% Participant.where(project_id: @project.id).each do |participant| %>
-	
-	<p>Email: <%= participant.email %></p>
 
-	<%= link_to 'Delete Participant', participant_path(participant), method: :delete %><br>
-
+<!-- creates new participants -->
+<%= form_for(@participant, url: project_participants_path(@project.id)) do |f| %>
+  <%= f.label :email %>: <%= f.text_field :email %> <%= f.submit %>
 <% end %>
 
-<br>
-<%= link_to 'New Participant', new_project_participant_path(@project) %>
+<!-- lists participants -->
+<ul><% Participant.where(project_id: @project.id).each do |participant| %>
+	<p><li><%= participant.email %> <%= link_to 'delete', participant_path(participant), method: :delete %></li></p>
+<% end %></ul>
+
 <%= link_to 'New Cycle', new_project_cycle_path(@project) %>
 <%= link_to 'Delete Project', project_path(@project), method: :delete %>
-<%= link_to 'New Project', new_project_path %>
