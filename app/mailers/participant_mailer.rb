@@ -4,6 +4,6 @@ class ParticipantMailer < ActionMailer::Base
   def welcome_email(participant, seeds)
  	@participant = participant
  	@seeds = seeds
-	mail(to: @participant.email, subject: 'Your sprouts are thirsty!')
+	mail(to: @participant.email, subject: 'Alert from your sprouts!')
   end
 end

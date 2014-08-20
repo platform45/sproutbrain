@@ -20819,3 +20819,149 @@ Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-20 09:42:41 +020
 
 
 Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-20 09:42:41 +0200
+
+
+Started GET "/" for 127.0.0.1 at 2014-08-20 10:15:36 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (1.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/homepage (34.2ms)
+Completed 200 OK in 83ms (Views: 59.9ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-20 10:15:37 +0200
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-08-20 10:15:37 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-20 10:15:37 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-20 10:15:37 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-20 10:15:37 +0200
+
+
+Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-20 10:15:37 +0200
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-08-20 10:15:39 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eq8mdyoUi0A+yVk8FN+WqBjU90YR99JIzXVxVSPZLtk=", "user"=>{"email"=>"katiehahm@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (2.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'katiehahm@gmail.com'  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  UPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = 1  [["current_sign_in_at", "2014-08-20 08:15:39.505049"], ["last_sign_in_at", "2014-08-19 14:39:21.356657"], ["sign_in_count", 3], ["updated_at", "2014-08-20 08:15:39.506428"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mProject Load (0.7ms)[0m  SELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1
+Redirected to http://localhost:3000/projects/2
+Completed 302 Found in 107ms (ActiveRecord: 7.4ms)
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2014-08-20 10:15:39 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mProject Load (0.4ms)[0m  SELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCycle Load (0.7ms)[0m  [1mSELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = 2[0m
+  [1m[35mSeedtag Load (0.6ms)[0m  SELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 2
+  [1m[36mParticipant Load (0.5ms)[0m  [1mSELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = 2[0m
+  Rendered projects/show.html.erb within layouts/application (48.3ms)
+  [1m[35mProject Load (0.4ms)[0m  SELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1
+Completed 200 OK in 65ms (Views: 49.8ms | ActiveRecord: 8.1ms)
+  [1m[36mCycle Load (0.4ms)[0m  [1mSELECT "cycles".* FROM "cycles"[0m
+  [1m[35mSeedtag Load (0.4ms)[0m  SELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 2
+  [1m[36mParticipant Load (0.3ms)[0m  [1mSELECT "participants".* FROM "participants"[0m
+  [1m[35mCycle Load (0.5ms)[0m  SELECT "cycles".* FROM "cycles"
+  [1m[36mSeedtag Load (0.4ms)[0m  [1mSELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 2[0m
+  [1m[35mParticipant Load (0.3ms)[0m  SELECT "participants".* FROM "participants"
+
+
+Started POST "/projects/2/participants" for 127.0.0.1 at 2014-08-20 10:18:42 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ParticipantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZL6SIlV/7c2WdEBpq50OVSO2m5gEjx1wm83d6daXSds=", "participant"=>{"email"=>"katiehahm@gmail.com"}, "commit"=>"Create Participant", "project_id"=>"2"}
+  [1m[35mUser Load (1.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "participants" ("email", "project_id") VALUES ($1, $2) RETURNING "id"  [["email", "katiehahm@gmail.com"], ["project_id", 2]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/projects/2
+Completed 302 Found in 50ms (ActiveRecord: 10.7ms)
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2014-08-20 10:18:42 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCycle Load (0.7ms)[0m  SELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = 2
+  [1m[36mSeedtag Load (0.6ms)[0m  [1mSELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 2[0m
+  [1m[35mParticipant Load (0.4ms)[0m  SELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = 2
+  Rendered projects/show.html.erb within layouts/application (38.7ms)
+  [1m[36mProject Load (0.8ms)[0m  [1mSELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1[0m
+Completed 200 OK in 78ms (Views: 60.9ms | ActiveRecord: 8.7ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-08-20 10:18:44 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ZL6SIlV/7c2WdEBpq50OVSO2m5gEjx1wm83d6daXSds="}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 16ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-08-20 10:18:44 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (1.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/homepage (10.9ms)
+Completed 200 OK in 26ms (Views: 15.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-08-20 10:18:45 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RyhCmSjgE6lhPVzE+ZL7quz7uf7kP9udsRi67d24j8g=", "user"=>{"email"=>"katiehahm@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (2.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'katiehahm@gmail.com'  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (2.4ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = 1[0m  [["current_sign_in_at", "2014-08-20 08:18:45.629170"], ["last_sign_in_at", "2014-08-20 08:15:39.505049"], ["sign_in_count", 4], ["updated_at", "2014-08-20 08:18:45.630581"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1[0m
+Redirected to http://localhost:3000/projects/2
+Completed 302 Found in 95ms (ActiveRecord: 5.8ms)
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2014-08-20 10:18:45 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCycle Load (1.0ms)[0m  SELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = 2
+  [1m[36mSeedtag Load (0.4ms)[0m  [1mSELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 2[0m
+  [1m[35mParticipant Load (0.5ms)[0m  SELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = 2
+  Rendered projects/show.html.erb within layouts/application (19.0ms)
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1[0m
+Completed 200 OK in 28ms (Views: 22.4ms | ActiveRecord: 3.3ms)
+  [1m[36mCycle Load (1.0ms)[0m  [1mSELECT "cycles".* FROM "cycles"[0m
+  [1m[35mSeedtag Load (0.8ms)[0m  SELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 2
+  [1m[36mParticipant Load (0.5ms)[0m  [1mSELECT "participants".* FROM "participants"[0m
+  Rendered participant_mailer/welcome_email.html.erb (1.3ms)
+
+ParticipantMailer#welcome_email: processed outbound mail in 26.5ms
+
+Sent mail to katiehahm@gmail.com (12.3ms)
+Date: Wed, 20 Aug 2014 10:19:55 +0200
+From: no-reply@gmail.com
+To: katiehahm@gmail.com
+Message-ID: <53f45a2b92ac4_5375810b8d04447c5@katies-mbp-6.capetown.45cloud.net.mail>
+Subject: Your sprouts are thirsty!
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+Hello! This is a reminder that you need to rinse  in cool water, amd place the jars back facing down.

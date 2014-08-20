@@ -5,9 +5,10 @@ scheduler = Rufus::Scheduler.new
 
 #every day,
 scheduler.every("1m") do
+
 	#for all current cycles,
-	if (Time.now.hour == 10 || Time.now.hour == 18)
-		Cycle.all.each do |cycle|
+	Cycle.all.each do |cycle|
+		if (Time.now.hour == cycle.morning_alert.hour || Time.now.hour == cycle.evening_alert.hour)
 			if (cycle.start < Date.today && cycle.end > Date.today)
 				#for each seed in this cycle and ending before the cycle ends,
 				current_seeds = Array.new
@@ -23,14 +24,8 @@ scheduler.every("1m") do
 				end
 				@current_seeds = current_seeds
 				#put reminder at 10am
-				if (Time.now.hour == 10)
-					p = Participant.all
-					ParticipantMailer.welcome_email(p[Random.rand(p.length)], @current_seeds).deliver
-				#put reminder at 6pm
-				elsif (Time.now.hour == 18)
-					p = Participant.all
-					ParticipantMailer.welcome_email(p[Random.rand(p.length)], @current_seeds).deliver
-				end
+				p = Participant.all
+				ParticipantMailer.welcome_email(p[Random.rand(p.length)], @current_seeds).deliver
 			end
 		end
 	end
