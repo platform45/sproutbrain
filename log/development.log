@@ -22406,3 +22406,25 @@ Content-Transfer-Encoding: 7bit
 
 
 Hello! This is a reminder that you need to rinse Black Eye Beans in cool water, amd place the jars back facing down.
+  [1m[36mCycle Load (1.1ms)[0m  [1mSELECT "cycles".* FROM "cycles"[0m
+  [1m[35mSeedtag Load (0.7ms)[0m  SELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 3
+  [1m[36mSeed Load (1.0ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mSeed Load (0.5ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1  [["id", 26]]
+  [1m[36mParticipant Load (0.6ms)[0m  [1mSELECT "participants".* FROM "participants"[0m
+  Rendered participant_mailer/welcome_email.html.erb (1.3ms)
+
+ParticipantMailer#welcome_email: processed outbound mail in 17.9ms
+
+Sent mail to katiehahm@gmail.com (1620.3ms)
+Date: Wed, 20 Aug 2014 11:37:19 +0200
+From: no-reply@gmail.com
+To: katiehahm@gmail.com
+Message-ID: <53f46c4f34d45_58a881b1ad6097732@katies-mbp-6.capetown.45cloud.net.mail>
+Subject: Alert from your sprouts!
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+Hello! This is a reminder that you need to rinse Black Eye Beans in cool water, amd place the jars back facing down.
