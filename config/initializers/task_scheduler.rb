@@ -3,12 +3,13 @@ require 'rufus/scheduler'
 
 scheduler = Rufus::Scheduler.new
 
-#every day,
+#every minute,
 scheduler.every("1m") do
-
 	#for all current cycles,
 	Cycle.all.each do |cycle|
+		#if current hour is the morning/evening alert hour,
 		if (Time.now.hour == cycle.morning_alert.hour || Time.now.hour == cycle.evening_alert.hour)
+			#if today is a valid date for the cycle,
 			if (cycle.start <= Date.today && cycle.end >= Date.today)
 				#for each seed in this cycle and ending before the cycle ends,
 				current_seeds = Array.new
@@ -23,7 +24,7 @@ scheduler.every("1m") do
 					end
 				end
 				@current_seeds = current_seeds
-				#put reminder at 10am
+				#send email
 				p = Participant.all
 				ParticipantMailer.welcome_email(p[Random.rand(p.length)], @current_seeds).deliver
 			end

@@ -22047,3 +22047,362 @@ Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-20 11:00:55
 
 Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-20 11:00:55 +0200
   [1m[36mCycle Load (0.4ms)[0m  [1mSELECT "cycles".* FROM "cycles"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-08-20 11:19:38 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (1.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/homepage (38.0ms)
+Completed 200 OK in 86ms (Views: 62.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-08-20 11:19:38 +0200
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-20 11:19:38 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-20 11:19:38 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-20 11:19:38 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-20 11:19:38 +0200
+
+
+Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-20 11:19:38 +0200
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-08-20 11:19:40 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"D10+ytJ17AF35k06vX8jNXhQE2zbznLHwQZQqEAa9hs=", "user"=>{"email"=>"katiehahm@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (2.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'katiehahm@gmail.com'  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = 1  [["current_sign_in_at", "2014-08-20 09:19:40.912561"], ["last_sign_in_at", "2014-08-20 09:03:21.119148"], ["sign_in_count", 6], ["updated_at", "2014-08-20 09:19:40.914204"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mProject Load (0.6ms)[0m  SELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1
+Redirected to http://localhost:3000/projects/3
+Completed 302 Found in 105ms (ActiveRecord: 6.6ms)
+
+
+Started GET "/projects/3" for 127.0.0.1 at 2014-08-20 11:19:40 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mProject Load (0.3ms)[0m  SELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mCycle Load (0.7ms)[0m  [1mSELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = 3[0m
+  [1m[35mSeedtag Load (0.8ms)[0m  SELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 3
+  [1m[36mSeed Load (0.4ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mSeed Load (0.4ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1  [["id", 7]]
+  [1m[36mSeed Load (0.4ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mParticipant Load (0.5ms)[0m  SELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = 3
+  Rendered projects/show.html.erb within layouts/application (51.6ms)
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1[0m
+Completed 200 OK in 69ms (Views: 45.0ms | ActiveRecord: 16.2ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-08-20 11:19:41 +0200
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-20 11:19:41 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-20 11:19:41 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-20 11:19:41 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-20 11:19:41 +0200
+
+
+Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-20 11:19:41 +0200
+  [1m[35mCycle Load (0.3ms)[0m  SELECT "cycles".* FROM "cycles"
+
+
+Started GET "/" for 127.0.0.1 at 2014-08-20 11:20:46 +0200
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (4.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mProject Load (0.9ms)[0m  SELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1
+Redirected to http://localhost:3000/projects/3
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 12ms (ActiveRecord: 5.7ms)
+
+
+Started GET "/projects/3" for 127.0.0.1 at 2014-08-20 11:20:46 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mProject Load (0.3ms)[0m  SELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mCycle Load (0.7ms)[0m  [1mSELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = 3[0m
+  [1m[35mSeedtag Load (0.5ms)[0m  SELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 3
+  [1m[36mSeed Load (0.5ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mSeed Load (0.3ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1  [["id", 7]]
+  [1m[36mSeed Load (0.3ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mParticipant Load (0.6ms)[0m  SELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = 3
+  Rendered projects/show.html.erb within layouts/application (11.3ms)
+  [1m[36mProject Load (1.2ms)[0m  [1mSELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1[0m
+Completed 200 OK in 22ms (Views: 13.8ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-20 11:20:46 +0200
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-08-20 11:20:46 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-20 11:20:46 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-20 11:20:46 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-20 11:20:46 +0200
+
+
+Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-20 11:20:46 +0200
+  [1m[35mCycle Load (0.6ms)[0m  SELECT "cycles".* FROM "cycles"
+  [1m[36mCycle Load (0.5ms)[0m  [1mSELECT "cycles".* FROM "cycles"[0m
+  [1m[35mCycle Load (0.5ms)[0m  SELECT "cycles".* FROM "cycles"
+  [1m[36mCycle Load (0.5ms)[0m  [1mSELECT "cycles".* FROM "cycles"[0m
+  [1m[35mCycle Load (0.6ms)[0m  SELECT "cycles".* FROM "cycles"
+  [1m[36mCycle Load (0.5ms)[0m  [1mSELECT "cycles".* FROM "cycles"[0m
+  [1m[35mCycle Load (0.5ms)[0m  SELECT "cycles".* FROM "cycles"
+
+
+Started GET "/" for 127.0.0.1 at 2014-08-20 11:28:19 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (10.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  [1m[35mUser Load (2.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mProject Load (0.7ms)[0m  [1mSELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1[0m
+Redirected to http://localhost:3000/projects/3
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 70ms (ActiveRecord: 11.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-08-20 11:28:19 +0200
+Processing by Devise::SessionsController#new as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1[0m
+Redirected to http://localhost:3000/projects/3
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/projects/3" for 127.0.0.1 at 2014-08-20 11:28:19 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mCycle Load (0.9ms)[0m  SELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = 3
+  [1m[36mSeedtag Load (0.9ms)[0m  [1mSELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 3[0m
+  [1m[35mSeed Load (0.5ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mSeed Load (0.7ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mSeed Load (0.6ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mParticipant Load (0.7ms)[0m  [1mSELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = 3[0m
+  Rendered projects/show.html.erb within layouts/application (67.1ms)
+  [1m[35mProject Load (0.4ms)[0m  SELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1
+Completed 200 OK in 108ms (Views: 84.5ms | ActiveRecord: 17.5ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-08-20 11:28:19 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-20 11:28:19 +0200
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-20 11:28:19 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-20 11:28:19 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-20 11:28:19 +0200
+
+
+Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-20 11:28:19 +0200
+
+
+Started GET "/projects/3/cycles/3/edit" for 127.0.0.1 at 2014-08-20 11:28:24 +0200
+Processing by CyclesController#edit as HTML
+  Parameters: {"project_id"=>"3", "id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mCycle Load (0.4ms)[0m  SELECT  "cycles".* FROM "cycles"  WHERE "cycles"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.6ms)[0m  [1mSELECT "seeds"."name" FROM "seeds"[0m
+  Rendered cycles/edit.html.erb within layouts/application (13.3ms)
+  [1m[35mProject Load (1.6ms)[0m  SELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1
+Completed 200 OK in 27ms (Views: 20.5ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-08-20 11:28:24 +0200
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-20 11:28:24 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-20 11:28:24 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-20 11:28:24 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-20 11:28:24 +0200
+
+
+Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-20 11:28:24 +0200
+
+
+Started PATCH "/projects/3/cycles/3" for 127.0.0.1 at 2014-08-20 11:28:29 +0200
+Processing by CyclesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DsodBAXZ113NqwNFW0+i+7N0nsUN46HyOclTVOGct4s=", "cycle"=>{"name"=>"cycle1", "duration_days"=>"5", "start"=>"2014-08-18", "morning_alert"=>"11:00", "evening_alert"=>"18:00:00.000"}, "seed_names"=>["Alfafa", "Black Eye Beans"], "commit"=>"Update Cycle", "project_id"=>"3", "id"=>"3"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mCycle Load (0.5ms)[0m  SELECT  "cycles".* FROM "cycles"  WHERE "cycles"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mSeedtag Load (0.5ms)[0m  [1mSELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 3[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "seedtags" WHERE "seedtags"."id" = $1[0m  [["id", 11]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "seedtags" WHERE "seedtags"."id" = $1  [["id", 12]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "seedtags" WHERE "seedtags"."id" = $1[0m  [["id", 13]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "cycles" SET "morning_alert" = $1 WHERE "cycles"."id" = 3  [["morning_alert", "2000-01-01 11:00:00.000000"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSeed Load (0.9ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."name" = 'Alfafa' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "seedtags" ("cycle_id", "seed_id", "startdate") VALUES ($1, $2, $3) RETURNING "id"  [["cycle_id", 3], ["seed_id", 13], ["startdate", "2014-08-18"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSeed Load (0.4ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."name" = 'Black Eye Beans' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "seedtags" ("cycle_id", "seed_id", "startdate") VALUES ($1, $2, $3) RETURNING "id"  [["cycle_id", 3], ["seed_id", 26], ["startdate", "2014-08-18"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/projects/3
+Completed 302 Found in 36ms (ActiveRecord: 9.2ms)
+
+
+Started GET "/projects/3" for 127.0.0.1 at 2014-08-20 11:28:29 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mCycle Load (0.5ms)[0m  SELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = 3
+  [1m[36mSeedtag Load (0.4ms)[0m  [1mSELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 3[0m
+  [1m[35mSeed Load (0.3ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mSeed Load (0.3ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1[0m  [["id", 26]]
+  [1m[35mParticipant Load (0.4ms)[0m  SELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = 3
+  Rendered projects/show.html.erb within layouts/application (9.6ms)
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1[0m
+Completed 200 OK in 20ms (Views: 13.5ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-20 11:28:29 +0200
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-08-20 11:28:29 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-20 11:28:29 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-20 11:28:29 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-20 11:28:29 +0200
+
+
+Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-20 11:28:29 +0200
+
+
+Started GET "/" for 127.0.0.1 at 2014-08-20 11:29:31 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  [1m[35mUser Load (1.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mProject Load (0.9ms)[0m  [1mSELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1[0m
+Redirected to http://localhost:3000/projects/3
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 50ms (ActiveRecord: 7.8ms)
+
+
+Started GET "/projects/3" for 127.0.0.1 at 2014-08-20 11:29:31 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mCycle Load (0.7ms)[0m  SELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = 3
+  [1m[36mSeedtag Load (0.6ms)[0m  [1mSELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 3[0m
+  [1m[35mSeed Load (0.5ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mSeed Load (0.4ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1[0m  [["id", 26]]
+  [1m[35mParticipant Load (0.5ms)[0m  SELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = 3
+  Rendered projects/show.html.erb within layouts/application (46.3ms)
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1[0m
+Completed 200 OK in 88ms (Views: 69.1ms | ActiveRecord: 13.6ms)
+  [1m[35mCycle Load (0.3ms)[0m  SELECT "cycles".* FROM "cycles"
+  [1m[36mSeedtag Load (0.3ms)[0m  [1mSELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 3[0m
+  [1m[35mSeed Load (0.3ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mSeed Load (0.5ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1[0m  [["id", 26]]
+  [1m[35mParticipant Load (0.9ms)[0m  SELECT "participants".* FROM "participants"
+  Rendered participant_mailer/welcome_email.html.erb (0.9ms)
+
+ParticipantMailer#welcome_email: processed outbound mail in 19.5ms
+
+Sent mail to katiehahm@gmail.com (41.5ms)
+Date: Wed, 20 Aug 2014 11:29:36 +0200
+From: no-reply@gmail.com
+To: katiehahm@gmail.com
+Message-ID: <53f46a80d695a_576d81264338145de@katies-mbp-6.capetown.45cloud.net.mail>
+Subject: Alert from your sprouts!
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+Hello! This is a reminder that you need to rinse Black Eye Beans in cool water, amd place the jars back facing down.
+  [1m[36mCycle Load (0.5ms)[0m  [1mSELECT "cycles".* FROM "cycles"[0m
+  [1m[35mSeedtag Load (0.4ms)[0m  SELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 3
+  [1m[36mSeed Load (0.3ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mSeed Load (0.5ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1  [["id", 26]]
+  [1m[36mParticipant Load (0.4ms)[0m  [1mSELECT "participants".* FROM "participants"[0m
+  Rendered participant_mailer/welcome_email.html.erb (0.1ms)
+
+ParticipantMailer#welcome_email: processed outbound mail in 9.3ms
+
+Sent mail to katiehahm@gmail.com (5.5ms)
+Date: Wed, 20 Aug 2014 11:30:37 +0200
+From: no-reply@gmail.com
+To: katiehahm@gmail.com
+Message-ID: <53f46abdaf81_576d81264338146ab@katies-mbp-6.capetown.45cloud.net.mail>
+Subject: Alert from your sprouts!
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+Hello! This is a reminder that you need to rinse Black Eye Beans in cool water, amd place the jars back facing down.
+  [1m[35mCycle Load (0.5ms)[0m  SELECT "cycles".* FROM "cycles"
+  [1m[36mSeedtag Load (0.4ms)[0m  [1mSELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 3[0m
+  [1m[35mSeed Load (0.2ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mSeed Load (0.2ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1[0m  [["id", 26]]
+  [1m[35mParticipant Load (0.3ms)[0m  SELECT "participants".* FROM "participants"
+  Rendered participant_mailer/welcome_email.html.erb (0.1ms)
+
+ParticipantMailer#welcome_email: processed outbound mail in 9.1ms
+
+Sent mail to katiehahm@gmail.com (5.8ms)
+Date: Wed, 20 Aug 2014 11:31:37 +0200
+From: no-reply@gmail.com
+To: katiehahm@gmail.com
+Message-ID: <53f46af93a4a5_576d81264338147b7@katies-mbp-6.capetown.45cloud.net.mail>
+Subject: Alert from your sprouts!
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+Hello! This is a reminder that you need to rinse Black Eye Beans in cool water, amd place the jars back facing down.
