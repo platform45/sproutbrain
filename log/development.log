@@ -22989,3 +22989,46 @@ Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-20 17:08:22
 
 
 Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-20 17:08:22 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2014-08-20 19:11:17 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  [1m[35mUser Load (2.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mProject Load (1.1ms)[0m  [1mSELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1[0m
+Redirected to http://localhost:3000/projects/3
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 97ms (ActiveRecord: 13.0ms)
+
+
+Started GET "/projects/3" for 127.0.0.1 at 2014-08-20 19:11:17 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (3.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mProject Load (2.0ms)[0m  [1mSELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mCycle Load (1.3ms)[0m  SELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = 3
+  [1m[36mSeedtag Load (1.4ms)[0m  [1mSELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 3[0m
+  [1m[35mParticipant Load (0.9ms)[0m  SELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = 3
+  Rendered projects/show.html.erb within layouts/application (58.4ms)
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1[0m
+Completed 200 OK in 136ms (Views: 104.4ms | ActiveRecord: 17.2ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-08-20 19:11:18 +0200
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-20 19:11:18 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-20 19:11:18 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-20 19:11:18 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-20 19:11:18 +0200
+
+
+Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-20 19:11:18 +0200
