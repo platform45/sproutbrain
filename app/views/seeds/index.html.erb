@@ -1,6 +1,39 @@
-<h1>Seeds:</h1>
+<h1>My Seeds:</h1>
 
-<% Seed.all.each do |seed| %>
+<% my_seeds = Array.new %>
+<% Project.where(user_id: current_user.id).each do |project| %>
+	<% Cycle.where(project_id: project.id).each do |cycle| %>
+		<% Seedtag.where(cycle_id: cycle.id).each do |seedtag| %>
+			<% my_seeds.push(Seed.find(seedtag.seed_id)) %>
+		<% end %>
+	<% end %>
+<% end %>
+
+<% if my_seeds %>
+	<% my_seeds = my_seeds.uniq %>
+	<% my_seeds.each do |seed| %>
+		
+		<h3><%= seed.name %></h3>
+		
+		<p>Days for seed to sprout: <%= seed.min_duration %> - <%= seed.max_duration %></p>
+		
+		<p>Plant Family: <%= seed.family %></p>
+		
+		<p>Nutrition: <%= seed.nutrition %></p>
+
+		<p>Tips: <%= seed.nutrition %></p>
+
+	<% end %>
+<% end %>
+
+<h1>Other Seeds:</h1>
+
+<% other_seeds = Seed.all %>
+<% my_seeds.each do |my_seed| %>
+	<% other_seeds.delete(my_seed) %>
+<% end %>
+
+<% other_seeds.each do |seed| %>
 	
 	<h3><%= seed.name %></h3>
 	

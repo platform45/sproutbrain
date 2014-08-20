@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818144836) do
+ActiveRecord::Schema.define(version: 20140819142058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20140818144836) do
     t.integer "duration_days"
     t.date    "start"
     t.date    "end"
+    t.time    "morning_alert"
+    t.time    "evening_alert"
   end
 
   create_table "participants", force: true do |t|

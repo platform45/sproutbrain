@@ -8,10 +8,11 @@
 <h2>Cycles:</h2>
 <!-- highlight ongoing cycles -->
 <% Cycle.where(project_id: @project.id).each do |cycle| %>
-	<p><%= cycle.name %> <%= link_to 'delete' , cycle_path(cycle), method: :delete %></p>
+	<p><%= cycle.name %> <%= link_to 'delete', cycle_path(cycle), method: :delete %> <%= link_to 'edit', edit_project_cycle_path(cycle.project_id, cycle) %></p>
 	<p>Start Date: <%= cycle.start %></p>
 	<p>End Date: <%= cycle.end %></p>
 	<p>Duration (in days): <%= cycle.duration_days %></p>
+	<p>Alert times: <%= cycle.morning_alert.strftime('%l:%M %P') %>, <%= cycle.evening_alert.strftime('%l:%M %P') %></p>
 	<p>Seeds: 
 		<% if Seedtag.where(cycle_id: cycle.id) %>
 			<% Seedtag.where(cycle_id: cycle.id).each do |seedtag| %>
