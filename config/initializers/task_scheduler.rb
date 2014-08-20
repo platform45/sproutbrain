@@ -9,7 +9,7 @@ scheduler.every("1m") do
 	#for all current cycles,
 	Cycle.all.each do |cycle|
 		if (Time.now.hour == cycle.morning_alert.hour || Time.now.hour == cycle.evening_alert.hour)
-			if (cycle.start < Date.today && cycle.end > Date.today)
+			if (cycle.start <= Date.today && cycle.end >= Date.today)
 				#for each seed in this cycle and ending before the cycle ends,
 				current_seeds = Array.new
 				Seedtag.where(cycle_id: cycle.id).each do |seedtag|

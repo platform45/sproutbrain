@@ -10,7 +10,7 @@ class CyclesController < ApplicationController
 
 	def create
 		@cycle = Cycle.create(cycle_params.merge({project_id: params[:project_id]}))
-		@cycle.end = @cycle.start.advance(:days => @cycle.duration_days)
+		@cycle.end = @cycle.start.advance(:days => (@cycle.duration_days - 1))
 		if @cycle.save
 			if params[:seed_names].present?
 				params[:seed_names].each do |name|
