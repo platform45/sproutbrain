@@ -12,7 +12,6 @@ class CyclesController < ApplicationController
 		@cycle = Cycle.create(cycle_params.merge({project_id: params[:project_id]}))
 		@cycle.end = @cycle.start.advance(:days => (@cycle.duration_days - 1))
 		if @cycle.save
-			ParticipantMailer.welcome_email(Participant.find_by(project_id: @cycle.project_id), ["Hello"]).deliver
 			if params[:seed_names].present?
 				params[:seed_names].each do |name|
 					Seedtag.create(seed_id: Seed.find_by(name: name).id, cycle_id: @cycle.id, startdate: @cycle.start)
