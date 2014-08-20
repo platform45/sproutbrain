@@ -1,6 +1,6 @@
-<p>New cycle: </p>
+<p>Edit cycle: </p>
 
-<%= form_for(@cycle, url: project_cycles_path(params[:project_id])) do |f| %>
+<%= form_for(@cycle, url: project_cycle_path(params[:project_id], @cycle.id)) do |f| %>
   
   <%= f.label :name %><br>
   <%= f.text_field :name %><br>
@@ -15,13 +15,7 @@
   <%= f.time_field :morning_alert %><br>
 
   <%= f.label :evening_alert %><br>
-  <%= f.time_field :evening_alert %><br>  
-
-<!--   valid_seeds = Array.new
-  Seed.all.each do |seed|
-    if (seed.min_duration + seed.max_duration) / 2 <= :duration_days
-      valid_seeds.push(seed)
-  valid_seeds.pluck(:name).each do |seed| -->
+  <%= f.time_field :evening_alert %><br> 
 
   <% all_seeds = Seed.all.pluck(:name) %>
   <% all_seeds.sort_by!{ |s| s.downcase } %>
@@ -30,9 +24,8 @@
     <%= check_box_tag "seed_names[]", seed %>
     <%= seed %>
   <% end %><br>
-  
-  <%= f.submit %>
-
+      
+  <%= f.submit %> 
 <% end %>
 
 <%= link_to 'Cancel', project_path(params[:project_id]) %>

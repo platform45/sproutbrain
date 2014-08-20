@@ -22,7 +22,27 @@ class CyclesController < ApplicationController
 			render :new
 		end
 	end
-	
+
+	def edit
+		@cycle = Cycle.find(params[:id])
+	end
+
+	def update
+		@cycle = Cycle.find(params[:id])
+		Seedtag.where(cycle_id: @cycle.id).destroy_all
+		@cycle.end = @cycle.start.advance(:days => @cycle.duration_days)
+		if @cycle.update(cycle_params)
+			if params[:seed_names].present?
+			  	params[:seed_names].each do |name|
+					Seedtag.create(seed_id: Seed.find_by(name: name).id, cycle_id: @cycle.id, startdate: @cycle.start)
+				end
+		  	end
+			redirect_to project_path(@cycle.project_id)
+		else
+			render :edit
+		end
+	end
+
 	def destroy
 		cycle = Cycle.find(params[:id])
 		project_id = cycle.project_id
@@ -33,7 +53,7 @@ class CyclesController < ApplicationController
 	private
 
 	def cycle_params
-		params.require(:cycle).permit(:name, :duration_days, :start)
+		params.require(:cycle).permit(:name, :duration_days, :start, :morning_alert, :evening_alert)
 	end
 
 end
