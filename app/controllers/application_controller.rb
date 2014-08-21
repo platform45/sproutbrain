@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
 
   layout :layout_choice
 
+  # after signing in, redirect to the first project or a new project path
   def after_sign_in_path_for(resource)
     @projects = Project.where(user_id: current_user.id)
     if @projects[0]
@@ -17,10 +18,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # after signing out, redirect to sign in
   def after_sign_out_path_for(resource)
     new_user_session_path
   end
 
+  # views/layouts choice
   def layout_choice
     if devise_controller? && action_name != 'edit' && action_name != 'update'
       "homepage"
