@@ -30,8 +30,6 @@ gem 'devise'
 
 gem 'pry'
 
-gem 'rufus-scheduler'
-
 gem 'pg'
 
 gem 'rails_12factor', group: :production
