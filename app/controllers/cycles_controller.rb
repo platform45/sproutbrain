@@ -33,7 +33,7 @@ class CyclesController < ApplicationController
 		@cycle = Cycle.find(params[:id])
 		Seedtag.where(cycle_id: @cycle.id).destroy_all
 		@cycle.end = @cycle.start.advance(:days => @cycle.duration_days)
-		if @cycle.update(update_cycle_params)
+		if @cycle.update(cycle_params)
 			if params[:seed_names].present?
 			  	params[:seed_names].each do |name|
 					Seedtag.create(seed_id: Seed.find_by(name: name).id, cycle_id: @cycle.id, startdate: @cycle.start)
