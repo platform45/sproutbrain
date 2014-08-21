@@ -10,8 +10,10 @@ class CyclesController < ApplicationController
 
 	def create
 		@cycle = Cycle.create(cycle_params.merge({project_id: params[:project_id]}))
+		# set the end date based on inputted start and duration
 		@cycle.end = @cycle.start.advance(:days => (@cycle.duration_days - 1))
 		if @cycle.save
+			# create seedtags for the cycle and seeds
 			if params[:seed_names].present?
 				params[:seed_names].each do |name|
 					Seedtag.create(seed_id: Seed.find_by(name: name).id, cycle_id: @cycle.id, startdate: @cycle.start)
