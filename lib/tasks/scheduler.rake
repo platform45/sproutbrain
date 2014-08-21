@@ -1,4 +1,4 @@
-namespace :alert_scheduler do
+# namespace :alert_scheduler do
 	desc "This task is called by the Heroku scheduler add-on"
 	task :send_reminders => :environment do
 	    # for all current cycles,
@@ -27,4 +27,4 @@ namespace :alert_scheduler do
 			end
 		end
 	end
-end
+# end
