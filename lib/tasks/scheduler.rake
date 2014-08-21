@@ -23,6 +23,9 @@ task :send_reminders => :environment do
 				#send email
 				p = Participant.all
 				ParticipantMailer.sprout_alert(p[Random.rand(p.length)], @current_seeds).deliver
+				if (cycle.end == Date.today && Time.now.hour == (cycle.evening_alert.hour - 2))
+					ParticipantMailer.cycle_alert(current_user, cycle, cycle.start).deliver
+				end
 			end
 		end
 	end

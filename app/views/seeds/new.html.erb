@@ -1,0 +1,27 @@
+<p>New Seed: </p>
+
+<%= form_for(@seed) do |f| %>
+  
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :minimum_days_to_sprout %><br>
+  <%= f.number_field :min_duration %><br>
+
+  <%= f.label :maximum_days_to_sprout %><br>
+  <%= f.number_field :max_duration %><br>
+
+  <%= f.label :family %><br>
+  <%= f.text_field :family %><br>
+
+  <%= f.label :nutrition_facts %><br>
+  <%= f.text_area :nutrition %><br>
+
+  <%= f.label :tips? %><br>
+  <%= f.text_area :tips %><br>  
+  
+  <%= f.submit %>
+
+<% end %>
+
+<%= link_to 'Cancel', seeds_path %>

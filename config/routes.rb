@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :participants, only: [:new, :create]
   end
 
-  resources :seeds, only: [:index]
+  resources :seeds, only: [:index, :new, :create]
 
   devise_scope :user do
     root "devise/sessions#new", as: :home

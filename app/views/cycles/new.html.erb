@@ -1,6 +1,6 @@
 <p>New cycle: </p>
 
-<%= form_for(@cycle, url: project_cycles_path(params[:project_id])) do |f| %>
+<%= form_for(@cycle) do |f| %>
   
   <%= f.label :name %><br>
   <%= f.text_field :name %><br>

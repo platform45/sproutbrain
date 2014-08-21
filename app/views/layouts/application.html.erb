@@ -14,7 +14,7 @@
 		<li><%= link_to 'Seeds Info', seeds_path %></li>
 		<!-- make this a dropdown to all projects -->
     <% @curr_projects = Project.where(user_id: current_user.id) %>
-    <% if @curr_projects %>
+    <% if !@curr_projects.empty? %>
       <% @curr_projects.each do |project| %>
         <li><%= link_to project.name, project_path(project.id) %></li>
       <% end %>
