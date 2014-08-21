@@ -4,7 +4,7 @@
 	    # for all current cycles,
 		Cycle.all.each do |cycle|
 			#if current hour is the morning/evening alert hour,
-			if (Time.now.hour == cycle.morning_alert.hour || Time.now.hour == cycle.evening_alert.hour)
+			if (Time.now.hour == (cycle.morning_alert.hour - 2) || Time.now.hour == (cycle.evening_alert.hour - 2))
 				#if today is a valid date for the cycle,
 				if (cycle.start <= Date.today && cycle.end >= Date.today)
 					#for each seed in this cycle and ending before the cycle ends,
