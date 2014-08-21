@@ -23032,3 +23032,122 @@ Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-20 19:11:18
 
 
 Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-20 19:11:18 +0200
+
+
+Started GET "/" for 127.0.0.1 at 2014-08-21 12:06:31 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (2.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/homepage (43.4ms)
+Completed 200 OK in 127ms (Views: 86.7ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-08-21 12:06:32 +0200
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-21 12:06:32 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-21 12:06:32 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-21 12:06:32 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-21 12:06:32 +0200
+
+
+Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-21 12:06:32 +0200
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-08-21 12:06:33 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5wf5UBw3oGxu3D4qmq6DWpisY3u2TPLPn/F4/gK+fl0=", "user"=>{"email"=>"katiehahm@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (1.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'katiehahm@gmail.com'  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.0ms)[0m  UPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = 1  [["current_sign_in_at", "2014-08-21 10:06:33.940436"], ["last_sign_in_at", "2014-08-20 13:15:40.144251"], ["sign_in_count", 8], ["updated_at", "2014-08-21 10:06:33.942040"]]
+  [1m[36m (2.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mProject Load (0.7ms)[0m  SELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1
+Redirected to http://localhost:3000/projects/3
+Completed 302 Found in 113ms (ActiveRecord: 9.6ms)
+
+
+Started GET "/projects/3" for 127.0.0.1 at 2014-08-21 12:06:33 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mProject Load (0.3ms)[0m  SELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mCycle Load (1.7ms)[0m  [1mSELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = 3[0m
+  [1m[35mSeedtag Load (0.9ms)[0m  SELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 3
+  [1m[36mParticipant Load (0.7ms)[0m  [1mSELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = 3[0m
+  Rendered projects/show.html.erb within layouts/application (25.9ms)
+  [1m[35mProject Load (0.5ms)[0m  SELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1
+Completed 200 OK in 42ms (Views: 26.7ms | ActiveRecord: 9.8ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-08-21 12:06:38 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"zx58t+HIBNlvppMs4zyzzIYrqSlOD7zDlZJIxgq0+90="}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 14ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-08-21 12:06:38 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/homepage (2.8ms)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-08-21 12:06:39 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AGk/o7QZLGHT9QpLRdRehXAuNg0MFpc6nu/hIhndQg0=", "user"=>{"email"=>"katiehahm@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'katiehahm@gmail.com'  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = 1  [["current_sign_in_at", "2014-08-21 10:06:39.415995"], ["last_sign_in_at", "2014-08-21 10:06:33.940436"], ["sign_in_count", 9], ["updated_at", "2014-08-21 10:06:39.416759"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mProject Load (0.4ms)[0m  SELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1
+Redirected to http://localhost:3000/projects/3
+Completed 302 Found in 87ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/projects/3" for 127.0.0.1 at 2014-08-21 12:06:39 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mProject Load (0.6ms)[0m  SELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mCycle Load (0.4ms)[0m  [1mSELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = 3[0m
+  [1m[35mSeedtag Load (0.3ms)[0m  SELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 3
+  [1m[36mParticipant Load (0.3ms)[0m  [1mSELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = 3[0m
+  Rendered projects/show.html.erb within layouts/application (6.3ms)
+  [1m[35mProject Load (0.4ms)[0m  SELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1
+Completed 200 OK in 15ms (Views: 9.3ms | ActiveRecord: 3.1ms)
+
+
+Started DELETE "/projects/3" for 127.0.0.1 at 2014-08-21 12:06:42 +0200
+Processing by ProjectsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"dVr29zMBFuwroPOlFNKXwPUwgpsW/5EF7+kC/gpQ/oE=", "id"=>"3"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mProject Load (0.4ms)[0m  SELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mCycle Load (0.3ms)[0m  SELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = $1  [["project_id", 3]]
+  [1m[36mSeedtag Load (0.3ms)[0m  [1mSELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = $1[0m  [["cycle_id", 3]]
+  [1m[35mSQL (2.1ms)[0m  DELETE FROM "cycles" WHERE "cycles"."id" = $1  [["id", 3]]
+  [1m[36mParticipant Load (0.3ms)[0m  [1mSELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = $1[0m  [["project_id", 3]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "participants" WHERE "participants"."id" = $1  [["id", 3]]
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "projects" WHERE "projects"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+Redirected to http://localhost:3000/projects/new
+Completed 302 Found in 47ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2014-08-21 12:06:42 +0200
+Processing by ProjectsController#new as HTML
+  [1m[35mUser Load (1.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered projects/new.html.erb within layouts/application (1.9ms)
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1[0m
+Completed 200 OK in 10ms (Views: 6.0ms | ActiveRecord: 1.6ms)
