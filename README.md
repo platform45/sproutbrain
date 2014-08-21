@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/repos/53f5b6fde30ba068dd034555/badges/d0219a23c6ea84745443/gpa.svg)](https://codeclimate.com/repos/53f5b6fde30ba068dd034555/feed)
+
 SpoutBrain
 =======
 
