@@ -3,7 +3,8 @@
 SpoutBrain
 =======
 
-![image](images/sprouts.png)
+<!-- ![image](images/sprouts.png) -->
+![alt tag](http://www.gonatural.co.za/wp-content/uploads/2013/10/6_litre_Kitchen.jpg)
 
 Hydroponic sustainable food supply.
 
