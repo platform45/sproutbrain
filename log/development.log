@@ -49930,3 +49930,393 @@ Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-21 15:50:46
 
 
 Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-21 15:50:46 +0200
+  [1m[36mCycle Load (2.0ms)[0m  [1mSELECT "cycles".* FROM "cycles"[0m
+  [1m[35mCycle Load (0.7ms)[0m  SELECT "cycles".* FROM "cycles"
+  [1m[36mCycle Load (7.7ms)[0m  [1mSELECT  "cycles".* FROM "cycles"   ORDER BY "cycles"."id" ASC LIMIT 1[0m
+  [1m[35mCycle Load (0.7ms)[0m  SELECT  "cycles".* FROM "cycles"   ORDER BY "cycles"."id" ASC LIMIT 1
+  [1m[36mCycle Load (0.9ms)[0m  [1mSELECT  "cycles".* FROM "cycles"   ORDER BY "cycles"."id" ASC LIMIT 1[0m
+  [1m[36mCycle Load (1.2ms)[0m  [1mSELECT  "cycles".* FROM "cycles"   ORDER BY "cycles"."id" ASC LIMIT 1[0m
+  [1m[36mCycle Load (2.0ms)[0m  [1mSELECT  "cycles".* FROM "cycles"   ORDER BY "cycles"."id" ASC LIMIT 1[0m
+  [1m[36mCycle Load (1.2ms)[0m  [1mSELECT  "cycles".* FROM "cycles"   ORDER BY "cycles"."id" ASC LIMIT 1[0m
+  [1m[36mCycle Load (1.6ms)[0m  [1mSELECT  "cycles".* FROM "cycles"   ORDER BY "cycles"."id" ASC LIMIT 1[0m
+  [1m[36mCycle Load (1.4ms)[0m  [1mSELECT  "cycles".* FROM "cycles"   ORDER BY "cycles"."id" ASC LIMIT 1[0m
+  [1m[36mCycle Load (1.5ms)[0m  [1mSELECT  "cycles".* FROM "cycles"   ORDER BY "cycles"."id" ASC LIMIT 1[0m
+  [1m[35mCycle Load (1.0ms)[0m  SELECT  "cycles".* FROM "cycles"   ORDER BY "cycles"."id" ASC LIMIT 1
+  [1m[36mParticipant Load (1.0ms)[0m  [1mSELECT  "participants".* FROM "participants"   ORDER BY "participants"."id" ASC LIMIT 1[0m
+  [1m[36mParticipant Load (2.1ms)[0m  [1mSELECT  "participants".* FROM "participants"   ORDER BY "participants"."id" ASC LIMIT 1[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-08-22 10:22:10 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  [1m[35mUser Load (1.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mProject Load (1.0ms)[0m  [1mSELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1[0m
+Redirected to http://localhost:3000/projects/5
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 64ms (ActiveRecord: 9.1ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2014-08-22 10:22:10 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCycle Load (1.0ms)[0m  SELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = 5
+  [1m[36mSeedtag Load (1.0ms)[0m  [1mSELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 6[0m
+  [1m[35mSeed Load (1.1ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mSeed Load (0.6ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mParticipant Load (0.6ms)[0m  SELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = 5
+  Rendered projects/show.html.erb within layouts/application (123.4ms)
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects"  WHERE "projects"."user_id" = 1[0m
+  [1m[35mProject Load (0.3ms)[0m  SELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1
+Completed 200 OK in 219ms (Views: 193.8ms | ActiveRecord: 18.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-08-22 10:22:10 +0200
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mProject Load (0.7ms)[0m  SELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1
+Redirected to http://localhost:3000/projects/5
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2014-08-22 10:22:10 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mProject Load (0.3ms)[0m  SELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCycle Load (0.4ms)[0m  [1mSELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = 5[0m
+  [1m[35mSeedtag Load (0.4ms)[0m  SELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 6
+  [1m[36mSeed Load (0.3ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mSeed Load (0.3ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mParticipant Load (0.3ms)[0m  [1mSELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = 5[0m
+  Rendered projects/show.html.erb within layouts/application (7.7ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects"  WHERE "projects"."user_id" = 1
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1[0m
+Completed 200 OK in 16ms (Views: 10.3ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-22 10:22:10 +0200
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-08-22 10:22:10 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-22 10:22:10 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-22 10:22:10 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-22 10:22:10 +0200
+
+
+Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-22 10:22:10 +0200
+
+
+Started POST "/projects/5/participants" for 127.0.0.1 at 2014-08-22 10:22:14 +0200
+Processing by ParticipantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fzg+VPTppOhZ1OBMrclhZ5dSLK/D15Gg8lG9JaLEd8g=", "participant"=>{"email"=>"katiehahm@gmail.com"}, "commit"=>"Create Participant", "project_id"=>"5"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.1ms)[0m  INSERT INTO "participants" ("email", "project_id") VALUES ($1, $2) RETURNING "id"  [["email", "katiehahm@gmail.com"], ["project_id", 5]]
+  [1m[36m (2.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/projects/5
+Completed 302 Found in 15ms (ActiveRecord: 6.7ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2014-08-22 10:22:14 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mProject Load (0.5ms)[0m  [1mSELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCycle Load (0.6ms)[0m  SELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = 5
+  [1m[36mSeedtag Load (0.5ms)[0m  [1mSELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 6[0m
+  [1m[35mSeed Load (0.4ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mSeed Load (0.3ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mParticipant Load (0.4ms)[0m  SELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = 5
+  Rendered projects/show.html.erb within layouts/application (11.3ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects"  WHERE "projects"."user_id" = 1[0m
+  [1m[35mProject Load (0.3ms)[0m  SELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1
+Completed 200 OK in 23ms (Views: 15.5ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-08-22 10:22:14 +0200
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-22 10:22:14 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-22 10:22:14 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-22 10:22:14 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-22 10:22:14 +0200
+
+
+Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-22 10:22:14 +0200
+  [1m[35mCycle Load (0.8ms)[0m  SELECT  "cycles".* FROM "cycles"   ORDER BY "cycles"."id" ASC LIMIT 1
+  [1m[36mParticipant Load (0.8ms)[0m  [1mSELECT  "participants".* FROM "participants"   ORDER BY "participants"."id" ASC LIMIT 1[0m
+  [1m[35mCycle Load (0.9ms)[0m  SELECT  "cycles".* FROM "cycles"   ORDER BY "cycles"."id" ASC LIMIT 1
+  [1m[36mParticipant Load (0.5ms)[0m  [1mSELECT  "participants".* FROM "participants"   ORDER BY "participants"."id" ASC LIMIT 1[0m
+  [1m[35mCycle Load (1.1ms)[0m  SELECT  "cycles".* FROM "cycles"   ORDER BY "cycles"."id" ASC LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mCycle Load (1.0ms)[0m  SELECT  "cycles".* FROM "cycles"   ORDER BY "cycles"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1[0m
+
+
+Started GET "/projects/5/cycles/6/edit" for 127.0.0.1 at 2014-08-22 10:31:11 +0200
+Processing by CyclesController#edit as HTML
+  Parameters: {"project_id"=>"5", "id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mCycle Load (0.3ms)[0m  SELECT  "cycles".* FROM "cycles"  WHERE "cycles"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36m (0.4ms)[0m  [1mSELECT "seeds"."name" FROM "seeds"[0m
+  Rendered cycles/edit.html.erb within layouts/application (23.9ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects"  WHERE "projects"."user_id" = 1
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1[0m
+Completed 200 OK in 65ms (Views: 33.8ms | ActiveRecord: 12.3ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-08-22 10:31:11 +0200
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-22 10:31:11 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-22 10:31:11 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-22 10:31:11 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-22 10:31:11 +0200
+
+
+Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-22 10:31:11 +0200
+
+
+Started PATCH "/projects/5/cycles/6" for 127.0.0.1 at 2014-08-22 10:31:28 +0200
+Processing by CyclesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fzg+VPTppOhZ1OBMrclhZ5dSLK/D15Gg8lG9JaLEd8g=", "cycle"=>{"name"=>"cycle25", "duration_days"=>"5", "start"=>"2014-08-18", "morning_alert"=>"10:00", "evening_alert"=>"18:00"}, "seed_names"=>["Alfafa", "Broccoli", "Kohlrabi", "Radish"], "commit"=>"Update Cycle", "project_id"=>"5", "id"=>"6"}
+  [1m[35mUser Load (1.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mCycle Load (0.6ms)[0m  [1mSELECT  "cycles".* FROM "cycles"  WHERE "cycles"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mSeedtag Load (0.5ms)[0m  SELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 6
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "seedtags" WHERE "seedtags"."id" = $1  [["id", 32]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "seedtags" WHERE "seedtags"."id" = $1[0m  [["id", 33]]
+  [1m[35m (0.3ms)[0m  COMMIT
+Unpermitted parameters: name, duration_days, morning_alert, evening_alert
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.6ms)[0m  UPDATE "cycles" SET "end" = $1 WHERE "cycles"."id" = 6  [["end", "2014-08-23"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mSeed Load (1.4ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."name" = 'Alfafa' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "seedtags" ("cycle_id", "seed_id", "startdate") VALUES ($1, $2, $3) RETURNING "id"  [["cycle_id", 6], ["seed_id", 13], ["startdate", "2014-08-18"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSeed Load (0.6ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."name" = 'Broccoli' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "seedtags" ("cycle_id", "seed_id", "startdate") VALUES ($1, $2, $3) RETURNING "id"  [["cycle_id", 6], ["seed_id", 7], ["startdate", "2014-08-18"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSeed Load (0.4ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."name" = 'Kohlrabi' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "seedtags" ("cycle_id", "seed_id", "startdate") VALUES ($1, $2, $3) RETURNING "id"  [["cycle_id", 6], ["seed_id", 8], ["startdate", "2014-08-18"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mSeed Load (0.4ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."name" = 'Radish' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "seedtags" ("cycle_id", "seed_id", "startdate") VALUES ($1, $2, $3) RETURNING "id"  [["cycle_id", 6], ["seed_id", 3], ["startdate", "2014-08-18"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/projects/5
+Completed 302 Found in 58ms (ActiveRecord: 17.1ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2014-08-22 10:31:28 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCycle Load (0.8ms)[0m  SELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = 5
+  [1m[36mSeedtag Load (0.5ms)[0m  [1mSELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 6[0m
+  [1m[35mSeed Load (0.2ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mSeed Load (0.2ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mSeed Load (0.2ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36mSeed Load (0.2ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mParticipant Load (0.5ms)[0m  SELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = 5
+  Rendered projects/show.html.erb within layouts/application (16.1ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects"  WHERE "projects"."user_id" = 1[0m
+  [1m[35mProject Load (0.3ms)[0m  SELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1
+Completed 200 OK in 31ms (Views: 19.7ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-22 10:31:28 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-22 10:31:28 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-22 10:31:28 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-22 10:31:28 +0200
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-08-22 10:31:28 +0200
+
+
+Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-22 10:31:28 +0200
+
+
+Started GET "/projects/5/cycles/6/edit" for 127.0.0.1 at 2014-08-22 10:31:48 +0200
+Processing by CyclesController#edit as HTML
+  Parameters: {"project_id"=>"5", "id"=>"6"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mCycle Load (0.9ms)[0m  SELECT  "cycles".* FROM "cycles"  WHERE "cycles"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36m (0.4ms)[0m  [1mSELECT "seeds"."name" FROM "seeds"[0m
+  Rendered cycles/edit.html.erb within layouts/application (8.1ms)
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "projects"  WHERE "projects"."user_id" = 1
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1[0m
+Completed 200 OK in 22ms (Views: 15.2ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-22 10:31:48 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-22 10:31:48 +0200
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-08-22 10:31:48 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-22 10:31:48 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-22 10:31:48 +0200
+
+
+Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-22 10:31:48 +0200
+
+
+Started PATCH "/projects/5/cycles/6" for 127.0.0.1 at 2014-08-22 10:31:58 +0200
+Processing by CyclesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fzg+VPTppOhZ1OBMrclhZ5dSLK/D15Gg8lG9JaLEd8g=", "cycle"=>{"name"=>"cycle25", "duration_days"=>"5", "start"=>"2014-08-18", "morning_alert"=>"10:00", "evening_alert"=>"10:00"}, "seed_names"=>["Alfafa", "Green Peas", "Radish"], "commit"=>"Update Cycle", "project_id"=>"5", "id"=>"6"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mCycle Load (0.5ms)[0m  [1mSELECT  "cycles".* FROM "cycles"  WHERE "cycles"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mSeedtag Load (0.6ms)[0m  SELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 6
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "seedtags" WHERE "seedtags"."id" = $1  [["id", 34]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "seedtags" WHERE "seedtags"."id" = $1[0m  [["id", 35]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "seedtags" WHERE "seedtags"."id" = $1  [["id", 36]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "seedtags" WHERE "seedtags"."id" = $1[0m  [["id", 37]]
+  [1m[35m (0.3ms)[0m  COMMIT
+Unpermitted parameters: name, duration_days, morning_alert, evening_alert
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36mSeed Load (0.7ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."name" = 'Alfafa' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "seedtags" ("cycle_id", "seed_id", "startdate") VALUES ($1, $2, $3) RETURNING "id"[0m  [["cycle_id", 6], ["seed_id", 13], ["startdate", "2014-08-18"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mSeed Load (0.5ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."name" = 'Green Peas' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "seedtags" ("cycle_id", "seed_id", "startdate") VALUES ($1, $2, $3) RETURNING "id"[0m  [["cycle_id", 6], ["seed_id", 27], ["startdate", "2014-08-18"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mSeed Load (0.5ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."name" = 'Radish' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "seedtags" ("cycle_id", "seed_id", "startdate") VALUES ($1, $2, $3) RETURNING "id"[0m  [["cycle_id", 6], ["seed_id", 3], ["startdate", "2014-08-18"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/projects/5
+Completed 302 Found in 29ms (ActiveRecord: 10.2ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2014-08-22 10:31:58 +0200
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mProject Load (0.3ms)[0m  SELECT  "projects".* FROM "projects"  WHERE "projects"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCycle Load (0.5ms)[0m  [1mSELECT "cycles".* FROM "cycles"  WHERE "cycles"."project_id" = 5[0m
+  [1m[35mSeedtag Load (0.4ms)[0m  SELECT "seedtags".* FROM "seedtags"  WHERE "seedtags"."cycle_id" = 6
+  [1m[36mSeed Load (0.2ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mSeed Load (0.2ms)[0m  SELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1  [["id", 27]]
+  [1m[36mSeed Load (0.2ms)[0m  [1mSELECT  "seeds".* FROM "seeds"  WHERE "seeds"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mParticipant Load (0.3ms)[0m  SELECT "participants".* FROM "participants"  WHERE "participants"."project_id" = 5
+  Rendered projects/show.html.erb within layouts/application (9.3ms)
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects"  WHERE "projects"."user_id" = 1[0m
+  [1m[35mProject Load (0.6ms)[0m  SELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1
+Completed 200 OK in 20ms (Views: 13.9ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-22 10:31:59 +0200
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-08-22 10:31:59 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-22 10:31:59 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-22 10:31:59 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-22 10:31:59 +0200
+
+
+Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-22 10:31:59 +0200
+
+
+Started GET "/projects/5/cycles/6/edit" for 127.0.0.1 at 2014-08-22 10:38:23 +0200
+Processing by CyclesController#edit as HTML
+  Parameters: {"project_id"=>"5", "id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mCycle Load (0.4ms)[0m  SELECT  "cycles".* FROM "cycles"  WHERE "cycles"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36m (0.3ms)[0m  [1mSELECT "seeds"."name" FROM "seeds"[0m
+  Rendered cycles/edit.html.erb within layouts/application (13.2ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects"  WHERE "projects"."user_id" = 1
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = 1[0m
+Completed 200 OK in 54ms (Views: 22.6ms | ActiveRecord: 11.2ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-08-22 10:38:24 +0200
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-22 10:38:24 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-22 10:38:24 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-22 10:38:24 +0200
+
+
+Started GET "/assets/layout.css" for 127.0.0.1 at 2014-08-22 10:38:24 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-22 10:38:24 +0200
+
+
+Started PATCH "/projects/5/cycles/6" for 127.0.0.1 at 2014-08-22 10:38:32 +0200
+Processing by CyclesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fzg+VPTppOhZ1OBMrclhZ5dSLK/D15Gg8lG9JaLEd8g=", "cycle"=>{"name"=>"cycle25", "duration_days"=>"5", "start"=>"2014-08-18", "morning_alert"=>"10:00", "evening_alert"=>"10:00"}, "seed_names"=>["Alfafa", "Green Peas", "Radish"], "commit"=>"Update Cycle", "project_id"=>"5", "id"=>"6"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mCycle Load (0.3ms)[0m  [1mSELECT  "cycles".* FROM "cycles"  WHERE "cycles"."id" = $1 LIMIT 1[0m  [["id", 6]]
+Completed 500 Internal Server Error in 3ms
+
+TypeError (no implicit conversion of nil into String):
+  app/controllers/cycles_controller.rb:34:in `parse'
+  app/controllers/cycles_controller.rb:34:in `update'
+
+
+  Rendered /Users/Katie/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/Katie/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/Katie/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/Katie/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.8ms)

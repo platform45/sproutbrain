@@ -3,9 +3,9 @@ class ParticipantMailer < ActionMailer::Base
   default from: "from@example.com"
 
   def sprout_alert(participant, seeds)
- 	@participant = participant
- 	@seeds = seeds
- 	mail(to: @participant.email, subject: 'Alert from your sprouts!')
+   	@participant = participant
+   	@seeds = seeds
+   	mail(to: @participant.email, subject: 'Alert from your sprouts!')
   end
 
   def cycle_alert(user, cycle, start)

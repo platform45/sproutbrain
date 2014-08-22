@@ -31,10 +31,10 @@ class CyclesController < ApplicationController
 
 	def update
 		@cycle = Cycle.find(params[:id])
-		Seedtag.where(cycle_id: @cycle.id).destroy_all
-		@cycle.end = @cycle.start.advance(:days => @cycle.duration_days)
-		if @cycle.update(update_cycle_params)
+		@cycle.end = Date.parse(params[:start]).advance(:days => params[:duration_days].to_i)
+		if @cycle.update(cycle_params)
 			if params[:seed_names].present?
+				Seedtag.where(cycle_id: @cycle.id).destroy_all
 			  	params[:seed_names].each do |name|
 					Seedtag.create(seed_id: Seed.find_by(name: name).id, cycle_id: @cycle.id, startdate: @cycle.start)
 				end

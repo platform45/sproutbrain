@@ -20,11 +20,15 @@ task :send_reminders => :environment do
 					end
 				end
 				@current_seeds = current_seeds
+				@current_seeds = @current_seeds.to_sentence
 				#send email
 				p = Participant.all
-				ParticipantMailer.sprout_alert(p[Random.rand(p.length)], @current_seeds).deliver
+				lucky_participant = p[Random.rand(p.length)]
+				ParticipantMailer.sprout_alert(lucky_participant, @current_seeds).deliver
+				cycle.slack_sprout_alert(lucky_participant, @current_seeds)
 				if (cycle.end == Date.today && Time.now.hour == (cycle.evening_alert.hour - 2))
 					ParticipantMailer.cycle_alert(current_user, cycle, cycle.start).deliver
+					cycle.slack_cycle_alert(current_user)
 				end
 			end
 		end
