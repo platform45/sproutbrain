@@ -87,6 +87,37 @@ class Cycle < ActiveRecord::Base
 			    })
 	end
 
+	def valid_now
+		thishour = Time.now.utc.hour
+		if (thishour != (self.morning_alert.hour - 2) || thishour != (self.evening_alert.hour - 2))
+			return true
+		elsif (self.start > Date.today || self.end < Date.today)
+			return true
+		end
+		return false
+	end
+
+	def get_current_seeds
+		@current_seeds = Array.new
+		if (Seedtag.first != nil)
+			Seedtag.where(cycle_id: cycle.id).each do |seedtag|
+				s = Seed.find(seedtag.seed_id)
+				# this part is for filtering seeds that will likely not sprout before cycle end
+				# seed_length = (s.min_duration + s.max_duration) / 2
+				# if (seedtag.startdate.advance(:days => seed_length - 1) < Date.today)
+				# 	seedtag.startdate = Date.today
+				# end
+				# if (seedtag.startdate.advance(:days => seed_length - 1) <= cycle.end)
+				# 	current_seeds.push(s.name)
+				# end
+				# comment this line below if above lines are uncommented
+				@current_seeds.push(s.name)
+			end
+		end
+		@current_seeds = @current_seeds.to_sentence
+		return @current_seeds
+	end
+
 	# def repeat_alert
 	# 	if (Cycle.first != nil)
 	# 		Cycle.all.each do |cycle|
