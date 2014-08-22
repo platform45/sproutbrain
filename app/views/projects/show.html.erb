@@ -6,7 +6,6 @@
 <% end %>
 
 <h2>Cycles:</h2>
-<% Cycle.first.repeat_alert %>
 <!-- highlight ongoing cycles -->
 <% Cycle.where(project_id: @project.id).each do |cycle| %>
 	<p><%= cycle.name %> <%= link_to 'delete', cycle_path(cycle), method: :delete %> <%= link_to 'edit', edit_project_cycle_path(cycle.project_id, cycle) %></p>
@@ -21,7 +20,6 @@
 			<% end %>
 		<% end %>
 	</p><br>
-
 <% end %>
 
 <h2>Participants:</h2>

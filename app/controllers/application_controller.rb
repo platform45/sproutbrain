@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
 
+  before_filter :configure_permitted_parameters, if: :devise_controller?
+
   before_action :authenticate_user!
   
   protect_from_forgery with: :exception
@@ -21,6 +23,11 @@ class ApplicationController < ActionController::Base
   # after signing out, redirect to sign in
   def after_sign_out_path_for(resource)
     new_user_session_path
+  end
+
+  # permit slack_name as a parameter to user 
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << :slack_name
   end
 
   # views/layouts choice
