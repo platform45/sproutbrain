@@ -34,6 +34,9 @@ gem 'pg'
 
 gem 'rails_12factor', group: :production
 
+gem 'json'
+gem 'rest-client'
+
 # gem 'bourbon'
 
 # gem 'neat'
