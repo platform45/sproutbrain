@@ -24,10 +24,10 @@ class Cycle < ActiveRecord::Base
 
 	def slack_sprout_alert(participant, seeds)
 		slack_attachment = JSON.generate([{:fallback => "Sproutbrain notification",
-										   # :text => "#{participant.email}: Alert from your sprouts!",
+										   :text => "@#{participant.slack_name}:",
 										   :color => "#36a64f",
 										   :fields =>
-										      [{:title => "#{participant.email}: Alert from your sprouts!",
+										      [{:title => "Alert from your sprouts!",
 										      	:value => "We need water! This is a reminder that you need to rinse us (#{seeds}) in cool water, and place the jars back facing down. If many of the seeds have sprouted, fill the jar with water and scrape off the seed shells that float to the top."}]
 										}])
 
@@ -44,10 +44,10 @@ class Cycle < ActiveRecord::Base
 
 	def slack_cycle_alert(user)
 		slack_attachment = JSON.generate([{:fallback => "Sproutbrain notification",
-										   # :text => "Time to take care of the sprouts!",
+										   :text => "@#{participant.slack_name}:",
 										   :color => "#36a64f",
 										   :fields =>
-										      [{:title => "#{user.email}: Cycle is about to expire...",
+										      [{:title => "Cycle is about to expire...",
 										      	:value => "Your cycle is about to expire! That means you won't be watering us and we're sad:( Please go to www.sproutbrain.com and adjust the start date of your cycle!"}]
 										}])
 
@@ -64,11 +64,16 @@ class Cycle < ActiveRecord::Base
 
 	def slack_first_alert(participant)
 		slack_attachment = JSON.generate([{:fallback => "Sproutbrain notification",
-										   # :text => "#{participant.email}: Alert from your sprouts!",
+										   :text => "@#{participant.slack_name}:",
 										   :color => "#36a64f",
 										   :fields =>
-										      [{:title => "#{participant.email}: Welcome to the start of a cycle!",
-										      	:value => "Congrats to making a new cycle! To start, Put enough seeds (1 to 2 tsbsp. or 3 to 4 tsps., approximately 16-30 grams, depending on the seeds), to lightly cover the bottom surface of the upright jar(s). Cover with mesh screen and secure with rubber band. Rinse seeds of dirt and dust. Cover the seeds with about 2-4cm water and soak for a full 6-8 hours or overnight by leaving jars with the mouth up on the drainage tray. "}]
+										      [{:title => "Welcome to the start of a cycle!"}, 
+										       {:title => "Step 1:",
+										       	:value => "To start, Put enough seeds (1 to 2 tsbsp. or 3 to 4 tsps., approximately 16-30 grams, depending on the seeds), to lightly cover the bottom surface of the upright jar(s). "}, 
+										       {:title => "Step 2:",
+										       	:value => "Cover with mesh screen and secure with rubber band. Rinse seeds of dirt and dust."},
+										       {:title => "Step 3:",
+										       	:value => "Cover the seeds with about 2-4cm water and soak for a full 6-8 hours or overnight by leaving jars with the mouth up on the drainage tray. "}]
 										}])
 
 		RestClient.post("https://slack.com/api/chat.postMessage",
@@ -107,18 +112,20 @@ class Cycle < ActiveRecord::Base
 					@current_seeds = @current_seeds.to_sentence
 					#send email
 					p = Participant.where(project_id: cycle.project_id)
-					lucky_participant = p[Random.rand(0..(p.length-1))]
-					@fact = cycle.get_facts
-					if (cycle.start == Date.today)
-						ParticipantMailer.first_alert(lucky_participant, @fact).deliver
-						#cycle.slack_first_alert(lucky_participant)
-					else
-						ParticipantMailer.sprout_alert(lucky_participant, @current_seeds, @fact).deliver
-						#cycle.slack_sprout_alert(lucky_participant, @current_seeds)
-						if (cycle.end == Date.today && Time.now.utc.hour == (cycle.evening_alert.hour - 2))
-							current_user = User.find(Project.find(cycle.project_id).user_id)
-							ParticipantMailer.cycle_alert(current_user, cycle, cycle.start).deliver
-							#cycle.slack_cycle_alert(current_user)
+					if (p != nil)
+						lucky_participant = p[Random.rand(0..(p.length-1))]
+						@fact = cycle.get_facts
+						if (cycle.start == Date.today)
+							ParticipantMailer.first_alert(lucky_participant, @fact).deliver
+							cycle.slack_first_alert(lucky_participant)
+						else
+							ParticipantMailer.sprout_alert(lucky_participant, @current_seeds, @fact).deliver
+							cycle.slack_sprout_alert(lucky_participant, @current_seeds)
+							if (cycle.end == Date.today && Time.now.utc.hour == (cycle.evening_alert.hour - 2))
+								current_user = User.find(Project.find(cycle.project_id).user_id)
+								ParticipantMailer.cycle_alert(current_user, cycle, cycle.start).deliver
+								cycle.slack_cycle_alert(current_user)
+							end
 						end
 					end
 				end

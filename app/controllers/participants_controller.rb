@@ -23,7 +23,7 @@ class ParticipantsController < ApplicationController
 	private
 
 	def participant_params
-		params.require(:participant).permit(:email)
+		params.require(:participant).permit(:email, :slack_name)
 	end
 
 end

@@ -29,12 +29,13 @@
 
 <!-- creates new participants -->
 <%= form_for(@participant, url: project_participants_path(@project.id)) do |f| %>
-  <%= f.label :email %>: <%= f.text_field :email %> <%= f.submit %>
+  <%= f.label :email %>: <%= f.text_field :email %>
+  <%= f.label :slack_name %>: <%= f.text_field :slack_name %> <%= f.submit %>
 <% end %>
 
 <!-- lists participants -->
 <ul><% Participant.where(project_id: @project.id).each do |participant| %>
-	<p><li><%= participant.email %> <%= link_to 'delete', participant_path(participant), method: :delete %></li></p>
+	<p><li><%= participant.slack_name %>, <%= participant.email %> <%= link_to 'delete', participant_path(participant), method: :delete %></li></p>
 <% end %></ul>
 
 <%= link_to 'New Cycle', new_project_cycle_path(@project) %>
