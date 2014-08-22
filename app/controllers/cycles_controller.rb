@@ -31,7 +31,7 @@ class CyclesController < ApplicationController
 
 	def update
 		@cycle = Cycle.find(params[:id])
-		@cycle.end = Date.parse(params[:start]).advance(:days => params[:duration_days].to_i)
+		@cycle.end = Date.parse(params[:cycle][:start]).advance(:days => params[:cycle][:duration_days].to_i - 1)
 		if @cycle.update(cycle_params)
 			if params[:seed_names].present?
 				Seedtag.where(cycle_id: @cycle.id).destroy_all

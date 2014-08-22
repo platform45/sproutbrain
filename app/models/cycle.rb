@@ -43,38 +43,41 @@ class Cycle < ActiveRecord::Base
 			    })
 	end	
 
-	def repeat_cycle
+	def repeat_alert
 		Cycle.all.each do |cycle|
-			#if current hour is the morning/evening alert hour, (-2 is because heroku counts UTC time)
-			if (Time.now.hour == (cycle.morning_alert.hour) || Time.now.hour == (cycle.evening_alert.hour))
+		#if current hour is the morning/evening alert hour, (-2 is because heroku counts UTC time)
+			if (Time.now.utc.hour == (cycle.morning_alert.hour - 2) || Time.now.utc.hour == (cycle.evening_alert.hour - 2))
 				#if today is a valid date for the cycle,
 				if (cycle.start <= Date.today && cycle.end >= Date.today)
 					#for each seed in this cycle and ending before the cycle ends,
 					current_seeds = Array.new
 					Seedtag.where(cycle_id: cycle.id).each do |seedtag|
 						s = Seed.find(seedtag.seed_id)
-						seed_length = (s.min_duration + s.max_duration) / 2
-						if (seedtag.startdate.advance(:days => seed_length) < Date.today)
-							seedtag.startdate = Date.today
-						end
-						if (seedtag.startdate.advance(:days => seed_length) < cycle.end)
-							current_seeds.push(s.name)
-						end
+						# this part is for filtering seeds that will likely not sprout before cycle end
+						# seed_length = (s.min_duration + s.max_duration) / 2
+						# if (seedtag.startdate.advance(:days => seed_length - 1) < Date.today)
+						# 	seedtag.startdate = Date.today
+						# end
+						# if (seedtag.startdate.advance(:days => seed_length - 1) <= cycle.end)
+						# 	current_seeds.push(s.name)
+						# end
+						# comment this line below if above lines are uncommented
+						current_seeds.push(s.name)
 					end
 					@current_seeds = current_seeds
 					@current_seeds = @current_seeds.to_sentence
 					#send email
 					p = Participant.all
-					lucky_participant = p[Random.rand(p.length)]
+					lucky_participant = p[Random.rand(0..(p.length-1))]
 					ParticipantMailer.sprout_alert(lucky_participant, @current_seeds).deliver
-					cycle.slack_sprout_alert(lucky_participant, @current_seeds)
-					if (cycle.end == Date.today && Time.now.hour == (cycle.evening_alert.hour))
+					#cycle.slack_sprout_alert(lucky_participant, @current_seeds)
+					if (cycle.end == Date.today && Time.now.utc.hour == (cycle.evening_alert.hour - 2))
+						current_user = User.find(Project.find(cycle.project_id).user_id)
 						ParticipantMailer.cycle_alert(current_user, cycle, cycle.start).deliver
-						cycle.slack_cycle_alert(current_user)
+						#cycle.slack_cycle_alert(current_user)
 					end
 				end
 			end
 		end
 	end
-
 end
