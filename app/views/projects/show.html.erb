@@ -2,7 +2,7 @@
 
 <!-- creates new project -->
 <%= form_for(@new_project) do |f| %>
-  <%= f.label :name %>: <%= f.text_field :name %> <%= f.submit %>
+  <p><%= f.label :name %>: <%= f.text_field :name %> <%= f.submit %></p>
 <% end %>
 
 <h2>Cycles:</h2>
@@ -15,11 +15,14 @@
 	<p>Duration (in days): <%= cycle.duration_days %></p>
 	<p>Alert times: <%= cycle.morning_alert.strftime('%l:%M %P') %>, <%= cycle.evening_alert.strftime('%l:%M %P') %></p>
 	<p>Seeds: 
+		<% current_seeds = Array.new %>
 		<% if Seedtag.where(cycle_id: cycle.id) %>
 			<% Seedtag.where(cycle_id: cycle.id).each do |seedtag| %>
-				<%= Seed.find(seedtag.seed_id).name %>, 
+				<% current_seeds.push(Seed.find(seedtag.seed_id).name) %>
 			<% end %>
 		<% end %>
+		<% seeds_sentence = current_seeds.to_sentence %>
+		<%= seeds_sentence %>
 	</p><br>
 <% end %>
 
@@ -28,8 +31,8 @@
 
 <!-- creates new participants -->
 <%= form_for(@participant, url: project_participants_path(@project.id)) do |f| %>
-  <%= f.label :email %>: <%= f.text_field :email %>
-  <%= f.label :slack_name %>: <%= f.text_field :slack_name %> <%= f.submit %>
+  <p><%= f.label :email %>: <%= f.text_field :email %>
+  <%= f.label :slack_name %>: <%= f.text_field :slack_name %> <%= f.submit %></p>
 <% end %>
 
 <!-- lists participants -->

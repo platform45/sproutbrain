@@ -1,24 +1,26 @@
-<p>Edit cycle: </p>
+<h2>Edit cycle: </h2>
 
 <%= form_for(@cycle, url: project_cycle_path(params[:project_id], @cycle.id)) do |f| %>
   
-  <%= f.label :name %><br>
-  <%= f.text_field :name %><br>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br>
 
-  <%= f.label :duration_days %><br>
-  <%= f.number_field :duration_days %><br>
+    <%= f.label :duration_days %><br>
+    <%= f.number_field :duration_days %><br>
 
-  <%= f.label :start %><br>
-  <%= f.date_field :start %><br>
+    <%= f.label :start %><br>
+    <%= f.date_field :start %><br>
 
-  <%= f.label :morning_alert %><br>
-  <%= f.time_field :morning_alert %><br>
+    <%= f.label :morning_alert %><br>
+    <%= f.time_field :morning_alert %><br>
 
-  <%= f.label :evening_alert %><br>
-  <%= f.time_field :evening_alert %><br> 
+    <%= f.label :evening_alert %><br>
+    <%= f.time_field :evening_alert %><br> 
 
-  <% all_seeds = Seed.all.pluck(:name) %>
-  <% all_seeds.sort_by!{ |s| s.downcase } %>
+    <% all_seeds = Seed.all.pluck(:name) %>
+    <% all_seeds.sort_by!{ |s| s.downcase } %>
+  </p>
 
   <table>
     <% 0.upto((all_seeds.length - 1) / 4) do |index| %>
@@ -53,4 +55,4 @@
   <%= f.submit %> 
 <% end %>
 
-<%= link_to 'Cancel', project_path(params[:project_id]) %>
+<p><%= link_to 'Cancel', project_path(params[:project_id]) %></p>

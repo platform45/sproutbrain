@@ -8,7 +8,7 @@ task :send_reminders => :environment do
 				break
 			end
 			@current_seeds = cycle.get_current_seeds
-			cycle.send_email(@current_seeds)
+			# cycle.send_email(@current_seeds)
 			#send email
 			lucky_participant = p[Random.rand(0..(p.length-1))]
 			@fact = cycle.get_facts
