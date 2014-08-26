@@ -1,15 +1,14 @@
 <h2><%= @project.name %></h2>
 
-<!-- creates new project -->
-<%= form_for(@new_project) do |f| %>
-  <p><%= f.label :name %>: <%= f.text_field :name %> <%= f.submit %></p>
-<% end %>
-
 <h2>Cycles:</h2>
-
 <!-- highlight ongoing cycles -->
 <% Cycle.where(project_id: @project.id).each do |cycle| %>
-	<p><%= cycle.name %> <%= link_to 'delete', cycle_path(cycle), method: :delete %> <%= link_to 'edit', edit_project_cycle_path(cycle.project_id, cycle) %></p>
+	<p>
+		<%= cycle.name %> 
+		<%= link_to 'delete', cycle_path(cycle), method: :delete %> 
+		<%= link_to 'edit', edit_project_cycle_path(cycle.project_id, cycle) %>
+	</p>
+	
 	<p>Start Date: <%= cycle.start %></p>
 	<p>End Date: <%= cycle.end %></p>
 	<p>Duration (in days): <%= cycle.duration_days %></p>
@@ -23,22 +22,36 @@
 		<% end %>
 		<% seeds_sentence = current_seeds.to_sentence %>
 		<%= seeds_sentence %>
-	</p><br>
+	</p>
+<% end %>
+
+<!-- creates new project -->
+<%= form_for(@new_project) do |f| %>
+  <p><%= f.text_field :name, :placeholder => "New project name" %></p>
 <% end %>
 
 <h2>Participants:</h2>
 <!-- highlight ongoing cycles -->
-
 <!-- creates new participants -->
 <%= form_for(@participant, url: project_participants_path(@project.id)) do |f| %>
-  <p><%= f.label :email %>: <%= f.text_field :email %>
-  <%= f.label :slack_name %>: <%= f.text_field :slack_name %> <%= f.submit %></p>
+  <p>
+  	<%= f.text_field :email, :placeholder => "Email" %>
+  	<%= f.text_field :slack_name, :placeholder => "Slack username" %><%= f.submit %>
+  </p>
 <% end %>
 
 <!-- lists participants -->
-<ul><% Participant.where(project_id: @project.id).each do |participant| %>
-	<p><li><%= participant.slack_name %>, <%= participant.email %> <%= link_to 'delete', participant_path(participant), method: :delete %></li></p>
-<% end %></ul>
+<ul>
+	<% Participant.where(project_id: @project.id).each do |participant| %>
+		<p>
+			<li> 
+				<%= participant.email %>, 
+				<%= participant.slack_name %> 
+				<%= link_to 'delete', participant_path(participant), method: :delete %>
+			</li>
+		</p>
+	<% end %>
+</ul>
 
 <%= link_to 'New Cycle', new_project_cycle_path(@project) %>
 <%= link_to 'Delete Project', project_path(@project), method: :delete %>

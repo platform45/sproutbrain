@@ -89,15 +89,15 @@ class Cycle < ActiveRecord::Base
 
 	def not_valid_now
 		thishour = Time.now.utc.hour
-		if (thishour != (self.morning_alert.hour - 2) || thishour != (self.evening_alert.hour - 2))
-			return true
-		elsif (self.start > Date.today || self.end < Date.today)
+		if (thishour == (self.morning_alert.hour - 2) || thishour == (self.evening_alert.hour - 2))
+			return false
+		elsif (self.start <= Date.today || self.end >= Date.today)
 			return true
 		end
-		return false
+		return true
 	end
 
-	def get_current_seeds
+	def get_current_seeds(cycle)
 		@current_seeds = Array.new
 		if (Seedtag.first != nil && Seedtag.where(cycle_id: cycle.id) != nil)
 			Seedtag.where(cycle_id: cycle.id).each do |seedtag|

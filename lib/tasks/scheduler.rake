@@ -7,8 +7,7 @@ task :send_reminders => :environment do
 			if (cycle.not_valid_now || p == nil || p.length <= 0)
 				break
 			end
-			@current_seeds = cycle.get_current_seeds
-			# cycle.send_email(@current_seeds)
+			@current_seeds = cycle.get_current_seeds(cycle)
 			#send email
 			lucky_participant = p[Random.rand(0..(p.length-1))]
 			@fact = cycle.get_facts

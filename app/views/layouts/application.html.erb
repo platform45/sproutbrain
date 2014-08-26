@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- navbar stuff -->
+  <meta charset='utf-8'>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+  <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+  <script src="script.js"></script>
+  
   <title>Sproutbrain</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <!-- , 'data-turbolinks-track' => true %> -->
@@ -10,22 +18,26 @@
 </head>
 <body>
 
-	<ul id="nav">
-		<li><%= link_to 'Seeds Info', seeds_path %></li>
-		<!-- make this a dropdown to all projects -->
+	<!-- <ul id="nav"> -->
+  <div id='cssmenu'>
+  <ul>
+		<li><span><%= link_to 'Seeds Info', seeds_path %></span></li>
+		
+    <!-- make this a dropdown to all projects -->
     <% @curr_projects = Project.where(user_id: current_user.id) %>
     <% if !@curr_projects.empty? %>
       <% @curr_projects.each do |project| %>
-        <li><%= link_to project.name, project_path(project.id) %></li>
+        <li><span><%= link_to project.name, project_path(project.id) %></span></li>
       <% end %>
     <% else %>
-      <li><%= link_to 'New Project', new_project_path %></li>
+      <li><span><%= link_to 'New Project', new_project_path %></span></li>
     <% end %>
 
     <!-- make this a dropdown to my account (edit profile, logout) -->
-    <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-    <li><%= link_to 'Edit Account', edit_user_registration_path %></li>
+    <li><span><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></span></li>
+    <li class='last'><span><%= link_to 'Edit Account', edit_user_registration_path %></span></li>
 	</ul>
+  </div>
 
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
@@ -34,3 +46,4 @@
 
 </body>
 </html>
+
