@@ -1,6 +1,8 @@
 <p><%= link_to 'Register New Seed', new_seed_path %></p>
 
+<div id="seed_title">
 <h2>My Seeds:</h2>
+</div>
 
 <% my_seeds = Array.new %>
 <% Project.where(user_id: current_user.id).each do |project| %>
@@ -62,7 +64,9 @@
 	</table>
 <% end %>
 
+<div id="seed_title">
 <h2>Other Seeds:</h2>
+</div>
 
 <% other_seeds = Array.new %>
 <% Seed.all.each do |seed| %>
