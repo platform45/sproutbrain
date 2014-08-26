@@ -20,10 +20,35 @@
   <% all_seeds = Seed.all.pluck(:name) %>
   <% all_seeds.sort_by!{ |s| s.downcase } %>
 
-  <% all_seeds.each do |seed| %>
-    <%= check_box_tag "seed_names[]", seed %>
-    <%= seed %>
-  <% end %><br>
+  <table>
+    <% 0.upto((all_seeds.length - 1) / 4) do |index| %>
+      <tr>
+        <% i = index * 4 %>
+        <td>
+          <%= check_box_tag "seed_names[]", all_seeds[i] %>
+          <%= all_seeds[i] %>
+        </td>
+        <% if all_seeds.length > (i + 1) %>
+          <td>
+            <%= check_box_tag "seed_names[]", all_seeds[i + 1] %>
+            <%= all_seeds[i + 1] %>
+          </td>
+        <% end %>
+        <% if all_seeds.length > (i + 2) %>
+          <td>
+            <%= check_box_tag "seed_names[]", all_seeds[i + 2] %>
+            <%= all_seeds[i + 2] %>
+          </td>
+        <% end %>
+        <% if all_seeds.length > (i + 3) %>
+          <td>
+            <%= check_box_tag "seed_names[]", all_seeds[i + 3] %>
+            <%= all_seeds[i + 3] %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
       
   <%= f.submit %> 
 <% end %>

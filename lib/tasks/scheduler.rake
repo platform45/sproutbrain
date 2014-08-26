@@ -12,15 +12,15 @@ task :send_reminders => :environment do
 			#send email
 			lucky_participant = p[Random.rand(0..(p.length-1))]
 			@fact = cycle.get_facts
-			if (cycle.start == Date.today)
-				ParticipantMailer.first_alert(lucky_participant, @fact).deliver
+			if (cycle.start == Date.today && Time.now.utc.hour == (cycle.morning_alert.hour - 2))
+				ParticipantMailer.first_alert(lucky_participant, @fact, cycle).deliver
 				cycle.slack_first_alert(lucky_participant)
 			else
-				ParticipantMailer.sprout_alert(lucky_participant, @current_seeds, @fact).deliver
+				ParticipantMailer.sprout_alert(lucky_participant, @current_seeds, @fact, cycle).deliver
 				cycle.slack_sprout_alert(lucky_participant, @current_seeds)
 				if (cycle.end == Date.today && Time.now.utc.hour == (cycle.evening_alert.hour - 2))
 					current_user = User.find(Project.find(cycle.project_id).user_id)
-					ParticipantMailer.cycle_alert(current_user, cycle, cycle.start).deliver
+					ParticipantMailer.cycle_alert(current_user, cycle, cycle.start, @fact).deliver
 					cycle.slack_cycle_alert(current_user)
 				end
 			end

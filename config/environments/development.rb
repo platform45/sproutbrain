@@ -37,7 +37,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_deliveries = true
 
-  # config.mailer_sender = "katiehahm@yahoo.com"
+  config.mailer_sender = "from@example.com"
 
   # config.action_mailer.default_url_options = { host: 'localhost:3000' }
 

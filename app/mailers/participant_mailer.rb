@@ -1,24 +1,31 @@
 class ParticipantMailer < ActionMailer::Base
-  # default from: "no-reply@gmail.com"
   default from: "from@example.com"
 
-  def sprout_alert(participant, seeds, fact)
+  def sprout_alert(participant, seeds, fact, cycle)
    	@participant = participant
    	@seeds = seeds
     @fact = fact
-   	mail(to: @participant.email, subject: 'Alert from your sprouts!')
+    # @edit_url = "http://localhost:3000/projects/" + "#{cycle.project_id}" + "/cycles/" + "#{cycle.id}" + "/edit"
+   	@edit_url = "http://www.sproutbrain.com/projects/" + "#{cycle.project_id}" + "/cycles/" + "#{cycle.id}" + "/edit"
+    mail(to: @participant.email, subject: 'Alert from your sprouts!')
   end
 
-  def cycle_alert(user, cycle, start)
+  def cycle_alert(user, cycle, start, fact)
   	@user = user
   	@cycle = cycle
   	@start = start
-  	mail(to: @user.email, subject: 'Cycle is about to expire...')
+    @fact = fact
+    # change localhost to sproutbrain
+    # @edit_url = "http://localhost:3000/projects/" + "#{cycle.project_id}" + "/cycles/" + "#{cycle.id}" + "/edit"
+  	@edit_url = "http://www.sproutbrain.com/projects/" + "#{cycle.project_id}" + "/cycles/" + "#{cycle.id}" + "/edit"
+    mail(to: @user.email, subject: 'Cycle is about to expire...')
   end
 
-  def first_alert(participant, fact)
+  def first_alert(participant, fact, cycle)
     @participant = participant
     @fact = fact
+    # @edit_url = "http://localhost:3000/projects/" + "#{cycle.project_id}" + "/cycles/" + "#{cycle.id}" + "/edit"
+    @edit_url = "http://www.sproutbrain.com/projects/" + "#{cycle.project_id}" + "/cycles/" + "#{cycle.id}" + "/edit"
     mail(to: @participant.email, subject: 'Welcome to the start of your cycle!')
   end
 
