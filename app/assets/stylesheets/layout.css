@@ -2,33 +2,6 @@ a {
 	text-decoration: none;
 }
 
-/*#nav {
-	width: 97%;
-	float: left;
-	margin: 0 0 3em 0;
-	list-style: none;
-	background-color: #f2f2f2;
-	text-align: center;
-}
-
-#nav li {
-    float: left; 
-}
-   
-#nav li a {
-	display: block;
-	padding: 8px 15px;
-	text-decoration: none;
-	font-weight: bold;
-	color: #069;
-	border-right: 1px solid #ccc; 
-}
-
-#nav li a:hover {
-	color: #c00;
-	background-color: #fff; 
-}*/
-
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
 #cssmenu {
   background: #87BF80;
