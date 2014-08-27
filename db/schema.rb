@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140822124338) do
+ActiveRecord::Schema.define(version: 20140827075744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20140822124338) do
   create_table "projects", force: true do |t|
     t.string  "name"
     t.integer "user_id"
+    t.string  "slack_channel"
+    t.string  "slack_token"
   end
 
   create_table "seeds", force: true do |t|

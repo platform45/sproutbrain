@@ -1,0 +1,13 @@
+<h2>Edit project:</h2>
+<div id="new_project"
+<%= form_for(@project) do |f| %>
+  <p><%= f.label :name %>: <br>
+  	<%= f.text_field :name %><br></p>
+  <p><%= f.label :slack_channel_name %>: <br>
+  	<%= f.text_field :slack_channel %><br></p>
+  <p>Please log into www.slack.com and go to www.api.slack.com to retrieve your token.</p>
+  <p><%= f.label :slack_token %>: <br>
+  	<%= f.text_field :slack_token %> <br>
+  	<%= f.submit %></p>
+<% end %>
+</div>

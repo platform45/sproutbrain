@@ -1,3 +1,4 @@
+<div id="all_seeds">
 <p><%= link_to 'Register New Seed', new_seed_path %></p>
 
 <div id="seed_title">
@@ -21,7 +22,7 @@
 		<% 0.upto((my_seeds.length - 1) / 4) do |index| %>
 		<tr>
 			<% i = index * 4 %>
-			<div id='seed_info_test'>
+			<div id='seed_info'>
 				<td><h3><%= my_seeds[i].name %></h3>
 					<p>Days for seed to sprout: <%= my_seeds[i].min_duration %> - <%= my_seeds[i].max_duration %></p>
 					<p>Plant Family: <%= my_seeds[i].family %></p>
@@ -113,3 +114,4 @@
 		</tr>
 	<% end %>
 </table>
+</div>

@@ -13,13 +13,37 @@
   <col width="24%">
 	<% all_cycles = Array.new %>
 	<% all_cycles = Cycle.where(project_id: @project.id) %>
+	<% all_cycles = all_cycles.reverse %>
 	<% all_cycles.unshift("New Cycle here") %>
 	<% 0.upto((all_cycles.length - 1) / 3) do |index| %>
 		<tr>
 			<% i = index * 3 %>
 			<div id="each_cycle"> <td>
 				<% if index == 0 %>
-					<div id="new_cycle"><%= link_to '+ New Cycle', new_project_cycle_path(@project) %></div>
+					<br><%= link_to '+ New Cycle', new_project_cycle_path(@project) %><br>
+					<h3>Participants:</h3>
+					<!-- highlight ongoing cycles -->
+					<!-- creates new participants -->
+					<%= form_for(@participant, url: project_participants_path(@project.id)) do |f| %>
+					  <p><%= f.text_field :email, :placeholder => "Email" %><br>
+					  <%= f.text_field :slack_name, :placeholder => "Slack username" %><br>
+					  <%= f.submit %></p>
+					<% end %>
+
+					<a href="#view_participants">View Participants</a>
+					<div id="view_participants" class="modalDialog">
+						<div>
+							<a href="#close" title="Close" class="close">X</a>
+							<!-- lists participants -->
+							<% Participant.where(project_id: @project.id).each do |participant| %>
+								<p>
+										<p><%= participant.email %> &#160;&#160;&#160;
+										<%= link_to '✘', participant_path(participant), method: :delete %><br>
+										<%= participant.slack_name %> </p>
+								</p>
+							<% end %>
+						</div>
+					</div>
 				<% else %>
 					<p><%= all_cycles[i].name %> &#160;&#160;&#160; <%= link_to '✘', cycle_path(all_cycles[i]), method: :delete %> </p>
 					<p><%= all_cycles[i].start %> - <%= all_cycles[i].end %></p>
@@ -81,38 +105,4 @@
 		</tr>
 	<% end %>
 </table>
-</div>
-
-<div id="participants">
-	<!-- creates new project -->
-	<div id="new_project">
-		<%= form_for(@new_project) do |f| %>
-		  <p><%= f.text_field :name, :placeholder => "New project name" %></p>
-		<% end %>
-	</div>
-
-	<h3>Participants:</h3>
-	<!-- highlight ongoing cycles -->
-	<!-- creates new participants -->
-	<%= form_for(@participant, url: project_participants_path(@project.id)) do |f| %>
-	  <p><%= f.text_field :email, :placeholder => "Email" %><br>
-	  <%= f.text_field :slack_name, :placeholder => "Slack username" %><br>
-	  <%= f.submit %></p>
-	<% end %>
-
-	<a href="#view_participants">View Participants</a>
-	<div id="view_participants" class="modalDialog">
-		<div>
-			<a href="#close" title="Close" class="close">X</a>
-			<!-- lists participants -->
-			<% Participant.where(project_id: @project.id).each do |participant| %>
-				<p>
-						<p><%= participant.email %> &#160;&#160;&#160;
-						<%= link_to '✘', participant_path(participant), method: :delete %><br>
-						<%= participant.slack_name %> </p>
-				</p>
-			<% end %>
-		</div>
-	</div>
-	</div>
 </div>

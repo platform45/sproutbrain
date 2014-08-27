@@ -23,6 +23,19 @@ class ProjectsController < ApplicationController
 		end
 	end
 
+	def edit
+		@project = Project.find(params[:id])
+	end
+
+	def update
+		@project = Project.find(params[:id])
+		if @project.save
+			redirect_to project_path(@project.id)
+		else
+			render :edit
+		end
+	end
+
 	def destroy
 		project = Project.find(params[:id])
 		project.destroy
@@ -36,7 +49,7 @@ class ProjectsController < ApplicationController
 	private
 
 	def project_params
-		params.require(:project).permit(:name)
+		params.require(:project).permit(:name, :slack_token, :slack_channel)
 	end
 
 end

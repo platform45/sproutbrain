@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   devise_for :users
   
-  resources :cycles, only: [:show, :index, :destroy]
+  resources :cycles, only: [:destroy]
 
   resources :participants, only: [:destroy]
 

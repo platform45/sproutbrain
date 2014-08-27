@@ -30,9 +30,8 @@
       <% @curr_projects.each do |project| %>
         <li><span><%= link_to project.name, project_path(project.id) %></span></li>
       <% end %>
-    <% else %>
-      <li><span><%= link_to 'New Project', new_project_path %></span></li>
     <% end %>
+    <li><span><%= link_to 'New Project', new_project_path %></span></li>
 
     <!-- make this a dropdown to my account (edit profile, logout) -->
     <li><span><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></span></li>
