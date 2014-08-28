@@ -1,17 +1,28 @@
+<div id="welcome">Welcome to Sproutbrain!</div>
+<!-- <div id="form"> -->
+<div id="signin_form">
 <h2>Sign in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+  <div><%= f.email_field :email, autofocus: true, placeholder: 'Email' %></div>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+  <div><%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %></div>
 
   <% if devise_mapping.rememberable? -%>
     <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
   <% end -%>
-
   <div><%= f.submit "Sign in" %></div>
 <% end %>
 
+<br>
 <%= render "devise/shared/links" %>
+<!-- </div> -->
+
+<!-- <div id="howitworks"> -->
+<h3>How does Sproutbrain work?</h3>
+<p>
+  After signing up, you can receive both slack and email notifications to rinse your sprout. You specify the duration you want the alerts, the time of the day you want the alerts, and the people you want to alert. There's also nutritional information on all seeds for reference. 
+</p>
+</div>
+
+<!-- </div> -->

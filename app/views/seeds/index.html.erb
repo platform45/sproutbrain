@@ -1,8 +1,7 @@
-<div id="all_seeds">
 <p><%= link_to 'Register New Seed', new_seed_path %></p>
 
 <div id="seed_title">
-<h2>My Seeds:</h2>
+	<h2>My Seeds:</h2>
 </div>
 
 <% my_seeds = Array.new %>
@@ -19,54 +18,30 @@
 	<% my_seeds.sort_by!{ |s| s.name.downcase } %>
 
 	<table>
-		<% 0.upto((my_seeds.length - 1) / 4) do |index| %>
 		<tr>
-			<% i = index * 4 %>
-			<div id='seed_info'>
-				<td><h3><%= my_seeds[i].name %></h3>
-					<p>Days for seed to sprout: <%= my_seeds[i].min_duration %> - <%= my_seeds[i].max_duration %></p>
-					<p>Plant Family: <%= my_seeds[i].family %></p>
-					<p>Nutrition: <%= my_seeds[i].nutrition %></p>
-					<p>Tips: <%= my_seeds[i].nutrition %></p>
-				</td>
+			<div id="table_title">
+				<td><h3>Name</h3></td>
+				<td><h3>Days to sprout</h3></td>
+				<td><h3>Plant Family</h3></td>
+				<td><h3>Nutrition</h3></td>
+				<td><h3>Tips</h3></td>
 			</div>
-			<% if my_seeds.length > (i + 1) %>
-				<div id='seed_info'>
-					<td><h3><%= my_seeds[i + 1].name %></h3>
-						<p>Days for seed to sprout: <%= my_seeds[i + 1].min_duration %> - <%= my_seeds[i + 1].max_duration %></p>
-						<p>Plant Family: <%= my_seeds[i + 1].family %></p>
-						<p>Nutrition: <%= my_seeds[i + 1].nutrition %></p>
-						<p>Tips: <%= my_seeds[i + 1].nutrition %></p>
-					</td>
-				</div>
-			<% end %>
-			<% if my_seeds.length > (i + 2) %>
-				<div id='seed_info'>
-					<td><h3><%= my_seeds[i + 2].name %></h3>
-						<p>Days for seed to sprout: <%= my_seeds[i + 2].min_duration %> - <%= my_seeds[i + 2].max_duration %></p>
-						<p>Plant Family: <%= my_seeds[i + 2].family %></p>
-						<p>Nutrition: <%= my_seeds[i + 2].nutrition %></p>
-						<p>Tips: <%= my_seeds[i + 2].nutrition %></p>
-					</td>
-				</div>
-			<% end %>
-			<% if my_seeds.length > (i + 3) %>
-				<div id='seed_info'>
-					<td><h3><%= my_seeds[i + 3].name %></h3>
-						<p>Days for seed to sprout: <%= my_seeds[i + 3].min_duration %> - <%= my_seeds[i + 3].max_duration %></p>
-						<p>Plant Family: <%= my_seeds[i + 3].family %></p>
-						<p>Nutrition: <%= my_seeds[i + 3].nutrition %></p>
-						<p>Tips: <%= my_seeds[i + 3].nutrition %></p>
-					</td>
-				</div>
-			<% end %>
 		</tr>
+		<% 0.upto(my_seeds.length - 1) do |index| %>
+			<tr>
+				<% seed = my_seeds[index] %>
+				<td><p><%= seed.name %></p></td>
+				<td><p><%= seed.min_duration %> - <%= seed.max_duration %></p></td>
+				<td><p><%= seed.family %></p></td>
+				<td><p><%= seed.nutrition %></p></td>
+				<td><p><%= seed.tips %></p></td>
+			</tr>
 		<% end %>
 	</table>
 <% end %>
 
 <div id="seed_title">
-<h2>Other Seeds:</h2>
+	<h2>Other Seeds:</h2>
 </div>
 
 <% other_seeds = Array.new %>
@@ -75,43 +50,26 @@
 		<% other_seeds.push(seed) %>
 	<% end %>
 <% end %>
-
 <% other_seeds.sort_by!{ |s| s.name.downcase } %>
+
 <table>
-	<% 0.upto((other_seeds.length - 1) / 4) do |index| %>
+	<tr>
+		<div id="table_title">
+			<td><h3>Name</h3></td>
+			<td><h3>Days to sprout</h3></td>
+			<td><h3>Plant Family</h3></td>
+			<td><h3>Nutrition</h3></td>
+			<td><h3>Tips</h3></td>
+		</div>
+	</tr>
+	<% 0.upto(other_seeds.length - 1) do |index| %>
 		<tr>
-			<% i = index * 4 %>
-			<div id='seed_info'><td><h3><%= other_seeds[i].name %></h3>
-				<p>Days for seed to sprout: <%= other_seeds[i].min_duration %> - <%= other_seeds[i].max_duration %></p>
-				<p>Plant Family: <%= other_seeds[i].family %></p>
-				<p>Nutrition: <%= other_seeds[i].nutrition %></p>
-				<p>Tips: <%= other_seeds[i].nutrition %></p>
-			</td></div>
-			<% if other_seeds.length > (i + 1) %>
-				<div id='seed_info'><td><h3><%= other_seeds[i + 1].name %></h3>
-					<p>Days for seed to sprout: <%= other_seeds[i + 1].min_duration %> - <%= other_seeds[i + 1].max_duration %></p>
-					<p>Plant Family: <%= other_seeds[i + 1].family %></p>
-					<p>Nutrition: <%= other_seeds[i + 1].nutrition %></p>
-					<p>Tips: <%= other_seeds[i + 1].nutrition %></p>
-				</td></div>
-			<% end %>
-			<% if other_seeds.length > (i + 2) %>
-				<div id='seed_info'><td><h3><%= other_seeds[i + 2].name %></h3>
-					<p>Days for seed to sprout: <%= other_seeds[i + 2].min_duration %> - <%= other_seeds[i + 2].max_duration %></p>
-					<p>Plant Family: <%= other_seeds[i + 2].family %></p>
-					<p>Nutrition: <%= other_seeds[i + 2].nutrition %></p>
-					<p>Tips: <%= other_seeds[i + 2].nutrition %></p>
-				</td></div>
-			<% end %>
-			<% if other_seeds.length > (i + 3) %>
-				<div id='seed_info'><td><h3><%= other_seeds[i + 3].name %></h3>
-					<p>Days for seed to sprout: <%= other_seeds[i + 3].min_duration %> - <%= other_seeds[i + 3].max_duration %></p>
-					<p>Plant Family: <%= other_seeds[i + 3].family %></p>
-					<p>Nutrition: <%= other_seeds[i + 3].nutrition %></p>
-					<p>Tips: <%= other_seeds[i + 3].nutrition %></p>
-				</td></div>
-			<% end %>
+			<% seed = other_seeds[index] %>
+			<td><p><%= seed.name %></p></td>
+			<td><p><%= seed.min_duration %> - <%= seed.max_duration %></p></td>
+			<td><p><%= seed.family %></p></td>
+			<td><p><%= seed.nutrition %></p></td>
+			<td><p><%= seed.tips %></p></td>
 		</tr>
 	<% end %>
 </table>
-</div>

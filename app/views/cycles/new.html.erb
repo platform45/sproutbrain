@@ -1,69 +1,47 @@
-<h2>New cycle: </h2>
-
 <div id="new_cycle_form">
-<div id="cycle_fields">
-<%= form_for(@cycle, url: project_cycles_path(params[:project_id], @cycle.id)) do |f| %>
-  
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %><br>
+  <h2>New cycle: </h2>
+  <div id="cycle_fields">
+  <%= form_for(@cycle, url: project_cycles_path(params[:project_id], @cycle.id)) do |f| %>
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %><br>
 
-    <%= f.label :duration_days %><br>
-    <%= f.number_field :duration_days %><br>
+      <%= f.label :duration_days %><br>
+      <%= f.number_field :duration_days %><br>
 
-    <%= f.label :start %><br>
-    <%= f.date_field :start %><br>
+      <%= f.label :start %><br>
+      <%= f.date_field :start %><br>
 
-    <%= f.label :morning_alert %><br>
-    <%= f.time_field :morning_alert %><br>
+      <%= f.label :morning_alert %><br>
+      <%= f.time_field :morning_alert %><br>
 
-    <%= f.label :evening_alert %><br>
-    <%= f.time_field :evening_alert %><br> 
+      <%= f.label :evening_alert %><br>
+      <%= f.time_field :evening_alert %><br> 
 
-    <% all_seeds = Seed.all.pluck(:name) %>
-    <% all_seeds.sort_by!{ |s| s.downcase } %>
-  </p>
-</div>
-
-  <div id="cycle_seeds">
-  <table>
-    <% 0.upto((all_seeds.length - 1) / 5) do |index| %>
-      <tr>
-        <% i = index * 5 %>
-        <td>
-          <%= check_box_tag "seed_names[]", all_seeds[i] %>
-          <%= all_seeds[i] %>
-        </td>
-        <% if all_seeds.length > (i + 1) %>
-          <td>
-            <%= check_box_tag "seed_names[]", all_seeds[i + 1] %>
-            <%= all_seeds[i + 1] %>
-          </td>
-        <% end %>
-        <% if all_seeds.length > (i + 2) %>
-          <td>
-            <%= check_box_tag "seed_names[]", all_seeds[i + 2] %>
-            <%= all_seeds[i + 2] %>
-          </td>
-        <% end %>
-        <% if all_seeds.length > (i + 3) %>
-          <td>
-            <%= check_box_tag "seed_names[]", all_seeds[i + 3] %>
-            <%= all_seeds[i + 3] %>
-          </td>
-        <% end %>
-        <% if all_seeds.length > (i + 4) %>
-          <td>
-            <%= check_box_tag "seed_names[]", all_seeds[i + 4] %>
-            <%= all_seeds[i + 4] %>
-          </td>
-        <% end %>
-      </tr>
-    <% end %>
-  </table>
+      <% all_seeds = Seed.all.pluck(:name) %>
+      <% all_seeds.sort_by!{ |s| s.downcase } %>
+    </p>
   </div>
-      <br>
-  <%= f.submit %>
-<% end %>
 
-<p><%= link_to 'Cancel', project_path(params[:project_id]) %></p></div>
+    <div id="cycle_seeds">
+      <table>
+        <% 0.upto(all_seeds.length - 1) do |index| %>
+          <% seed = all_seeds[index] %>
+          <% if index % 4 == 0 %>
+            <tr>
+          <% end %>
+          <td>
+            <%= check_box_tag "seed_names[]", seed %>
+            <%= seed %>
+          </td>
+          <% if index % 4 == 3 %>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+    <br>
+    <%= f.submit %>
+  <% end %>
+
+  <p><%= link_to 'Cancel', project_path(params[:project_id]) %></p></div>
