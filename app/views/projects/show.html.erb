@@ -1,108 +1,70 @@
-<div id="project_title"><h2><%= @project.name %> &#160;&#160; <%= link_to '✘', project_path(@project), method: :delete %></h2></div>
+<div id="project_title"><h2><%= @project.name %></div>
 
-<!-- <h3>Cycles:</h3> -->
 <!-- highlight ongoing cycles -->
 <div id="project_wrapper">
-
-
-<div id="cycles">
-
-<table>
-	<col width="24%">
-  <col width="24%">
-  <col width="24%">
-	<% all_cycles = Array.new %>
-	<% all_cycles = Cycle.where(project_id: @project.id) %>
-	<% all_cycles = all_cycles.reverse %>
-	<% all_cycles.unshift("New Cycle here") %>
-	<% 0.upto((all_cycles.length - 1) / 3) do |index| %>
-		<tr>
-			<% i = index * 3 %>
-			<div id="each_cycle"> <td>
-				<% if index == 0 %>
-					<br><%= link_to '+ New Cycle', new_project_cycle_path(@project) %><br>
-					<h3>Participants:</h3>
-					<!-- highlight ongoing cycles -->
-					<!-- creates new participants -->
-					<%= form_for(@participant, url: project_participants_path(@project.id)) do |f| %>
-					  <p><%= f.text_field :email, :placeholder => "Email" %><br>
-					  <%= f.text_field :slack_name, :placeholder => "Slack username" %><br>
-					  <%= f.submit %></p>
-					<% end %>
-
-					<a href="#view_participants">View Participants</a>
-					<div id="view_participants" class="modalDialog">
-						<div>
-							<a href="#close" title="Close" class="close">X</a>
-							<!-- lists participants -->
-							<% Participant.where(project_id: @project.id).each do |participant| %>
-								<p>
-										<p><%= participant.email %> &#160;&#160;&#160;
-										<%= link_to '✘', participant_path(participant), method: :delete %><br>
-										<%= participant.slack_name %> </p>
-								</p>
-							<% end %>
-						</div>
-					</div>
-				<% else %>
-					<p><%= all_cycles[i].name %> &#160;&#160;&#160; <%= link_to '✘', cycle_path(all_cycles[i]), method: :delete %> </p>
-					<p><%= all_cycles[i].start %> - <%= all_cycles[i].end %></p>
-					<p>Duration: <%= all_cycles[i].duration_days %> days</p>
-					<p>Alerts: <%= all_cycles[i].morning_alert.strftime('%l:%M %P') %>, <%= all_cycles[i].evening_alert.strftime('%l:%M %P') %></p>
-					<p>Seeds: 
-						<% current_seeds = Array.new %>
-						<% if Seedtag.where(cycle_id: all_cycles[i].id) %>
-							<% Seedtag.where(cycle_id: all_cycles[i].id).each do |seedtag| %>
-								<% current_seeds.push(Seed.find(seedtag.seed_id).name) %>
-							<% end %>
-						<% end %>
-						<% seeds_sentence = current_seeds.to_sentence %>
-						<%= seeds_sentence %>
-					</p>
-					<p><%= link_to 'edit', edit_project_cycle_path(all_cycles[i].project_id, all_cycles[i]) %></p>
+	<div id="cycles">
+		<!-- <h3>Cycles:</h3> -->
+		<table id="projecthome">
+			<col width="24%">
+			<col width="24%">
+			<col width="24%">
+			<% all_cycles = Array.new %>
+			<% all_cycles = Cycle.where(project_id: @project.id) %>
+			<% all_cycles = all_cycles.reverse %>
+			<% 0.upto(all_cycles.length - 1) do |index| %>
+				<% cycle = all_cycles[index] %>
+				<% if index % 3 == 0 %>
+					<tr>
 				<% end %>
-			</td></div>
-
-			<% if all_cycles.length > i + 1 %>
-				<td><div id="each_cycle">
-					<p><%= all_cycles[i + 1].name %> &#160;&#160;&#160; <%= link_to '✘', cycle_path(all_cycles[i + 1]), method: :delete %> </p>
-					<p><%= all_cycles[i + 1].start %> - <%= all_cycles[i + 1].end %></p>
-					<p>Duration: <%= all_cycles[i + 1].duration_days %> days</p>
-					<p>Alerts: <%= all_cycles[i + 1].morning_alert.strftime('%l:%M %P') %>, <%= all_cycles[i + 1].evening_alert.strftime('%l:%M %P') %></p>
-					<p>Seeds: 
-						<% current_seeds = Array.new %>
-						<% if Seedtag.where(cycle_id: all_cycles[i + 1].id) %>
-							<% Seedtag.where(cycle_id: all_cycles[i + 1].id).each do |seedtag| %>
-								<% current_seeds.push(Seed.find(seedtag.seed_id).name) %>
-							<% end %>
+				<td>                              
+					<p><pre><%= cycle.name %>                                                   <%= link_to 'x', cycle_path(cycle.id), method: :delete %></pre></p>
+					<p><% if cycle.start.year == Time.now.year || cycle.end.year == Time.now.year %>
+							<%= cycle.start.strftime('%-m/%-d') %> - <%= cycle.end.strftime('%-m/%-d') %>
+						<% else %>
+							<%= cycle.start %> - <%= cycle.end %>
 						<% end %>
-						<% seeds_sentence = current_seeds.to_sentence %>
-						<%= seeds_sentence %>
 					</p>
-					<p><%= link_to 'edit', edit_project_cycle_path(all_cycles[i + 1].project_id, all_cycles[i + 1]) %></p>
-				</td></div>
-			<% end %>
-
-			<% if all_cycles.length > i + 2 %>
-				<td><div id="each_cycle">
-					<p><%= all_cycles[i + 2].name %> &#160;&#160;&#160; <%= link_to '✘', cycle_path(all_cycles[i + 2]), method: :delete %> </p>
-					<p><%= all_cycles[i + 2].start %> - <%= all_cycles[i + 2].end %></p>
-					<p>Duration: <%= all_cycles[i + 2].duration_days %> days</p>
-					<p>Alerts: <%= all_cycles[i + 2].morning_alert.strftime('%l:%M %P') %>, <%= all_cycles[i + 2].evening_alert.strftime('%l:%M %P') %></p>
-					<p>Seeds: 
-						<% current_seeds = Array.new %>
-						<% if Seedtag.where(cycle_id: all_cycles[i + 2].id) %>
-							<% Seedtag.where(cycle_id: all_cycles[i + 2].id).each do |seedtag| %>
-								<% current_seeds.push(Seed.find(seedtag.seed_id).name) %>
+					<p>ALERTS: <br><%= cycle.morning_alert.strftime('%l:%M %P') %>, <%= cycle.evening_alert.strftime('%l:%M %P') %></p>
+		      <p>SEEDS:<br>
+		        <% current_seeds = Array.new %>
+		        <% if Seedtag.where(cycle_id: cycle.id) %>
+							<% Seedtag.where(cycle_id: cycle.id).each do |seedtag| %>
+							  <% current_seeds.push(Seed.find(seedtag.seed_id).name) %>
 							<% end %>
-						<% end %>
-						<% seeds_sentence = current_seeds.to_sentence %>
-						<%= seeds_sentence %>
-					</p>
-					<p><%= link_to 'edit', edit_project_cycle_path(all_cycles[i + 2].project_id, all_cycles[i + 2]) %></p>
-				</td></div>
-			<% end %>
-		</tr>
-	<% end %>
-</table>
+		        <% end %>
+		        <% seeds_sentence = current_seeds.to_sentence %>
+		        <%= seeds_sentence %>
+		     	</p>
+		     	<p><%= link_to 'edit', edit_project_cycle_path(cycle.project_id, cycle) %></p>
+		    </td>
+		    <% if index % 3 == 2 %>
+		    	</tr>
+		   	<% end %>
+		  <% end %>
+		</table>
+	<!-- highlight ongoing cycles -->
+	</div>
+
+	<div id="project_forms">
+		<%= link_to '+ New Cycle', new_project_cycle_path(@project) %><br>
+		<%= link_to 'x Delete Project', project_path(@project), method: :delete %></h2>
+
+		<h3>Participants:</h3>
+		<!-- creates new participants -->
+		<%= form_for(@participant, url: project_participants_path(@project.id)) do |f| %>
+			<p>
+				<%= f.text_field :email, :placeholder => "Email" %><br>
+				<%= f.text_field :slack_name, :placeholder => "Slack username" %><br>
+				<%= f.submit %>
+			</p>
+		<% end %>
+
+		<% Participant.where(project_id: @project.id).each do |participant| %>
+		  <p>
+		  	<%= participant.email %> &#160;&#160;&#160; <%= link_to 'x', participant_path(participant), method: :delete %><br>
+		    <%= participant.slack_name %>
+		  </p>
+		<% end %>
+	</div>
+
 </div>

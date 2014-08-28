@@ -1,92 +1,7 @@
-a {
-	text-decoration: none;
-}
-
-* {
-  font-family: 'Open Sans', sans-serif;
-
-}
-
-ul {
-
-  list-style-type: none;
-}
-
-th, td {
-  /*border: 1px solid black;*/
-}
-
-table {
-  table-layout: fixed;
-  width: 100%;
-}
-
-table td {
-  overflow: hidden;
-}
-
-td {
-  padding-left: 15px;
-  padding-right: 15px;
-  vertical-align: top;
-}
-
-body {
-  font-size: 16px;
-  background-color: #F4FFEE;
-}
-
-h2, h3 {
-  color: #75A56F;
-}
-
-/*unvisited link*/
-a:link {
-  color: #75A56F;
-}
-
-/* visited link */
-a:visited {
-  color: #75A56F;
-}
-
-a:hover {
-  color: #87BF80;
-}
-
-#cycle_seeds {
-  float: right;
-  /*float: right;*/
-  width: 80%;
-  padding-right: 3%;
-}
-
-#cycle_fields {
-  width: 15%;
-  float: left;
-}
-
-#seed_title {
-  text-align: center;
-}
-
-#new_project {
-  text-align: left;
-}
-
-#delete_x {
-  text-align: right;
-}
-
-#cycle_title {
-  text-align: center;
-  color: #75A56F;
-}
-
+/*projects home*/
 #project_title {
   text-align: center;
   color: #75A56F;
-
 }
 
 #project_wrapper {
@@ -94,73 +9,49 @@ a:hover {
 }
 
 #cycles {
-  width: 72%;
+  width: 77%;
   float: left;
   text-align: left;
 }
 
-#participants {
-  width: 22%;
+#project_forms {
+  width: 23%;
   float: right;
+  padding-left: 3%;
+  padding-top: 2%;
+  padding-right: 3%;
+  margin-top: 10px;
+  background-color: white;
+  height: 100%;
 }
 
-.modalDialog {
-  position: fixed;
-  font-family: Arial, Helvetica, sans-serif;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0,0,0,0.7);
-  z-index: 99999;
-  opacity:0;
-  -webkit-transition: opacity 400ms ease-in;
-  -moz-transition: opacity 400ms ease-in;
-  transition: opacity 400ms ease-in;
-  pointer-events: none;
-}
-
-.modalDialog:target {
-  opacity:1;
-  pointer-events: auto;
-}
-
-.modalDialog > div {
-  width: 400px;
-  position: relative;
-  margin: 10% auto;
-  padding: 5px 20px 13px 20px;
-  border-radius: 10px;
-  background: #fff;
-  background: -moz-linear-gradient(#fff, #999);
-  background: -webkit-linear-gradient(#fff, #999);
-  background: -o-linear-gradient(#fff, #999);
-}
-
-.close {
-  background: #87BF80;
-  color: #FFFFFF;
-  line-height: 25px;
-  position: absolute;
-  right: -12px;
+/*sign in home*/
+#welcome {
+  font-style: bold;
+  background-color: #75A56F;
   text-align: center;
-  top: -10px;
-  width: 24px;
-  text-decoration: none;
-  font-weight: bold;
-  -webkit-border-radius: 12px;
-  -moz-border-radius: 12px;
-  border-radius: 12px;
-  -moz-box-shadow: 1px 1px 3px #000;
-  -webkit-box-shadow: 1px 1px 3px #000;
-  box-shadow: 1px 1px 3px #000;
+  font-size: 400%;
+  color: white;
+  padding-bottom: 1%;
 }
 
-.close:hover { background: black; }
+#signin_form {
+  /*background-color: #75A56F;*/
+  width: 55%;
+  float: right;
+  margin-top: 2%;
+  margin-right: 3%;
+  padding-right: 2%;
+  padding-left: 3%;
+  padding-bottom: 1%;
+  padding-top: 1%;
+  /*color: white;*/
+}
 
+/*layouts*/
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
 #cssmenu {
-  background: #87BF80;
+  background: #75A56F;
   width: auto;
   text-align: center;
 }
@@ -180,6 +71,7 @@ a:hover {
   clear: both;
   visibility: hidden;
 }
+
 #cssmenu ul li {
   display: inline-block;
   padding: 0;
@@ -280,4 +172,18 @@ a:hover {
   }
 }
 
+#navigation li a.current{
+   background-color: black;
+   color: black;
+}
 
+#background {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+  padding-top: 20%;
+  padding-left: 3%;
+}
