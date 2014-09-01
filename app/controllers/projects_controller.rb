@@ -29,7 +29,7 @@ class ProjectsController < ApplicationController
 
 	def update
 		@project = Project.find(params[:id])
-		if @project.save
+		if @project.update(project_params)
 			redirect_to project_path(@project.id)
 		else
 			render :edit

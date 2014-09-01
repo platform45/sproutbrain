@@ -13,3 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(function() {
+	$("a").click(function () { 
+		$(this).css("color", "#F2FFE2");
+    });
+});
