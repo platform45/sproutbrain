@@ -1,0 +1,47 @@
+#new_project {
+  text-align: left;
+}
+
+#form {
+  width: 50%;
+  float: right;
+  padding-right: 5%;
+  vertical-align: middle;
+}
+
+#project_title {
+  text-align: center;
+  color: #75A56F;
+}
+
+#project_wrapper {
+  overflow: auto;
+}
+
+#cycles {
+  width: 77%;
+  float: left;
+  text-align: left;
+}
+
+#project_forms {
+  width: 23%;
+  float: right;
+  padding-left: 3%;
+  padding-top: 2%;
+  padding-right: 3%;
+  margin-top: 10px;
+  background-color: white;
+  height: 100%;
+}
+
+table#projecthome {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px 10px;
+}
+
+table#projecthome td {
+  overflow: hidden;
+}

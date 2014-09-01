@@ -47,7 +47,8 @@
 
 	<div id="project_forms">
 		<%= link_to '+ New Cycle', new_project_cycle_path(@project) %><br>
-		<%= link_to 'x Delete Project', project_path(@project), method: :delete %></h2>
+		<%= link_to '* Edit Project', edit_project_path(@project) %><br>
+		<%= link_to 'x Delete Project', project_path(@project), method: :delete %>
 
 		<h3>Participants:</h3>
 		<!-- creates new participants -->
