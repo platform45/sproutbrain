@@ -14,12 +14,7 @@ class CyclesController < ApplicationController
 		@cycle.end = @cycle.start.advance(:days => (@cycle.duration_days - 1))
 		if @cycle.save
 			# create seedtags for the cycle and seeds
-			if params[:seed_names].present?
-				params[:seed_names].each do |name|
-					Seedtag.create(seed_id: Seed.find_by(name: name).id, cycle_id: @cycle.id, startdate: @cycle.start)
-				end
-			end
-			redirect_to project_path(params[:project_id])
+			seedtag_helper(@cycle, true)
 		else
 			render :new
 		end
@@ -33,13 +28,7 @@ class CyclesController < ApplicationController
 		@cycle = Cycle.find(params[:id])
 		@cycle.end = Date.parse(params[:cycle][:start]).advance(:days => params[:cycle][:duration_days].to_i - 1)
 		if @cycle.update(cycle_params)
-			if params[:seed_names].present?
-				Seedtag.where(cycle_id: @cycle.id).destroy_all
-			  	params[:seed_names].each do |name|
-					Seedtag.create(seed_id: Seed.find_by(name: name).id, cycle_id: @cycle.id, startdate: @cycle.start)
-				end
-		  	end
-			redirect_to project_path(@cycle.project_id)
+			seedtag_helper(@cycle, false)
 		else
 			render :edit
 		end
@@ -54,8 +43,14 @@ class CyclesController < ApplicationController
 
 	private
 
-	def update_cycle_params
-		params.require(:cycle).permit(:start)
+	def seedtag_helper(cycle, iscreate)
+		if params[:seed_names].present?
+			Seedtag.where(cycle_id: cycle.id).destroy_all unless iscreate
+		  	params[:seed_names].each do |name|
+				Seedtag.create(seed_id: Seed.find_by(name: name).id, cycle_id: cycle.id, startdate: cycle.start)
+			end
+	  	end
+	  	redirect_to project_path(cycle.project_id)
 	end
 
 	def cycle_params

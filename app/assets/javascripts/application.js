@@ -35,4 +35,4 @@ $(function() {
 	    $('ul', this).stop().slideUp(100);
 	  }
 	);
-})
+});

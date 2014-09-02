@@ -1,28 +1,100 @@
-<div id="welcome">Welcome to Sproutbrain!</div>
-<!-- <div id="form"> -->
-<div id="signin_form">
-<h2>Sign in</h2>
+<ul id="home_nav">
+	<div id="home_nav_left">
+		<li><%= image_tag "logo.png" %></li>
+		<div id="title"><li><p>&nbsp;&nbsp;SPROUTBRAIN</p></li></div>
+	</div>
+	<div id="home_nav_right">
+		<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+		  <li><%= f.email_field :email, autofocus: true, placeholder: 'Email' %></li>
+		  <li><%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %></li>
+		  <li><%= f.submit "Sign in" %></li>
+		  <li><%= link_to 'Sign up', new_user_registration_path %></li>
+		<% end %>
+	</div>
+</ul>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div><%= f.email_field :email, autofocus: true, placeholder: 'Email' %></div>
+<div id="images_left">
+	<%= image_tag "sprouts_wooden1.jpg" %><br>
+	<%= image_tag "sprouts_wooden2.jpg" %><br>
+	<%= image_tag "sprouts_wooden5.jpg" %><br>
+	<%= image_tag "sprouts_wooden6.jpg" %><br><br>
 
-  <div><%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %></div>
+	<br><%= image_tag "sprouts_quad1.jpg" %><br>
+	<%= image_tag "sprouts_quad2.jpg" %><br>
+	<%= image_tag "sprouts_quad3.jpg" %><br>
+	<%= image_tag "sprouts_quad4.jpg" %><br><br>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
-
-<br>
-<%= render "devise/shared/links" %>
-<!-- </div> -->
-
-<!-- <div id="howitworks"> -->
-<h3>How does Sproutbrain work?</h3>
-<p>
-  After signing up, you can receive both slack and email notifications to rinse your sprout. You specify the duration you want the alerts, the time of the day you want the alerts, and the people you want to alert. There's also nutritional information on all seeds for reference. 
-</p>
+	<br><%= image_tag "sprouts_spoon1.jpg" %><br>
+	<%= image_tag "sprouts_bowl.jpg" %><br>
+	<%= image_tag "sprouts_spoon2.jpg" %><br>
+	<%= image_tag "sprouts_alfafa2.jpg" %>
 </div>
 
-<!-- </div> -->
+<div id="images_right">
+	<%= image_tag "sprouts_wooden3.jpg" %><br>
+	<%= image_tag "sprouts_wooden1.jpg" %><br>
+	<%= image_tag "sprouts_wooden6.jpg" %><br>
+	<%= image_tag "sprouts_wooden4.jpg" %><br><br>
+
+	<br><%= image_tag "sprouts_quad4.jpg" %><br>
+	<%= image_tag "sprouts_quad1.jpg" %><br>
+	<%= image_tag "sprouts_quad2.jpg" %><br>
+	<%= image_tag "sprouts_quad3.jpg" %><br><br>
+
+	<br><%= image_tag "sprouts_spoon1.jpg" %><br>
+	<%= image_tag "sprouts_bowl.jpg" %><br>
+	<%= image_tag "sprouts_spoon2.jpg" %><br>
+	<%= image_tag "sprouts_alfafa2.jpg" %>
+</div>
+
+<div id="welcome">
+	<div id="welcome_text"><p>Welcome to</p></div>
+	<div id="welcome_text_title"><p>Sproutbrain!</p></div>
+	<div id="acorn_img"><%= image_tag "acorn_sprout.png" %></div>
+	<div id="how_links"><a href="#pagetwo">How it works | </a>
+	<a href="#pagethree">How we help</a></div>
+</div>
+
+<div id="pagetwo"></div>
+<div id="pagethree"></div>
+
+<div id="howitworks">
+	<table>
+		<tr>
+			<td>
+				<div id="howitworks_title"><p>HOW IT WORKS: </p></div>
+				<div id="howitworks_titlesub"><p>Why sprouts? </p></div>
+				<div id="howitworks_text"><p>asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf </p></div>
+				<div id="howitworks_titlesub"><p>How do we grow? </p></div>
+				<div id="howitworks_text"><p>asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf  </p></div>
+				<p><a href="#pagethree">How we help</a></p>
+			</td>
+			<td>
+				<div id="howitworks_image"><br><br><br><%= image_tag "question-mark.png" %></div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="howwehelp">
+	<div id="howitworks_title"><p>HOW WE HELP: </p></div>
+	<table>
+		<tr>
+			<td>
+				<div id="howwehelp_image"><%= image_tag "temp_screenshot.png" %></div>
+				<div id="howwehelp_titlesub"><p>Step 1:</p></div>
+				<div id="howwehelp_text"><p>asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf </p></div>
+			</td>
+			<td>
+				<div id="howwehelp_image"><%= image_tag "temp_screenshot.png" %></div>
+				<div id="howwehelp_titlesub"><p>Step 2:</p></div>
+				<div id="howwehelp_text"><p>asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf </p></div>
+			</td>
+			<td>
+				<div id="howwehelp_image"><%= image_tag "temp_screenshot.png" %></div>
+				<div id="howwehelp_titlesub"><p>Step 3:</p></div>
+				<div id="howwehelp_text"><p>asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf </p></div>
+			</td>
+		</tr>
+	</table>
+</div>

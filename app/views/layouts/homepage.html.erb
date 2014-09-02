@@ -10,24 +10,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<!--  <p class="notice"><%= notice %></p>
-	 <p class="alert"><%= alert %></p> -->
-	<div id="background">
-	  <%= image_tag "sproutsbackground.png", class: "stretch"%>
-	</div>
-
-	<div id='home_nav'>
-		<nav>
-			<ul>
-				<!-- on the left -->
-				<li><%= link_to 'About us', about_path %></li>
-				<li><span><a href="useage.html.erb"><span>How it works</span></a></li>
-				<!-- on the right -->
-
-			</ul>
-		</nav>
-	</div>
-
 	<%= yield %>
 </body>
 </html>
