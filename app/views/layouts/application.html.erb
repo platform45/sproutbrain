@@ -21,22 +21,26 @@
 
 	<!-- <ul id="nav"> -->
   <div id='cssmenu'>
-  <ul>
-		<li><span><%= link_to 'Seeds Info', seeds_path %></span></li>
-		
-    <!-- make this a dropdown to all projects -->
-    <% @curr_projects = Project.where(user_id: current_user.id) %>
-    <% if !@curr_projects.empty? %>
-      <% @curr_projects.each do |project| %>
-        <li><span><%= link_to project.name, project_path(project.id) %></span></li>
-      <% end %>
-    <% end %>
-    <li><span><%= link_to 'New Project', new_project_path %></span></li>
-
-    <!-- make this a dropdown to my account (edit profile, logout) -->
-    <li><span><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></span></li>
-    <li class='last'><span><%= link_to 'Edit Account', edit_user_registration_path %></span></li>
-	</ul>
+    <nav>
+      <ul>
+    		<li><span><%= link_to 'Seeds Info', seeds_path %></span></li>
+    		<li>
+          <a href="#"><span>Projects</span></a>
+          <ul class="fallback">
+              <li><%= link_to 'New Project', new_project_path %></li><br>
+              <% @curr_projects = Project.where(user_id: current_user.id) %>
+              <% if !@curr_projects.empty? %>
+                <% @curr_projects.each do |project| %>
+                  <li><%= link_to project.name, project_path(project.id) %></li><br>
+                <% end %>
+              <% end %>
+          </ul>
+        </li>
+        <!-- make this a dropdown to my account (edit profile, logout) -->
+        <li><span><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></span></li>
+        <li class='last'><%= link_to 'Edit Account', edit_user_registration_path %></li>
+    	</ul>
+    </nav>
   </div>
 
 	<p class="notice"><%= notice %></p>

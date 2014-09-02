@@ -15,7 +15,24 @@
 //= require_tree .
 
 $(function() {
-	$("a").click(function () { 
-		$(this).css("color", "#F2FFE2");
+	var url = window.location.href; 
+    // passes on every "a" tag 
+    $("a").each(function() {
+            // checks if its the same on the address bar
+        if(url == (this.href)) { 
+            $(this).closest("li").addClass("active");
+        }
     });
 });
+
+$(function() {
+	$('nav li ul').hide().removeClass('fallback');
+	$('nav li').hover(
+	  function () {
+	    $('ul', this).stop().slideDown(100);
+	  },
+	  function () {
+	    $('ul', this).stop().slideUp(100);
+	  }
+	);
+})

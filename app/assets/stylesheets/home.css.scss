@@ -5,8 +5,8 @@
   left: 0px;
   top: 0px;
   z-index: -1;
-  padding-top: 20%;
-  padding-left: 3%;
+  /*padding-top: 20%;
+  padding-left: 3%;*/
 }
 
 /*sign in home*/
@@ -98,7 +98,20 @@
 #cssmenu ul li a:hover:before {
   width: 100%;
 }
-#cssmenu ul li a:after {
+/*bullets between menu*/
+#cssmenu ul li span a:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -3px;
+  top: 19px;
+  height: 6px;
+  width: 6px;
+  background: #ffffff;
+  opacity: .5;
+}
+
+#cssmenu ul li span:after {
   content: "";
   display: block;
   position: absolute;
@@ -153,7 +166,7 @@
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    border-bottom: 1px solid #fb998c;
+    /*border-bottom: 1px solid #fb998c;*/
   }
   #cssmenu ul li.last > a,
   #cssmenu ul li:last-child > a {
@@ -165,4 +178,18 @@
   #cssmenu ul li a:before {
     display: none;
   }
+}
+
+/*dropdown*/
+nav ul li ul {
+  position:absolute;
+  /*width:9.5%;*/
+  background-color: #75A56F;
+}
+nav ul li ul.fallback {
+  display:none;
+}
+
+nav ul li:hover ul.fallback {
+  display:block;
 }

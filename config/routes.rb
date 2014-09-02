@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   resources :seeds, only: [:index, :new, :create]
 
+  get '/about' => 'pages#about'
+  get '/useage' => 'pages#useage'
+
   devise_scope :user do
     root "devise/sessions#new", as: :home
   end
