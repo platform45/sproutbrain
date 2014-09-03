@@ -19,32 +19,26 @@
 </head>
 <body>
 
-	<!-- <ul id="nav"> -->
-  <div id='cssmenu'>
-    <nav>
-      <ul>
-    		<li><span><%= link_to 'Seeds Info', seeds_path %></span></li>
-    		<li>
-          <a href="#"><span>Projects</span></a>
-          <ul class="fallback">
-              <li><%= link_to 'New Project', new_project_path %></li><br>
-              <% @curr_projects = Project.where(user_id: current_user.id) %>
-              <% if !@curr_projects.empty? %>
-                <% @curr_projects.each do |project| %>
-                  <li><%= link_to project.name, project_path(project.id) %></li><br>
-                <% end %>
-              <% end %>
-          </ul>
-        </li>
-        <!-- make this a dropdown to my account (edit profile, logout) -->
-        <li><span><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></span></li>
-        <li class='last'><%= link_to 'Edit Account', edit_user_registration_path %></li>
-    	</ul>
-    </nav>
-  </div>
-
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
+  <ul id="home_nav">
+    <li><div id="home_nav_spacing"><p> </p></div></li>
+    <li><%= image_tag "logo.png" %></li>
+    <div id="title"><li><p>SPROUTBRAIN</p></li></div>
+    <div id="title_link"><li><%= link_to 'SEEDS INFO', seeds_path %></li></div>
+    <li>
+      <div id="title_link"><a href="#">PROJECTS</a></div>
+      <ul class="fallback">
+          <% @curr_projects = Project.where(user_id: current_user.id) %>
+          <% if !@curr_projects.empty? %>
+            <% @curr_projects.each do |project| %>
+              <li><%= link_to project.name, project_path(project.id) %></li><br>
+            <% end %>
+          <% end %>
+      </ul>
+    </li>
+    <div id="title_link"><li><%= link_to 'NEW PROJECT', new_project_path %></li></div>
+    <div id="title_link"><li><%= link_to 'EDIT ACCOUNT', edit_user_registration_path %></li></div>
+    <div id="title_link"><li><%= link_to 'SIGN OUT', destroy_user_session_path, method: :delete %></li></div>
+  </ul>
 
 <%= yield %>
 

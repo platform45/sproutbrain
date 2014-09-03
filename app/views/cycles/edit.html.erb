@@ -1,8 +1,7 @@
 <div id="new_cycle_form">
-  <h2>Edit cycle: </h2>
-  <div id="cycle_fields">
+  <div id="seed_title"><p>EDIT CYCLE </p></div>
   <%= form_for(@cycle, url: project_cycle_path(params[:project_id], @cycle.id)) do |f| %>
-    <p>
+    <div id="cycle_fields"><p>
       <%= f.label :name %><br>
       <%= f.text_field :name %><br>
 
@@ -39,10 +38,9 @@
           <% end %>
         <% end %>
       </table>
-    </div>
     <br>
     <%= f.submit %>
+    <p><%= link_to 'Cancel', project_path(params[:project_id]) %></p>
+  </div>
   <% end %>
-
-  <p><%= link_to 'Cancel', project_path(params[:project_id]) %></p>
 </div>

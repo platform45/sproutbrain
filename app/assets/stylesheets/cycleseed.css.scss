@@ -1,25 +1,71 @@
 /*seed*/
-#table_title {
-  font-weight: bold;
+#table_title td {
+  background-color: #E5D5CA;
 }
 
 #seed_title {
   text-align: center;
+  font-size: 30px;
+}
+
+#table_title th {
+  background-color: #969040;
+  color: white;
+  font-weight: normal;
+}
+
+#seedinfo_wrapper {
+  padding-top: 90px;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-bottom: 3%;
+  font-size: 14px;
+}
+
+#seedinfo_wrapper a:link {
+  color: #992757;
+}
+
+#seedinfo_wrapper a:visited {
+  color: #992757;
+}
+
+#seedinfo_wrapper a:hover {
+  color: #BF316C;
 }
 
 /*cycle*/
 #cycle_seeds {
   float: right;
-  /*float: right;*/
   width: 80%;
   padding-right: 3%;
 }
 
 #cycle_fields {
-  width: 15%;
-  float: left;
 }
 
 #new_cycle_form {
-  padding-left: 5%;
+  padding-top: 90px;
+  @include outer-container;
+  #cycle_fields { @include span-columns(3); }
+  #cycle_seeds { @include span-columns(9); }
+}
+
+#new_seed_wrapper {
+  padding-top: 90px;
+  text-align: left;
+}
+
+#new_seed_form {
+  text-align: center;
+  float: center;
+  padding: 0;
+}
+
+#new_seed_img {
+  z-index: -1;
+  position: fixed;
+  top: 40%;
+  margin-left: auto;
+  margin-right: auto;
 }

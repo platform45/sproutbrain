@@ -1,71 +1,55 @@
-<div id="project_title"><h2><%= @project.name %></div>
-
-<!-- highlight ongoing cycles -->
 <div id="project_wrapper">
 	<div id="cycles">
-		<!-- <h3>Cycles:</h3> -->
-		<table id="projecthome">
-			<col width="24%">
-			<col width="24%">
-			<col width="24%">
-			<% all_cycles = Array.new %>
-			<% all_cycles = Cycle.where(project_id: @project.id) %>
-			<% all_cycles = all_cycles.reverse %>
-			<% 0.upto(all_cycles.length - 1) do |index| %>
-				<% cycle = all_cycles[index] %>
-				<% if index % 3 == 0 %>
-					<tr>
-				<% end %>
-				<td>                              
-					<p><pre><%= cycle.name %>                                                   <%= link_to 'x', cycle_path(cycle.id), method: :delete %></pre></p>
-					<p><% if cycle.start.year == Time.now.year || cycle.end.year == Time.now.year %>
-							<%= cycle.start.strftime('%-m/%-d') %> - <%= cycle.end.strftime('%-m/%-d') %>
-						<% else %>
-							<%= cycle.start %> - <%= cycle.end %>
+		<div id="project_title"><p><%= @project.name.upcase %></p></div>
+		<% all_cycles = Cycle.where(project_id: @project.id) %>
+		<% all_cycles = all_cycles.reverse %>
+		<% all_cycles.each do |cycle| %>
+		  <div id="one_cycle">
+				<div id="cycle_center"><div id="cycle_show_name"><%= cycle.name %></div><div id="cycle_delete"></div><br>
+				<%= cycle.start.strftime('%m/%d/%y') %> - <%= cycle.end.strftime('%m/%d/%y') %></div><br>
+				<p>Alerts: <%= cycle.morning_alert.strftime('%l:%M %P') %>, <%= cycle.evening_alert.strftime('%l:%M %P') %></p>
+				<p>Seeds:
+					<% current_seeds = Array.new %>
+	        <!-- later won't need this when validated -->
+					<% if Seedtag.where(cycle_id: cycle.id) %>
+						<% Seedtag.where(cycle_id: cycle.id).each do |seedtag| %>
+							<% current_seeds.push(Seed.find(seedtag.seed_id).name) %>
 						<% end %>
-					</p>
-					<p>ALERTS: <br><%= cycle.morning_alert.strftime('%l:%M %P') %>, <%= cycle.evening_alert.strftime('%l:%M %P') %></p>
-		      <p>SEEDS:<br>
-		        <% current_seeds = Array.new %>
-		        <% if Seedtag.where(cycle_id: cycle.id) %>
-							<% Seedtag.where(cycle_id: cycle.id).each do |seedtag| %>
-							  <% current_seeds.push(Seed.find(seedtag.seed_id).name) %>
-							<% end %>
-		        <% end %>
-		        <% seeds_sentence = current_seeds.to_sentence %>
-		        <%= seeds_sentence %>
-		     	</p>
-		     	<p><%= link_to 'edit', edit_project_cycle_path(cycle.project_id, cycle) %></p>
-		    </td>
-		    <% if index % 3 == 2 %>
-		    	</tr>
-		   	<% end %>
-		  <% end %>
-		</table>
+					<% end %>
+					<% seeds_sentence = current_seeds.to_sentence %>
+					<%= seeds_sentence %>
+				</p><br>
+				<div id="cycle_edit"><p><%= link_to 'edit', edit_project_cycle_path(cycle.project_id, cycle) %> | <%= link_to 'delete', cycle_path(cycle.id), method: :delete %></p></div>
+			</div>
+		<% end %>
+  </div>
 	<!-- highlight ongoing cycles -->
-	</div>
 
 	<div id="project_forms">
-		<%= link_to '+ New Cycle', new_project_cycle_path(@project) %><br>
-		<%= link_to '* Edit Project', edit_project_path(@project) %><br>
-		<%= link_to 'x Delete Project', project_path(@project), method: :delete %>
+		<div id="project_form_links">
+			<br><br><div id="new_cycle_link"><%= link_to '+ NEW CYCLE', new_project_cycle_path(@project) %></div><br><br>
+			<div id="edit_project_link"><%= link_to '* Edit Project', edit_project_path(@project) %></div><br><br>
+			<div id="delete_project_link"><%= link_to 'x Delete Project', project_path(@project), method: :delete %></div>
+		</div>
 
-		<h3>Participants:</h3>
+		<div id="participants_title"><p>PARTICIPANTS</p></div>
 		<!-- creates new participants -->
-		<%= form_for(@participant, url: project_participants_path(@project.id)) do |f| %>
+		<div id="participants_form"><%= form_for(@participant, url: project_participants_path(@project.id)) do |f| %>
 			<p>
 				<%= f.text_field :email, :placeholder => "Email" %><br>
 				<%= f.text_field :slack_name, :placeholder => "Slack username" %><br>
 				<%= f.submit %>
 			</p>
-		<% end %>
+		<% end %></div>
 
+		<div id="participants_names">
 		<% Participant.where(project_id: @project.id).each do |participant| %>
 		  <p>
-		  	<%= participant.email %> &#160;&#160;&#160; <%= link_to 'x', participant_path(participant), method: :delete %><br>
-		    <%= participant.slack_name %>
+		  	<%= link_to 'x', participant_path(participant), method: :delete %> &#160;<%= participant.slack_name %><br>
+		     &#160;&#160;&#160;&#160;<%= participant.email %>
 		  </p>
 		<% end %>
+		</div>
 	</div>
 
 </div>

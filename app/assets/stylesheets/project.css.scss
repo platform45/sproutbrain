@@ -2,46 +2,136 @@
   text-align: left;
 }
 
-#form {
-  width: 50%;
+/*#form {
+  width: 70%;
   float: right;
   padding-right: 5%;
   vertical-align: middle;
-}
+}*/
 
 #project_title {
   text-align: center;
-  color: #75A56F;
+  padding-top: 90px;
+  font-size: 40px;
+}
+
+#participants_names {
+  color: #969040;
 }
 
 #project_wrapper {
-  overflow: auto;
+  @include outer-container;
+  #cycles { @include span-columns(9); }
+  #project_forms { @include span-columns(3); }
 }
 
-#cycles {
-  width: 77%;
-  float: left;
-  text-align: left;
+#cycle_show_name {
+  font-size: 25px;
+  color: #611937;
+}
+
+#cycle_center {
+  text-align: center;
+}
+
+#one_cycle {
+  @include span-columns(3 of 9);
+  @include omega(3n+1);
+  background-color: #969040;
+  color: white;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 3%;
+  margin-bottom: 3%;
+  font-size: 14px;
+}
+
+#cycle_delete {
+  text-align: right;
+}
+
+#cycle_edit {
+  text-align: right;
+}
+
+#one_cycle a:link {
+  color: white;
+}
+
+#one_cycle a:visited {
+  color: white;
+}
+
+#one_cycle a:hover {
+  color: white;
+}
+
+#home_nav a:hover {
+  color: #BF316C;
+}
+
+#participants_title {
+  text-align: center;
+  font-size: 26px;
+}
+
+#participants_form {
+  text-align: center;
 }
 
 #project_forms {
-  width: 23%;
-  float: right;
-  padding-left: 3%;
-  padding-top: 2%;
-  padding-right: 3%;
-  margin-top: 10px;
-  background-color: white;
-  height: 100%;
+  background-color: #E5D5CA;
+  float: top;
+  padding: 3%;
+  margin-top: 80px;
 }
 
-table#projecthome {
+#projecthome table {
   table-layout: fixed;
   width: 100%;
   border-collapse: separate;
   border-spacing: 10px 10px;
 }
 
-table#projecthome td {
+#new_cycle_link {
+  @include button(simple, #431120);
+  width: 100%;
+  text-align: center;
+  font-weight: normal;
+}
+
+#edit_project_link {
+  @include button(simple, #611937);
+  width: 100%;
+  text-align: center;
+  font-weight: normal;
+}
+
+#delete_project_link {
+  @include button(simple, #87234D);
+  width: 100%;
+  text-align: center;
+  font-weight: normal;
+}
+
+#projecthome table td {
   overflow: hidden;
+}
+
+#edit_project_wrapper {
+  padding-top: 110px;
+  @include outer-container;
+  #edit_project_form { @include span-columns(5); }
+  #edit_project_img { @include span-columns(7); }
+}
+
+#new_project_wrapper {
+  padding-top: 110px;
+  @include outer-container;
+  #new_project_form { @include span-columns(5); }
+  #new_project_img { @include span-columns(7); }
+}
+
+#new_project_img {
+  padding: 7%;
 }

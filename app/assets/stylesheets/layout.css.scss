@@ -29,17 +29,30 @@ h1, h2, h3 {
 }
 
 /*unvisited link*/
-a:link {
+#home_nav a:link {
   color: #992757;
 }
 
 /* visited link */
-a:visited {
+#home_nav a:visited {
   color: #992757;
 }
 
-a:hover {
+#home_nav a:hover {
   color: #BF316C;
+}
+
+#project_form_links a:link {
+  color: white;
+}
+
+/* visited link */
+#project_form_links a:visited {
+  color: white;
+}
+
+#project_form_links a:hover {
+  color: white;
 }
 
 /*modal*/

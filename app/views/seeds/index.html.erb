@@ -1,35 +1,67 @@
-<p><%= link_to 'Register New Seed', new_seed_path %></p>
+<div id="seedinfo_wrapper">
+	<div id="new_seed"><p>Can't find your seed? <%= link_to 'Register a new seed here!', new_seed_path %></p></div>
 
-<div id="seed_title">
-	<h2>My Seeds:</h2>
-</div>
+	<div id="seed_title">
+		<p>MY SEEDS</p>
+	</div>
 
-<% my_seeds = Array.new %>
-<% Project.where(user_id: current_user.id).each do |project| %>
-	<% Cycle.where(project_id: project.id).each do |cycle| %>
-		<% Seedtag.where(cycle_id: cycle.id).each do |seedtag| %>
-			<% my_seeds.push(Seed.find(seedtag.seed_id)) %>
+	<% my_seeds = Array.new %>
+	<% Project.where(user_id: current_user.id).each do |project| %>
+		<% Cycle.where(project_id: project.id).each do |cycle| %>
+			<% Seedtag.where(cycle_id: cycle.id).each do |seedtag| %>
+				<% my_seeds.push(Seed.find(seedtag.seed_id)) %>
+			<% end %>
 		<% end %>
 	<% end %>
-<% end %>
 
-<% if my_seeds %>
-	<% my_seeds = my_seeds.uniq %>
-	<% my_seeds.sort_by!{ |s| s.name.downcase } %>
+	<% if my_seeds %>
+		<% my_seeds = my_seeds.uniq %>
+		<% my_seeds.sort_by!{ |s| s.name.downcase } %>
 
-	<table>
-		<tr>
-			<div id="table_title">
-				<td><h3>Name</h3></td>
-				<td><h3>Days to sprout</h3></td>
-				<td><h3>Plant Family</h3></td>
-				<td><h3>Nutrition</h3></td>
-				<td><h3>Tips</h3></td>
-			</div>
-		</tr>
-		<% 0.upto(my_seeds.length - 1) do |index| %>
+		<table id="table_title">
 			<tr>
-				<% seed = my_seeds[index] %>
+				<th><p>Name</p></th>
+				<th><p>Days to sprout</p></th>
+				<th><p>Plant Family</p></th>
+				<th><p>Nutrition</p></th>
+				<th><p>Tips</p></th>
+			</tr>
+			<% 0.upto(my_seeds.length - 1) do |index| %>
+				<tr>
+					<% seed = my_seeds[index] %>
+					<td><p><%= seed.name %></p></td>
+					<td><p><%= seed.min_duration %> - <%= seed.max_duration %></p></td>
+					<td><p><%= seed.family %></p></td>
+					<td><p><%= seed.nutrition %></p></td>
+					<td><p><%= seed.tips %></p></td>
+				</tr>
+			<% end %>
+		</table>
+	<% end %>
+
+	<div id="seed_title">
+		<p>OTHER SEEDS</p>
+	</div>
+
+	<% other_seeds = Array.new %>
+	<% Seed.all.each do |seed| %>
+		<% unless my_seeds.include?(seed) %>
+			<% other_seeds.push(seed) %>
+		<% end %>
+	<% end %>
+	<% other_seeds.sort_by!{ |s| s.name.downcase } %>
+
+	<table id="table_title">
+		<tr>
+			<th><p>Name</p></th>
+			<th><p>Days to sprout</p></th>
+			<th><p>Plant Family</p></th>
+			<th><p>Nutrition</p></th>
+			<th><p>Tips</p></th>
+		</tr>
+		<% 0.upto(other_seeds.length - 1) do |index| %>
+			<tr>
+				<% seed = other_seeds[index] %>
 				<td><p><%= seed.name %></p></td>
 				<td><p><%= seed.min_duration %> - <%= seed.max_duration %></p></td>
 				<td><p><%= seed.family %></p></td>
@@ -38,38 +70,4 @@
 			</tr>
 		<% end %>
 	</table>
-<% end %>
-
-<div id="seed_title">
-	<h2>Other Seeds:</h2>
 </div>
-
-<% other_seeds = Array.new %>
-<% Seed.all.each do |seed| %>
-	<% unless my_seeds.include?(seed) %>
-		<% other_seeds.push(seed) %>
-	<% end %>
-<% end %>
-<% other_seeds.sort_by!{ |s| s.name.downcase } %>
-
-<table>
-	<tr>
-		<div id="table_title">
-			<td><h3>Name</h3></td>
-			<td><h3>Days to sprout</h3></td>
-			<td><h3>Plant Family</h3></td>
-			<td><h3>Nutrition</h3></td>
-			<td><h3>Tips</h3></td>
-		</div>
-	</tr>
-	<% 0.upto(other_seeds.length - 1) do |index| %>
-		<tr>
-			<% seed = other_seeds[index] %>
-			<td><p><%= seed.name %></p></td>
-			<td><p><%= seed.min_duration %> - <%= seed.max_duration %></p></td>
-			<td><p><%= seed.family %></p></td>
-			<td><p><%= seed.nutrition %></p></td>
-			<td><p><%= seed.tips %></p></td>
-		</tr>
-	<% end %>
-</table>

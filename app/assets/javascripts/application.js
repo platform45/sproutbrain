@@ -26,8 +26,8 @@ $(function() {
 });
 
 $(function() {
-	$('nav li ul').hide().removeClass('fallback');
-	$('nav li').hover(
+	$('li ul').hide().removeClass('fallback');
+	$('li').hover(
 	  function () {
 	    $('ul', this).stop().slideDown(100);
 	  },

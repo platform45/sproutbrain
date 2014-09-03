@@ -1,35 +1,29 @@
-<div id="form">
-<h2>New Seed: </h2>
+<div id="new_seed_wrapper">
+  <div id="seed_title"><p>NEW SEED</p></div>
+  <div id="new_seed_form">
+    <%= form_for(@seed) do |f| %>
+      <p>
+        <%= f.text_field :name, placeholder: "Name" %><br>
 
-<%= form_for(@seed) do |f| %>
-  
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %><br>
+        <%= f.number_field :min_duration, placeholder: "Minimum days to sprout" %><br>
 
-    <%= f.label :minimum_days_to_sprout %><br>
-    <%= f.number_field :min_duration %><br>
+        <%= f.number_field :max_duration, placeholder: "Maximum days to sprout" %><br>
 
-    <%= f.label :maximum_days_to_sprout %><br>
-    <%= f.number_field :max_duration %><br>
+        <%= f.text_field :family, placeholder: "Plant family"%><br>
 
-    <%= f.label :family %><br>
-    <%= f.text_field :family %><br>
+        <%= f.text_area :nutrition, placeholder: "Nutrition facts" %><br>
 
-    <%= f.label :nutrition_facts %><br>
-    <%= f.text_area :nutrition %><br>
+        <%= f.text_area :tips, placeholder: "Tips?" %><br>  
+        
+        <%= f.submit %>
+      </p>
 
-    <%= f.label :tips? %><br>
-    <%= f.text_area :tips %><br>  
-    
-    <%= f.submit %>
-  </p>
+    <% end %>
 
-<% end %>
+    <p><%= link_to 'Cancel', seeds_path %></p>
+  </div>
 
-<p><%= link_to 'Cancel', seeds_path %></p>
-</div>
-
-<div id="form_img">
-<img width="300" height="300" src="http://ldspictures.files.wordpress.com/2007/12/faithlarge.jpg" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; float: center; clear: both; display: block;" align="center" />
+  <div id="new_seed_img" class="stretch">
+    <%= image_tag 'growing_seeds.jpg' %>
+  </div>
 </div>

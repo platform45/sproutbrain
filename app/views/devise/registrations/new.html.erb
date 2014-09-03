@@ -1,33 +1,48 @@
-<div id="form">
-<h2>Sign up</h2>
+<ul id="home_nav">
+  <div id="home_nav_left">
+    <li><%= image_tag "logo.png" %></li>
+    <div id="title"><li><p>&nbsp;&nbsp;SPROUTBRAIN</p></li></div>
+  </div>
+</ul>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
-
-  <div><%= f.label :slack_name %><br />
-  <%= f.text_field :slack_name, autofocus: true %></div>
-
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
-
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
-
-<h3>How does Sproutbrain work?</h3>
-<p>
-  Welcome to Sproutbrain!<br>
-  After signing up, you can receive both slack and email notifications to rinse your sprout. You specify the duration you want the alerts, the time of the day you want the alerts, and the people you want to alert. There's also nutritional information on all seeds for reference. 
-</p>
-
-<%= render "devise/shared/links" %>
+<div id="images_left">
+  <%= image_tag "sprouts_wooden1.jpg" %><br>
+  <%= image_tag "sprouts_wooden2.jpg" %><br>
+  <%= image_tag "sprouts_wooden5.jpg" %><br>
+  <%= image_tag "sprouts_wooden6.jpg" %>
 </div>
 
-<div id="form_img">
-<img width="300" height="600" src="http://www.clker.com/cliparts/C/O/l/d/l/o/bean-sprout-character.svg" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; float: center; clear: both; display: block;" align="center" />
+<div id="images_right">
+  <%= image_tag "sprouts_wooden3.jpg" %><br>
+  <%= image_tag "sprouts_wooden1.jpg" %><br>
+  <%= image_tag "sprouts_wooden6.jpg" %><br>
+  <%= image_tag "sprouts_wooden4.jpg" %>
+</div>
+
+<div id="sign_up_form">
+  <div id="sign_up_title"><p>SIGN UP</p></div><br>
+
+  <div id="sign_up_here">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div><%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true %></div>
+
+      <div><%= f.label :slack_name %><br />
+      <%= f.text_field :slack_name, autofocus: true %></div>
+
+      <div><%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "off" %></div>
+
+      <div><%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+
+      <div><br><%= f.submit "Sign up" %></div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+
+  <div id="sprouts_img"><%= image_tag "sprouts.jpg" %></div>
 </div>
