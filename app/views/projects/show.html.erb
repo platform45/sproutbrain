@@ -34,6 +34,15 @@
 
 		<div id="participants_title"><p>PARTICIPANTS</p></div>
 		<!-- creates new participants -->
+		<% if @participant.errors.any? %>
+		  <div class="errors">
+		    Your participant could not be saved:
+		    <ul>
+		      <% @participant.errors.full_messages.each do |message| %>
+		        <li><%=message%></li>
+		      <% end %>
+		    </ul>
+		<% end %>
 		<div id="participants_form"><%= form_for(@participant, url: project_participants_path(@project.id)) do |f| %>
 			<p>
 				<%= f.text_field :email, :placeholder => "Email" %><br>

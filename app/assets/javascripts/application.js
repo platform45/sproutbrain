@@ -14,16 +14,16 @@
 //= require jquery_ujs
 //= require_tree .
 
-$(function() {
-	var url = window.location.href; 
-    // passes on every "a" tag 
-    $("a").each(function() {
-            // checks if its the same on the address bar
-        if(url == (this.href)) { 
-            $(this).closest("li").addClass("active");
-        }
-    });
-});
+// $(function() {
+// 	var url = window.location.href; 
+//     // passes on every "a" tag 
+//     $("a").each(function() {
+//             // checks if its the same on the address bar
+//         if(url == (this.href)) { 
+//             $(this).closest("li").addClass("active");
+//         }
+//     });
+// });
 
 $(function() {
 	$('li ul').hide().removeClass('fallback');
@@ -35,4 +35,19 @@ $(function() {
 	    $('ul', this).stop().slideUp(100);
 	  }
 	);
+});
+
+$(function() {
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 800);
+        return false;
+      }
+    }
+  });
 });

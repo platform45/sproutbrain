@@ -7,8 +7,8 @@
 		<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 		  <li><%= f.email_field :email, autofocus: true, placeholder: 'Email' %></li>
 		  <li><%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %></li>
-		  <li><%= f.submit "Sign in" %></li>
-		  <li><%= link_to 'Sign up', new_user_registration_path %></li>
+		  <li><div style="display: inline"><%= f.submit "Sign in" %></div></li>
+		  <li><div id="sign_up_button" style="display: inline"><%= link_to 'Sign up', new_user_registration_path %></div></li>
 		<% end %>
 	</div>
 </ul>
@@ -64,9 +64,11 @@
 			<td>
 				<div id="howitworks_title"><p>HOW IT WORKS: </p></div>
 				<div id="howitworks_titlesub"><p>Why sprouts? </p></div>
-				<div id="howitworks_text"><p>asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf </p></div>
+				<div id="howitworks_text"><p>
+					Sprouts are rich sources of vitamins, minerals, trace minerals, enzymes, antioxidants, chlorophyll and protein. They are low calorie and contain little or no fat. The fat they do contain is the healthy fat that your body needs. As some of the most nutritious foods that exist, they are great in salads, on sandwiches, added to soups, stir fried with vegetables or oven roasted. And the best part is that you can grow them in the comfort of your own kitchen. It takes less than 2 minutes a day and they are ready in 3 to 7 days, depending on the variety. </p></div>
 				<div id="howitworks_titlesub"><p>How do we grow? </p></div>
-				<div id="howitworks_text"><p>asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf  </p></div>
+				<div id="howitworks_text"><p>
+					All the seeds need is water, air, and proper light. By putting them in jars with a mesh top, all you need to do is rinse them in water twice a day. On the first day, soak the seeds overnight in water. On all other days, rinse them twice a day and place them downwards so the excess water can drain. </p></div>
 				<p><a href="#pagethree">How we help</a></p>
 			</td>
 			<td>
@@ -81,19 +83,19 @@
 	<table>
 		<tr>
 			<td>
-				<div id="howwehelp_image"><%= image_tag "temp_screenshot.png" %></div>
+				<div id="howwehelp_image"><%= image_tag "homepage_img.png" %></div>
 				<div id="howwehelp_titlesub"><p>Step 1:</p></div>
-				<div id="howwehelp_text"><p>asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf </p></div>
+				<div id="howwehelp_text"><p>After signing up, make a project and create cycles for the start date of your seeds and the end date/day you want to eat them. Decide the time of your alerts, and add participants. </p></div>
 			</td>
 			<td>
-				<div id="howwehelp_image"><%= image_tag "temp_screenshot.png" %></div>
+				<div id="howwehelp_image"><%= image_tag "email_img.png" %></div>
 				<div id="howwehelp_titlesub"><p>Step 2:</p></div>
-				<div id="howwehelp_text"><p>asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf </p></div>
+				<div id="howwehelp_text"><p>One of the participants will receive an email notification to rinse the seeds every day at the alert times. The owner of the project will also get an email when a cycle ends.  </p></div>
 			</td>
 			<td>
-				<div id="howwehelp_image"><%= image_tag "temp_screenshot.png" %></div>
+				<div id="howwehelp_image"><%= image_tag "slack_img.png" %></div>
 				<div id="howwehelp_titlesub"><p>Step 3:</p></div>
-				<div id="howwehelp_text"><p>asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf </p></div>
+				<div id="howwehelp_text"><p>If inputted, Sproutbrain also sends slack notifications to the channel specified in the project, and it tags the username of the chosen participant. If the chosen participant is not present, other people can still see the notification. </p></div>
 			</td>
 		</tr>
 	</table>

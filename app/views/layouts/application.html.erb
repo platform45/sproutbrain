@@ -25,7 +25,7 @@
     <div id="title"><li><p>SPROUTBRAIN</p></li></div>
     <div id="title_link"><li><%= link_to 'SEEDS INFO', seeds_path %></li></div>
     <li>
-      <div id="title_link"><a href="#">PROJECTS</a></div>
+      <div id="title_link"><a href="#">PROJECTS</a></div><br>
       <ul class="fallback">
           <% @curr_projects = Project.where(user_id: current_user.id) %>
           <% if !@curr_projects.empty? %>

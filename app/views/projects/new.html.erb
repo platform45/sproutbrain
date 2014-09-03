@@ -1,4 +1,15 @@
 <div id="new_project_wrapper">
+	
+	<% if @project.errors.any? %>
+	  <div class="errors">
+	    Your project could not be saved:
+	    <ul>
+	      <% @project.errors.full_messages.each do |message| %>
+	        <li><%=message%></li>
+	      <% end %>
+	    </ul>
+	<% end %>
+
 	<div id="new_project_form">
 		<div id="seed_title"><p>NEW PROJECT</p></div>
 		<div id="new_project">

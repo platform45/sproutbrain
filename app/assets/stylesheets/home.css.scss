@@ -127,7 +127,7 @@ body {
 }
 
 #home_nav_right {
-  margin-left: 65%;
+  margin-left: 63%;
   padding-top: 10px;
   /*border: 2px solid #431120;*/
 }
@@ -197,164 +197,27 @@ body {
   padding: 5%;
 }
 
+#sign_up_button {
+  @include button(simple, white);
+  font-size: 11px;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+#home_nav input[type=submit] {
+  display: inline-block;
+  @include button(simple, white);
+  color: #992757;
+  font-size: 11px;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
 /*navigation bar*/
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
-#cssmenu {
-  background: #75A56F;
-  width: auto;
-  text-align: center;
-}
-#cssmenu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-  display: block;
-  zoom: 1;
-}
-#cssmenu ul:after {
-  content: " ";
-  display: block;
-  font-size: 0;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
 
-#cssmenu ul li {
-  display: inline-block;
-  padding: 0;
-  margin: 0;
-}
-#cssmenu.align-right ul li {
-  float: right;
-}
-#cssmenu.align-center ul {
-  text-align: center;
-}
-#cssmenu ul li a {
-  color: #ffffff;
-  text-decoration: none;
-  display: block;
-  padding: 15px 25px;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 14px;
-  position: relative;
-  -webkit-transition: color .25s;
-  -moz-transition: color .25s;
-  -ms-transition: color .25s;
-  -o-transition: color .25s;
-  transition: color .25s;
-}
-
-/*this makes text black on hover*/
-#cssmenu ul li a:hover {
-  color: #333333;
-}
-#cssmenu ul li a:hover:before {
-  width: 100%;
-}
-/*bullets between menu*/
-#cssmenu ul li span a:after {
-  content: "";
-  display: block;
-  position: absolute;
-  right: -3px;
-  top: 19px;
-  height: 6px;
-  width: 6px;
-  background: #ffffff;
-  opacity: .5;
-}
-
-#cssmenu ul li span:after {
-  content: "";
-  display: block;
-  position: absolute;
-  right: -3px;
-  top: 19px;
-  height: 6px;
-  width: 6px;
-  background: #ffffff;
-  opacity: .5;
-}
-
-/*this makes underlining*/
-#cssmenu ul li a:before {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 3px;
-  width: 0;
-  background: #333333;
-  -webkit-transition: width .25s;
-  -moz-transition: width .25s;
-  -ms-transition: width .25s;
-  -o-transition: width .25s;
-  transition: width .25s;
-}
-#cssmenu ul li.last > a:after,
-#cssmenu ul li:last-child > a:after {
-  display: none;
-}
-#cssmenu ul li.active a {
-  color: #333333;
-}
-#cssmenu ul li.active a:before {
-  width: 100%;
-}
-#cssmenu.align-right li.last > a:after,
-#cssmenu.align-right li:last-child > a:after {
-  display: block;
-}
-#cssmenu.align-right li:first-child a:after {
-  display: none;
-}
-@media screen and (max-width: 768px) {
-  #cssmenu ul li {
-    float: none;
-    display: block;
-  }
-  #cssmenu ul li a {
-    width: 100%;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    /*border-bottom: 1px solid #fb998c;*/
-  }
-  #cssmenu ul li.last > a,
-  #cssmenu ul li:last-child > a {
-    border: 0;
-  }
-  #cssmenu ul li a:after {
-    display: none;
-  }
-  #cssmenu ul li a:before {
-    display: none;
-  }
-}
-
-/*dropdown*/
-nav ul li ul {
-  position:absolute;
-  /*width:9.5%;*/
-  background-color: #75A56F;
-}
-nav ul li ul.fallback {
-  display:none;
-}
-
-nav ul li:hover ul.fallback {
-  display:block;
-}
-
-/*dropdown*/
 ul li ul {
-  position:absolute;
+  position:relative;
 }
 ul li ul.fallback {
   display:none;
