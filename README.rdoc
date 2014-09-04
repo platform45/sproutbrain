@@ -1,6 +1,0 @@
-Current Functionalities:
-- User can create projects
-- Within a project, user can create cycles
-- Each cycle contains seeds
-- A cycle specifies the duration in days, and at 10am and 6pm during that duration a random participant receives a notification to water the seeds. 
-- A user can input all the participants' name and email.
