@@ -10,8 +10,6 @@ class CyclesController < ApplicationController
 
 	def create
 		@cycle = Cycle.create(cycle_params.merge({project_id: params[:project_id]}))
-		# set the end date based on inputted start and duration
-		@cycle.end = @cycle.start.advance(:days => (@cycle.duration_days - 1))
 		if @cycle.save
 			# create seedtags for the cycle and seeds
 			seedtag_helper(@cycle, true)
@@ -26,7 +24,6 @@ class CyclesController < ApplicationController
 
 	def update
 		@cycle = Cycle.find(params[:id])
-		@cycle.end = Date.parse(params[:cycle][:start]).advance(:days => params[:cycle][:duration_days].to_i - 1)
 		if @cycle.update(cycle_params)
 			seedtag_helper(@cycle, false)
 		else
@@ -54,7 +51,7 @@ class CyclesController < ApplicationController
 	end
 
 	def cycle_params
-		params.require(:cycle).permit(:name, :duration_days, :start, :morning_alert, :evening_alert)
+		params.require(:cycle).permit(:name, :start, :end, :morning_alert, :evening_alert)
 	end
 
 end

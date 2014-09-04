@@ -12,9 +12,7 @@
   
   <title>Sproutbrain</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
-  <!-- , 'data-turbolinks-track' => true %> -->
   <%= javascript_include_tag 'application' %>
-  <!-- , 'data-turbolinks-track' => true %> -->
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -23,14 +21,20 @@
     <li><div id="home_nav_spacing"><p> </p></div></li>
     <li><%= image_tag "logo.png" %></li>
     <div id="title"><li><p>SPROUTBRAIN</p></li></div>
-    <div id="title_link"><li><%= link_to 'SEEDS INFO', seeds_path %></li></div>
     <li>
-      <div id="title_link"><a href="#">PROJECTS</a></div><br>
+      <div id="title_link"><a href="#">MORE INFO &#160; ▾</a></div><br>
+      <ul class="fallback">
+        <li>&#160;&#160;&#160;<%= link_to 'Seeds Info', seeds_path %></li><br>
+        <li>&#160;&#160;&#160;<%= link_to 'Instructions', instructions_path %></li>
+      </ul>
+    </li>
+    <li>
+      <div id="title_link"><a href="#">PROJECTS &#160; ▾</a></div><br>
       <ul class="fallback">
           <% @curr_projects = Project.where(user_id: current_user.id) %>
           <% if !@curr_projects.empty? %>
             <% @curr_projects.each do |project| %>
-              <li><%= link_to project.name, project_path(project.id) %></li><br>
+              <li>&#160;&#160;&#160;<%= link_to project.name, project_path(project.id) %></li><br>
             <% end %>
           <% end %>
       </ul>

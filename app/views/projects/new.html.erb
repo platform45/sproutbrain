@@ -16,6 +16,7 @@
 			<%= form_for(@project) do |f| %>
 				<p><%= f.label :name %>: <br>
 					<%= f.text_field :name %><br></p>
+				<p>NOTE: Slack notifications are optional. If the channel and token are inputted, only participants with both email and slack name will be notified. Otherwise, only participants with email will be notified.</p>
 				<p><%= f.label :slack_channel_name %>: <br>
 					<%= f.text_field :slack_channel %><br></p>
 				<p>Please log into slack and go to www.api.slack.com to retrieve your token.</p>

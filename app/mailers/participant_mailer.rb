@@ -1,5 +1,5 @@
 class ParticipantMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "alert@sproutbrain.com"
 
   def sprout_alert(participant, seeds, fact, cycle)
    	@participant = participant

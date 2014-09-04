@@ -3,6 +3,10 @@
   background-color: #E5D5CA;
 }
 
+#seed_error_msg {
+  text-align: center;
+}
+
 #seed_title {
   text-align: center;
   font-size: 30px;
@@ -41,11 +45,8 @@
   padding-right: 3%;
 }
 
-#cycle_fields {
-}
-
 #new_cycle_form {
-  padding-top: 90px;
+  padding-top: 70px;
   @include outer-container;
   #cycle_fields { @include span-columns(3); }
   #cycle_seeds { @include span-columns(9); }
@@ -68,4 +69,34 @@
   top: 40%;
   margin-left: auto;
   margin-right: auto;
+}
+
+#instructions_wrapper {
+  padding-top: 90px;
+  @include outer-container;
+  #instructions_left { @include span-columns(4); }
+  #instructions_right { @include span-columns(8); }
+}
+
+#subtitle {
+  font-size: 23px;
+}
+
+#instructions_left {
+  background-color: #E5D5CA;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+#instructions_title {
+  background-color: #969040;
+  color: white;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+#instructions_right {
+  background-color: #E5D5CA;
+  padding-left: 3%;
+  padding-right: 3%;
 }

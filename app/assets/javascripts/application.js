@@ -14,17 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 
-// $(function() {
-// 	var url = window.location.href; 
-//     // passes on every "a" tag 
-//     $("a").each(function() {
-//             // checks if its the same on the address bar
-//         if(url == (this.href)) { 
-//             $(this).closest("li").addClass("active");
-//         }
-//     });
-// });
-
+// dropdown menu
 $(function() {
 	$('li ul').hide().removeClass('fallback');
 	$('li').hover(
@@ -37,6 +27,7 @@ $(function() {
 	);
 });
 
+// scroll smoothly on click
 $(function() {
   $('a[href*=#]:not([href=#])').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {

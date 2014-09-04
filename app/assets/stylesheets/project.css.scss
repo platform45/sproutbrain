@@ -14,8 +14,19 @@
 
 #project_wrapper {
   @include outer-container;
-  #cycles { @include span-columns(9); }
+  #cycles { 
+    @include span-columns(9);
+    #one_cycle {
+      @include span-columns(3 of 9);
+      @include omega(3n);
+    } 
+  }
   #project_forms { @include span-columns(3); }
+}
+
+#cycles {
+  display: block;
+  float: left;
 }
 
 #cycle_show_name {
@@ -28,9 +39,10 @@
 }
 
 #one_cycle {
-  @include span-columns(3 of 9);
-  @include omega(3n+1);
+  display: block;
+  float: left;
   background-color: #969040;
+  margin-right: 0;
   color: white;
   padding-left: 3%;
   padding-right: 3%;
@@ -57,6 +69,18 @@
 
 #one_cycle a:hover {
   color: white;
+}
+
+#participants_names a:link {
+  color: #969040;
+}
+
+#participants_names a:visited {
+  color: #969040;
+}
+
+#participants_names a:hover {
+  color: #969040;
 }
 
 #participants_title {

@@ -1,4 +1,14 @@
 <div id="new_cycle_form">
+
+  <% if @cycle.errors.any? %>
+    <div class="errors">
+      Your cycle could not be saved:
+      <ul>
+        <% @cycle.errors.full_messages.each do |message| %>
+          <li><%=message%></li>
+        <% end %>
+      </ul>
+  <% end %>
   
   <div id="seed_title"><p>NEW CYCLE </p></div>
   <%= form_for(@cycle, url: project_cycles_path(params[:project_id], @cycle.id)) do |f| %>
@@ -6,27 +16,30 @@
       <%= f.label :name %><br>
       <%= f.text_field :name %><br>
 
-      <%= f.label :duration_days %><br>
-      <%= f.number_field :duration_days %><br>
-
-      <%= f.label :start %><br>
+      <%= f.label :start_date %><br>
       <%= f.date_field :start %><br>
+
+      <%= f.label :end_date %><br>
+      <%= f.date_field :end %><br>
 
       <%= f.label :morning_alert %><br>
       <%= f.time_field :morning_alert %><br>
 
       <%= f.label :evening_alert %><br>
       <%= f.time_field :evening_alert %><br> 
-
-      <% all_seeds = Seed.all.pluck(:name) %>
-      <% all_seeds.sort_by!{ |s| s.downcase } %>
     </p>
   </div>
 
     <div id="cycle_seeds">
+      <% all_seeds = Seed.all %>
+      <% all_seeds_short = all_seeds.select { |s| s.max_duration <= 5 }.map(&:name) %>
+      <% all_seeds_short.sort_by! { |s| s.downcase } %>
+      <% all_seeds_long = all_seeds.select { |s| s.max_duration > 5 }.map(&:name) %>
+      <% all_seeds_long.sort_by! { |s| s.downcase } %>
+      <p>Recommended for 5 days or less: </p>
       <table>
-        <% 0.upto(all_seeds.length - 1) do |index| %>
-          <% seed = all_seeds[index] %>
+        <% 0.upto(all_seeds_short.length - 1) do |index| %>
+          <% seed = all_seeds_short[index] %>
           <% if index % 4 == 0 %>
             <tr>
           <% end %>
@@ -39,10 +52,25 @@
           <% end %>
         <% end %>
       </table>
+      <p>Recommended for more than 5 days: </p>
+      <table>
+        <% 0.upto(all_seeds_long.length - 1) do |index| %>
+          <% seed = all_seeds_long[index] %>
+          <% if index % 5 == 0 %>
+            <tr>
+          <% end %>
+          <td>
+            <%= check_box_tag "seed_names[]", seed %>
+            <%= seed %>
+          </td>
+          <% if index % 5 == 4 %>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
     
     <br>
-    <%= f.submit %>
-    <p><%= link_to 'Cancel', project_path(params[:project_id]) %></p>
+    <%= f.submit %> &#160; <%= link_to 'Cancel', project_path(params[:project_id]) %>
   </div>
   <% end %>
 </div>

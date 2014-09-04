@@ -13,8 +13,7 @@ Rails.application.routes.draw do
 
   resources :seeds, only: [:index, :new, :create]
 
-  get '/about' => 'pages#about'
-  get '/useage' => 'pages#useage'
+   get '/instructions' => 'pages#instructions'
 
   devise_scope :user do
     root "devise/sessions#new", as: :home

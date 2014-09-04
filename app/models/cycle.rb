@@ -3,6 +3,12 @@ class Cycle < ActiveRecord::Base
 	belongs_to :project
 	has_many :seedtags, dependent: :destroy
 
+	validates :name, presence: true
+	validates :start, presence: true
+	validates :end, presence: true
+	validates :morning_alert, presence: true
+	validates :evening_alert, presence: true
+
 	def get_facts
 		facts = Array.new
 		facts.push("The nutritional content of sprouts is many times greater than the original food value of the seeds and beans from which they sprout.")
@@ -74,14 +80,14 @@ class Cycle < ActiveRecord::Base
 		post_slack(project, slack_attachment)
 	end
 
-	def not_valid_now
+	def valid_now
 		thishour = Time.now.utc.hour
 		if (thishour == (self.morning_alert.hour - 2) || thishour == (self.evening_alert.hour - 2))
-			return false
-		elsif (self.start <= Date.today || self.end >= Date.today)
-			return true
+			if (self.start <= Date.today && self.end >= Date.today)
+				return true
+			end
 		end
-		return true
+		return false
 	end
 
 	def get_current_seeds(cycle)
@@ -89,19 +95,25 @@ class Cycle < ActiveRecord::Base
 		if (Seedtag.first != nil && Seedtag.where(cycle_id: cycle.id) != nil)
 			Seedtag.where(cycle_id: cycle.id).each do |seedtag|
 				s = Seed.find(seedtag.seed_id)
-				# this part is for filtering seeds that will likely not sprout before cycle end
-				# seed_length = (s.min_duration + s.max_duration) / 2
-				# if (seedtag.startdate.advance(:days => seed_length - 1) < Date.today)
-				# 	seedtag.startdate = Date.today
-				# end
-				# if (seedtag.startdate.advance(:days => seed_length - 1) <= cycle.end)
-				# 	current_seeds.push(s.name)
-				# end
-				# comment this line below if above lines are uncommented
 				@current_seeds.push(s.name)
 			end
 		end
 		@current_seeds = @current_seeds.to_sentence
 		return @current_seeds
+	end
+
+	def cleanup_participants(participants)
+		result = Array.new
+		participants.each do |participant|
+			project = Project.find(self.project_id)
+			if project.slack_channel == "" || project.slack_token == ""
+				#project doesn't want slack notifications
+				result.push(participant) unless participant.email == ""
+			else
+				#project wants both email and slack
+				result.push(participant) unless participant.slack_name == "" || participant.email == ""
+			end
+		end
+		return result
 	end
 end

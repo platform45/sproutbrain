@@ -1,4 +1,15 @@
 <div id="new_seed_wrapper">
+  <div id="seed_error_msg">
+  <% if @seed.errors.any? %>
+    <div class="errors">
+      Your seed could not be saved:
+      <ul>
+        <% @seed.errors.full_messages.each do |message| %>
+          <li><%=message%></li>
+        <% end %>
+      </ul>
+  <% end %>
+  </div>
   <div id="seed_title"><p>NEW SEED</p></div>
   <div id="new_seed_form">
     <%= form_for(@seed) do |f| %>
